@@ -1,14 +1,13 @@
-## name of project
+## CelebriDate
 ### Code Badges
-build status icon
-coverage status icon
+[![Build Status](https://travis-ci.org/ABarnhard/celebridate.svg)](https://travis-ci.org/ABarnhard/celebridate)
+[![Coverage Status](https://coveralls.io/repos/ABarnhard/celebridate/badge.png)](https://coveralls.io/r/ABarnhard/celebridate)
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
+Forthcoming...
 
 ### Description
-write a description about your project
+A dating site for celebrities
 
 ### Models
 ```
@@ -40,7 +39,10 @@ $ npm test
 ```
 
 ### Contributors
-- [Chyld Medford](https://github.com/chyld)
+- [Adam Barnhard](https://github.com/abarnhard)
+- [Sarah Pearson](https://github.com/SarahMPearson)
+- [Mark Supalla](https://github.com/abarnhar://github.com/marksupalla)
+- [Melanie Fryman](https://github.com/mlfryman)
 
 ### License
 [MIT](LICENSE)

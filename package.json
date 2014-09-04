@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "celebridate",
   "version": "0.0.0",
-  "description": "Node.js/Express Template",
+  "description": "Node.js/Express celebridate",
   "main": "app/index.js",
   "directories": {
     "test": "test"
@@ -22,30 +22,43 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nss-cohort-2014-06-07/template"
+    "url": "https://github.com/abarnhard/celebridate"
   },
-  "author": "Chyld Medford <chyld.medford@gmail.com>",
+  "author": "Adam Barnhard <admbarn@gmail.com>",
+  "contributors": [
+    "Sarah Pearson <SarahP@me.com>",
+    "Mark Supalla <marksupalla@gmail.com>",
+    "Melanie Fryman <melanie@frymanet.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nss-cohort-2014-06-07/template/issues"
+    "url": "https://github.com/abarnhard/celebridate/issues"
   },
-  "homepage": "https://github.com/nss-cohort-2014-06-07/template",
+  "homepage": "https://github.com/abarnhard/celebridate",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt": "^0.8.0",
     "body-parser": "^1.7.0",
     "chalk": "^0.5.1",
+    "connect-flash": "^0.1.1",
     "connect-redis": "^2.1.0",
     "express": "^4.8.7",
     "express-method-override": "0.0.3",
     "express-session": "^1.7.6",
     "jade": "^1.6.0",
     "less-middleware": "^1.0.4",
+    "mailgun-js": "^0.5.4",
     "moment": "^2.8.2",
     "mongodb": "^1.4.10",
     "morgan": "^1.3.0",
     "multiparty": "^3.3.2",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "passport-google-oauth": "^0.1.5",
+    "passport-local": "^1.0.0",
     "request": "^2.40.0",
+    "stripe": "^2.8.0",
+    "twilio": "^1.7.0",
     "underscore-contrib": "^0.3.0"
   },
   "devDependencies": {
