@@ -3,6 +3,7 @@
 var bcrypt = require('bcrypt'),
     Mongo  = require('mongodb'),
     _      = require('underscore-contrib'),
+    Message = require('./message'),
     fs     = require('fs'),
     path   = require('path');
 
@@ -106,6 +107,28 @@ User.prototype.moveFiles = function(files){
     return {url:photo, isPrimary:false};
   });
   this.photos = this.photos.concat(photos);
+};
+
+User.prototype.unread = function(cb){
+  Message.unread(this._id, cb);
+};
+
+User.prototype.save = function(o, cb){
+  var properties = Object.keys(o),
+      self       = this;
+  properties.forEach(function(property){
+    self[property] = o[property];
+  });
+  delete this.unread;
+  User.collection.save(self, cb);
+};
+
+User.prototype.messages = function(cb){
+  Message.messages(this._id, cb);
+};
+
+User.prototype.send = function(receiver, obj, cb){
+  Message.send(this._id, receiver._id, obj.message, cb);
 };
 
 module.exports = User;
