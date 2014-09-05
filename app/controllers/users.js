@@ -1,6 +1,7 @@
 'use strict';
 
-var User = require('../models/user');
+var User = require('../models/user'),
+    mp     = require('multiparty');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -29,5 +30,20 @@ exports.create = function(req, res){
 
 exports.profile = function(req, res){
   res.render('users/profile');
+};
+
+exports.edit = function(req, res){
+  res.render('users/edit');
+};
+
+exports.update = function(req, res){
+  var form = new mp.Form();
+  form.parse(req, function(err, fields, files){
+    // console.log('fields', fields);
+    // console.log('files', files);
+    User.updateProfile(req.user, fields, files, function(){
+      res.redirect('/profile');
+    });
+  });
 };
 

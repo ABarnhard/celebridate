@@ -1,0 +1,19 @@
+extends ../shared/template
+block content
+  h2 Profile Edit Page
+  .panel.panel-default
+    .panel-body
+      form(role='form', method='post', action='/profile/edit', enctype='multipart/form-data')
+        input(type='hidden', name='_method', value='put')
+        .form-group
+          label Name
+          input.form-control(type='text', name='name', placeholder='John Jones')
+        .form-group
+          label Email
+          input.form-control(type='email', name='email', placeholder='bob@example.com', value=user.email)
+        .form-group
+          label Photos
+          input.form-control(type='file', name='photos', multiple=true)
+        button.btn.btn-success(type='submit') Update Profile
+
+block scripts

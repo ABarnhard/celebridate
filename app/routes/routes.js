@@ -37,10 +37,11 @@ module.exports = function(app, express){
   app.get('/auth/facebook',          passport.authenticate('facebook'));
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/profile', failureRedirect:'/login', failureFlash:'Facebook Login failed'}));
 
-
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/profile', users.profile);
+  app.get('/profile/edit', users.edit);
+  app.put('/profile', users.update);
 
   console.log('Express: Routes Loaded');
 };
