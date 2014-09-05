@@ -3,8 +3,7 @@ block content
   h2 Profile Edit Page
   .panel.panel-default
     .panel-body
-      form(role='form', method='post', action='/profile/edit', enctype='multipart/form-data')
-        input(type='hidden', name='_method', value='put')
+      form(role='form', method='post', action='/profile', enctype='multipart/form-data')
         .form-group
           label Name
           input.form-control(type='text', name='name', placeholder='John Jones')

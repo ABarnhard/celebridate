@@ -83,7 +83,8 @@ User.prototype.moveFiles = function(files){
   var baseDir = __dirname + '/../static',
       relDir  = '/img/user_pics' + this._id,
       absDir  = baseDir + relDir,
-      exists  = fs.existsSync(absDir);
+      exists  = fs.existsSync(absDir),
+      self    = this;
 
   if(!exists){
     fs.mkdirSync(absDir);
@@ -93,7 +94,7 @@ User.prototype.moveFiles = function(files){
     if(!photo.size){return;}
 
     var ext      = path.extname(photo.path),
-        name     = (index + (this.photos || []).length) + ext,
+        name     = (index + (self.photos || []).length) + ext,
         absPath  = absDir + '/' + name,
         relPath  = relDir + '/' + name;
 
