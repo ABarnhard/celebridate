@@ -39,5 +39,91 @@ describe('users', function(){
       });
     });
   });
+
+  describe('post /register', function(){
+    it('should redirect and post to login', function(done){
+      request(app)
+      .post('/register')
+      .send('email=john%40gmail.com&password=1234')
+      .end(function(err, res){
+        expect(res.status).to.equal(307);
+        expect(res.headers.location).to.equal('/login');
+        done();
+      });
+    });
+    it('should redirect to the register page(duplicate email in system)', function(done){
+      request(app)
+      .post('/register')
+      .send('email=bob%40aol.com&password=1234')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/register');
+        done();
+      });
+    });
+  });
+
+  describe('get /login', function(){
+    it('should return the login page', function(done){
+      request(app)
+      .get('/login')
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Login');
+        done();
+      });
+    });
+  });
+
+  describe('post /login', function(){
+    it('should redirect to the home page', function(done){
+      request(app)
+      .post('/login')
+      .send('email=bob%40aol.com&password=1234')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+    it('should redirect to login page (incorrect credentials)', function(done){
+      request(app)
+      .post('/login')
+      .send('email=bob%40aol.com&password=12345')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/login');
+        done();
+      });
+    });
+  });
+
+  describe('bounce (redirect  /login)', function(){
+    it('should redirect to the login page if cookie isn\'t set', function(done){
+      request(app)
+      .post('/logout')
+      .send('_method=delete')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/login');
+        done();
+      });
+    });
+  });
+
+  describe('delete /logout', function(){
+    it('should redirect to the home page', function(done){
+      request(app)
+      .post('/logout')
+      .set('cookie', cookie)
+      .send('_method=delete')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/');
+        done();
+      });
+    });
+  });
+
 });
 
