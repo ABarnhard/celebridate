@@ -67,3 +67,8 @@ exports.contact = function(req, res){
   });
 };
 
+// For creating modal - please DELETE me!
+exports.edit = function(req, res){
+  res.render('users/details');
+};
+

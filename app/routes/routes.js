@@ -43,8 +43,11 @@ module.exports = function(app, express){
   app.post('/profile/photos', users.addPhoto);
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
-  app.put('/profile/about', users.details);
-  app.put('/profile/about', users.contact);
+  app.put('/profile/details', users.details);
+  app.put('/profile/contact', users.contact);
+
+  // For creating modal - please DELETE me!
+  app.get('/profile/details', users.edit);
 
   console.log('Express: Routes Loaded');
 };
