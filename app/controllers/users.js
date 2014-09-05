@@ -67,3 +67,7 @@ exports.contact = function(req, res){
   });
 };
 
+exports.alias = function(req, res){
+  res.render('users/alias');
+};
+

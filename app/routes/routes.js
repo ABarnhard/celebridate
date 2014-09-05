@@ -45,6 +45,7 @@ module.exports = function(app, express){
   app.put('/profile/about', users.about);
   app.put('/profile/about', users.details);
   app.put('/profile/about', users.contact);
+  app.get('/users/alias', users.alias);
 
   console.log('Express: Routes Loaded');
 };
