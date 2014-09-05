@@ -48,6 +48,8 @@ module.exports = function(app, express){
   app.post('/message/:userId', users.send);
   app.get('/messages', users.messages);
   app.get('/messages/:msgId', users.message);
+  app.get('/users/alias', users.alias);
+
   console.log('Express: Routes Loaded');
 };
 

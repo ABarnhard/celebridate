@@ -87,3 +87,7 @@ exports.message = function(req, res){
     res.render('users/message', {msg:msg});
   });
 };
+exports.alias = function(req, res){
+  res.render('users/alias');
+};
+
