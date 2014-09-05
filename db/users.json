@@ -1,11 +1,44 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
-  "email" : "bob@aol.com",
-  "password" : "$2a$10$XR.IQktUUujLBxed70GQn.jWY1wZ9ThM0Tar9wTqzkI4Uk1uP2Or2"
+  "coordinates" : [36.1003494, -86.77180169999997],
+  "email" : "bob@mailinator.com",
+  "password" : "$2a$10$ZvS/Y7WPMK5DLSVZwDaq3euj.WIzSDJsgGkMaQUZg/YYCU7kuzicy",
+  "type" : "local",
+  "alias" : "BobBoberson",
+  "location" : "Nashville, TN 37204, USA",
+  "phone" : "316-650-0346",
+  "zip" : "37204"
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
-  "email" : "sue@aol.com",
-  "password" : "$2a$10$sjPx9TkrEASeXzH6uuDCDO.n1Sj/H2A/bu/9hBFfm5fm3Z4LzrEPa"
+  "coordinates" : [36.1724885, -86.78059610000003],
+  "email" : "sue@mailinator.com",
+  "password" : "$2a$10$FpmjBzpoRgl2upGrwhNFAOKTOqFifZeYAPZ8BssCLGbRxhxf9Bafy",
+  "type" : "local",
+  "alias" : "SueJones",
+  "location" : "Nashville, TN 37201, USA",
+  "phone" : "316-650-0346",
+  "zip" : "37201"
 }
-
+{
+  "_id" : {"$oid":"000000000000000000000003"},
+  "coordinates" : [39.6487896, -105.0148322],
+  "googleId" : "000000000000000000001",
+  "type" : "google",
+  "alias" : "JohnJohnson",
+  "email" : "john@mailinator.com",
+  "location" : "Englewood, CO 80110, USA",
+  "phone" : "316-650-0346",
+  "zip" : "80110"
+}
+{
+  "_id" : {"$oid":"000000000000000000000004"},
+  "coordinates" : [33.9697897, -118.2468148],
+  "facebookId" : "90000000000000001",
+  "type" : "facebook",
+  "alias" : "JenJohnson",
+  "email" : "jen@mailinator.com",
+  "location" : "Los Angeles, CA 90001, USA",
+  "phone" : "316-650-0346",
+  "zip" : "90001"
+}

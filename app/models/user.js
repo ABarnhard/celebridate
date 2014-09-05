@@ -117,7 +117,7 @@ User.prototype.initUpdate = function(data, cb){
     data.coordinates.forEach(function(c, i){
       data.coordinates[i] = parseFloat(c);
     });
-    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, coordinates:data.coordinates, phone:data.phone, zip:data.zip}}, cb);
+    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, location:data.location, coordinates:data.coordinates, phone:data.phone, zip:data.zip}}, cb);
   });
 };
 

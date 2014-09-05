@@ -20,7 +20,7 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../static'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
-  app.use(session({store:new RedisStore(), secret:'HashLikeABoss', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(session({store:new RedisStore(), secret:'WickedUnbreakableHash', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
   app.use(flash());
   passportConfig(passport, app);
 

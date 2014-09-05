@@ -19,7 +19,7 @@ describe('users', function(){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [process.env.DB], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
       request(app)
       .post('/login')
-      .send('email=bob@aol.com')
+      .send('email=bob@mailinator.com')
       .send('password=1234')
       .end(function(err, res){
         cookie = res.headers['set-cookie'][0];
@@ -54,7 +54,7 @@ describe('users', function(){
     it('should redirect to the register page(duplicate email in system)', function(done){
       request(app)
       .post('/register')
-      .send('email=bob%40aol.com&password=1234')
+      .send('email=bob%40mailinator.com&password=1234')
       .end(function(err, res){
         expect(res.status).to.equal(302);
         expect(res.headers.location).to.equal('/register');
@@ -127,7 +127,7 @@ describe('users', function(){
     it('should redirect to the home page', function(done){
       request(app)
       .post('/login')
-      .send('email=bob%40aol.com&password=1234')
+      .send('email=bob%40mailinator.com&password=1234')
       .end(function(err, res){
         expect(res.status).to.equal(302);
         expect(res.headers.location).to.equal('/verify');
