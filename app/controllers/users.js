@@ -19,25 +19,15 @@ exports.logout = function(req, res){
 exports.create = function(req, res){
   User.register(req.body, function(err, user){
     if(user){
-      res.redirect('/');
+      res.redirect(307, '/login');
     }else{
+      req.flash('notice', 'That Email is already in use in the system');
       res.redirect('/register');
     }
   });
 };
 
-exports.authenticate = function(req, res){
-  User.authenticate(req.body, function(user){
-    if(user){
-      req.session.regenerate(function(){
-        req.session.userId = user._id;
-        req.session.save(function(){
-          res.redirect('/');
-        });
-      });
-    }else{
-      res.redirect('/login');
-    }
-  });
+exports.profile = function(req, res){
+  res.render('users/profile');
 };
 
