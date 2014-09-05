@@ -40,8 +40,11 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/profile', users.profile);
-  app.get('/profile/edit', users.edit);
-  app.post('/profile', users.update);
+  app.post('/profile/photos', users.addPhoto);
+  app.put('/profile/photos/primary', users.setProfilePhoto);
+  app.put('/profile/about', users.about);
+  app.put('/profile/about', users.details);
+  app.put('/profile/about', users.contact);
 
   console.log('Express: Routes Loaded');
 };

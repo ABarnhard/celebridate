@@ -32,18 +32,38 @@ exports.profile = function(req, res){
   res.render('users/profile');
 };
 
-exports.edit = function(req, res){
-  res.render('users/edit');
-};
-
-exports.update = function(req, res){
+exports.addPhoto = function(req, res){
   var form = new mp.Form();
   form.parse(req, function(err, fields, files){
     // console.log('fields', fields);
     // console.log('files', files);
-    User.updateProfile(req.user, fields, files, function(){
+    User.addPhotos(req.user, fields, files, function(){
       res.redirect('/profile');
     });
+  });
+};
+
+exports.setProfilePhoto = function(req, res){
+  req.user.setProfilePhoto(req.body, function(){
+    res.redirect('/profile');
+  });
+};
+
+exports.about = function(req, res){
+  req.user.updateAbout(req.body, function(){
+    res.redirect('/profile');
+  });
+};
+
+exports.details = function(req, res){
+  req.user.updateDetails(req.body, function(){
+    res.redirect('/profile');
+  });
+};
+
+exports.contact = function(req, res){
+  req.user.updateContact(req.body, function(){
+    res.redirect('/profile');
   });
 };
 
