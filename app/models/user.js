@@ -16,7 +16,7 @@ Object.defineProperty(User, 'collection', {
 
 User.findByIdSession = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, {fields:{alias:1, email:1, coordinates:1}}, function(err, obj){
+  User.collection.findOne({_id:_id}, {fields:{alias:1, email:1, coordinates:1, type:1, location:1, zip:1}}, function(err, obj){
     var user = Object.create(User.prototype);
     user = _.extend(user, obj);
     cb(err, user);

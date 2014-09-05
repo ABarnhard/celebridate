@@ -26,7 +26,31 @@ describe('User', function(){
     it('should create a new User object', function(){
       var u = new User();
       expect(u).to.be.instanceof(User);
+      expect(u.coordinates).to.have.length(0);
     });
   });
+
+  describe('.findByIdSession', function(){
+    it('should return a user object with limited fields', function(done){
+      User.findByIdSession('000000000000000000000002', function(err, u){
+        expect(Object.keys(u)).to.have.length(7);
+        expect(u).to.respondTo('moveFiles');
+        expect(u._id.toString()).to.equal('000000000000000000000002');
+        done();
+      });
+    });
+  });
+
+  describe('.findById', function(){
+    it('should return a full user object from the database', function(done){
+      User.findById('000000000000000000000002', function(err, u){
+        expect(u).to.respondTo('moveFiles');
+        expect(u._id.toString()).to.equal('000000000000000000000002');
+        expect(Object.keys(u).length).to.be.at.least(7);
+        done();
+      });
+    });
+  });
+
 });
 
