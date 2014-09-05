@@ -75,6 +75,54 @@ describe('users', function(){
     });
   });
 
+  describe('get /auth/google', function(){
+    it('should initiate oauth with google service', function(done){
+      request(app)
+      .get('/auth/google')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location.indexOf('accounts.google.com')).to.not.equal(-1);
+        done();
+      });
+    });
+  });
+
+  describe('get /auth/google/callback', function(){
+    it('should trigger passport function', function(done){
+      request(app)
+      .get('/auth/google/callback')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location.indexOf('accounts.google.com')).to.not.equal(-1);
+        done();
+      });
+    });
+  });
+
+  describe('get /auth/facebook', function(){
+    it('should initiate oauth with facebook service', function(done){
+      request(app)
+      .get('/auth/facebook')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location.indexOf('facebook')).to.not.equal(-1);
+        done();
+      });
+    });
+  });
+
+  describe('get /auth/facebook/callback', function(){
+    it('should initiate oauth with facebook service', function(done){
+      request(app)
+      .get('/auth/facebook/callback')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location.indexOf('facebook')).to.not.equal(-1);
+        done();
+      });
+    });
+  });
+
   describe('post /login', function(){
     it('should redirect to the home page', function(done){
       request(app)
@@ -82,7 +130,7 @@ describe('users', function(){
       .send('email=bob%40aol.com&password=1234')
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile');
+        expect(res.headers.location).to.equal('/verify');
         done();
       });
     });
