@@ -22,17 +22,9 @@ block content
 
     button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage') Message
     include newMessage
-    button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift') Gift
-    #gift.modal.fade(tabindex='-1', role='dialog', aria-labelledby='giftlLabel', aria-hidden='true')
-      .modal-dialog
-        .modal-content
-        .modal-header
-          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-          h4.modal-title Send a Gift
-        textarea.modal-body
-        .modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal') Close
-          button.btn.btn-primary(type='button') Send
+    a.btn.btn-default.btn(href='/gifts') Gift
+    //button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift') Gift
+    //include checkout
     button.btn.btn-default.btn-(data-toggle='modal', data-target='wink') Wink
       span.glyphicon.glyphicon-eye-open
   
@@ -45,6 +37,7 @@ block content
         h6 This is the About Me Section of the Profile Page
   .row
     .col-xs-12
+      .c-wrapper
       #carousel-example-generic.carousel.slide(data-ride='carousel')
         ol.carousel-indicators
           li.active(data-target='#carousel-example-generic', data-slide-to='0')

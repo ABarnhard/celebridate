@@ -12,6 +12,7 @@ var morgan         = require('morgan'),
     passportConfig = require('../lib/passport/config'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
+    gifts          = require('../controllers/gifts'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -52,6 +53,7 @@ module.exports = function(app, express){
   app.get('/messages', users.messages);
   app.get('/messages/:msgId', users.message);
   app.get('/users/alias', users.alias);
+  app.get('/gifts', gifts.index);
 
   console.log('Express: Routes Loaded');
 };
