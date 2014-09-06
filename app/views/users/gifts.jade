@@ -1,24 +1,29 @@
 extends ../shared/template
 block content
   .row
-    .col-xs-6.col-xs-offset-3.gifts
-      table#index.table.table-bordered.table-hover
-        thead
-          th Name
-          th Photo
-          th Price
-        tbody
-          each gift in gifts
-            tr
-              td
-                form(method='post', action='/cart')
-                  input(type='hidden', name='giftId', value=gift._id)
-                  button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift')= gift.name
-                  include checkout
-              td#giftImg
-                img(src=gift.photo)
-              td $#{gift.price.toFixed(2)}
-    .col-xs-3
+    .col-xs-12
+      .panel.panel-success
+        .panel-heading
+          h3.panel-title Gift Options
+        .panel-body
+          .table-responsive
+            table.table.table-hover.table-bordered#giftsTable
+              thead
+                th Name
+                th Photo
+                th Price
+              tbody
+                each gift in gifts
+                  tr
+                    td
+                      form(method='post', action='/cart')
+                        input(type='hidden', name='giftId', value=gift._id)
+                        button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift')= gift.name
+                        include checkout
+                    td#giftImg
+                      img(src=gift.photo)
+                    td $#{gift.price.toFixed(2)}
+    .col-xs-12
 
 
 block scripts
