@@ -149,7 +149,9 @@ User.prototype.updateAbout = function(data, cb){
 };
 
 User.prototype.updateDetails = function(data, cb){
-  User.collection.update({_id:this._id}, {$set:{details:data}}, cb);
+  var orientation = data.orientation;
+  delete data.orientation;
+  User.collection.update({_id:this._id}, {$set:{orientation:orientation, details:data}}, cb);
 };
 
 User.prototype.setProfilePhoto = function(index, cb){
