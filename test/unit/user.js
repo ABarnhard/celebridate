@@ -42,7 +42,7 @@ describe('User', function(){
   describe('.findByIdSession', function(){
     it('should return a user object with limited fields', function(done){
       User.findByIdSession('000000000000000000000002', function(err, u){
-        expect(Object.keys(u)).to.have.length(9);
+        expect(Object.keys(u)).to.have.length(8);
         expect(u).to.respondTo('moveFiles');
         expect(u._id.toString()).to.equal('000000000000000000000002');
         done();
@@ -55,7 +55,7 @@ describe('User', function(){
       User.findById('000000000000000000000002', function(err, u){
         expect(u).to.respondTo('moveFiles');
         expect(u._id.toString()).to.equal('000000000000000000000002');
-        expect(Object.keys(u).length).to.be.at.least(9);
+        expect(Object.keys(u).length).to.be.at.least(8);
         done();
       });
     });

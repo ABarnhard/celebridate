@@ -10,7 +10,7 @@
   "alias" : "BobBoberson",
   "location" : "Nashville, TN 37204, USA",
   "phone" : "316-650-0346",
-  "zip" : "37204",
+  "address" : {"zip":"37204"},
   "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
@@ -25,7 +25,7 @@
   "alias" : "SueJones",
   "location" : "Nashville, TN 37201, USA",
   "phone" : "316-650-0346",
-  "zip" : "37201"
+  "address" : {"zip" : "37201"}
 }
 {
   "_id" : {"$oid":"000000000000000000000003"},
@@ -39,7 +39,7 @@
   "email" : "john@mailinator.com",
   "location" : "Englewood, CO 80110, USA",
   "phone" : "316-650-0346",
-  "zip" : "80110",
+  "address" : {"zip" : "80110"},
   "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
@@ -54,7 +54,7 @@
   "email" : "jen@mailinator.com",
   "location" : "Los Angeles, CA 90001, USA",
   "phone" : "316-650-0346",
-  "zip" : "90001"
+  "address" : {"zip" : "90001"}
 }
 {
   "_id" : {"$oid":"000000000000000000000005"},
