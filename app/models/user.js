@@ -7,11 +7,21 @@ var bcrypt = require('bcrypt'),
     path   = require('path');
 
 function User(){
+  this.coordinates = [];
 }
 
 Object.defineProperty(User, 'collection', {
   get: function(){return global.mongodb.collection('users');}
 });
+
+User.findByIdSession = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  User.collection.findOne({_id:_id}, {fields:{alias:1, email:1, coordinates:1, type:1, location:1, zip:1}}, function(err, obj){
+    var user = Object.create(User.prototype);
+    user = _.extend(user, obj);
+    cb(err, user);
+  });
+};
 
 User.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
@@ -26,7 +36,10 @@ User.register = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
     if(user){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
-    User.collection.save(o, cb);
+    o.type = 'local';
+    user = new User();
+    user = _.extend(user, o);
+    User.collection.save(user, cb);
   });
 };
 
@@ -45,7 +58,8 @@ User.googleAuth = function(accessToken, refreshToken, profile, cb){
   // console.log(accessToken, refreshToken, profile, cb);
   User.collection.findOne({googleId:profile.id}, function(err, user){
     if(user){return cb(err, user);}
-    user = {googleId:profile.id, displayName:profile.displayName, type:'google'};
+    user = new User();
+    user = _.extend(user, {googleId:profile.id, type:'google'});
     User.collection.save(user, cb);
   });
 };
@@ -54,26 +68,13 @@ User.facebookAuth = function(accessToken, refreshToken, profile, cb){
   // console.log(profile);
   User.collection.findOne({facebookId:profile.id}, function(err, user){
     if(user){return cb(err, user);}
-    user = {facebookId:profile.id, displayName:profile.displayName, type:'facebook'};
+    user = new User();
+    user = _.extend(user, {facebookId:profile.id, type:'facebook'});
     User.collection.save(user, cb);
   });
 };
 
-User.updateProfile = function(user, fields, files, cb){
-  // console.log('***Post Body:', fields);
-  Object.keys(fields).forEach(function(key){
-    fields[key][0] = fields[key][0].trim();
-    if(fields[key][0]){
-      switch(key){
-        case 'visible':
-          user.isPublic = (fields[key] === 'public');
-          break;
-        default:
-          user[key] = fields[key][0];
-      }
-    }
-  });
-  // console.log('*** Updated User:', user);
+User.addPhotos = function(user, files, cb){
   user.moveFiles(files);
   User.collection.save(user, cb);
 };
@@ -107,6 +108,43 @@ User.prototype.moveFiles = function(files){
   });
   this.photos = this.photos.concat(photos);
 };
+
+User.prototype.initUpdate = function(data, cb){
+  // console.log('************DATA', data);
+  var self = this;
+  User.collection.findOne({alias:data.alias}, function(err1, obj1){
+    if(obj1){return cb('Please choose a different alias, that one is already in use');}
+    data.coordinates.forEach(function(c, i){
+      data.coordinates[i] = parseFloat(c);
+    });
+    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, location:data.location, coordinates:data.coordinates, phone:data.phone, zip:data.zip}}, cb);
+  });
+};
+
+User.prototype.updateAbout = function(data, cb){
+  Object.keys(data).forEach(function(key){
+    data[key] = data[key].trim();
+  });
+  User.collection.update({_id:this._id}, {$set:{about:data}}, cb);
+};
+
+User.prototype.updateDetails = function(data, cb){
+  User.collection.update({_id:this._id}, {$set:{details:data}}, cb);
+};
+
+User.prototype.setProfilePhoto = function(index, cb){
+  User.collection.findOne({_id:this._id}, {fields:{photos:1}}, function(err, data){
+    var i = data.photos.map(function(x){return x.isPrimary;}).indexOf(true);
+    if(i !== -1){data.photos[i].isPrimary = false;}
+    data.photos[index].isPrimary = true;
+    User.collection.update({_id:data._id}, {$set:{photos:data.photos}}, cb);
+  });
+};
+// NEED TO TOUCH BASE BEFORE FINISHING
+/*
+User.prototype.updateContact = function(data, cb){
+};
+*/
 
 module.exports = User;
 

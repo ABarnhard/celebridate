@@ -20,7 +20,7 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../static'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
-  app.use(session({store:new RedisStore(), secret:'HashLikeABoss', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(session({store:new RedisStore(), secret:'WickedUnbreakableHash', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
   app.use(flash());
   passportConfig(passport, app);
 
@@ -31,17 +31,22 @@ module.exports = function(app, express){
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
-  app.post('/login', passport.authenticate('local', {successRedirect:'/profile', failureRedirect:'/login', failureFlash:'Login failed'}));
+  app.post('/login',                 passport.authenticate('local', {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Login failed'}));
   app.get('/auth/google',            passport.authenticate('google',   {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
-  app.get('/auth/google/callback',   passport.authenticate('google',   {successRedirect:'/profile', failureRedirect:'/login', failureFlash:'Google Login failed'}));
+  app.get('/auth/google/callback',   passport.authenticate('google',   {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Google Login failed'}));
   app.get('/auth/facebook',          passport.authenticate('facebook'));
-  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/profile', failureRedirect:'/login', failureFlash:'Facebook Login failed'}));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Facebook Login failed'}));
 
   app.use(security.bounce);
   app.delete('/logout', users.logout);
+  app.get('/verify', users.verify);
   app.get('/profile', users.profile);
-  app.get('/profile/edit', users.edit);
-  app.post('/profile', users.update);
+  app.put('/profile/init', users.initUpdate);
+  app.post('/profile/photos', users.addPhotos);
+  app.put('/profile/photos/primary', users.setProfilePhoto);
+  app.put('/profile/about', users.about);
+  app.put('/profile/details', users.details);
+  // app.put('/profile/contact', users.contact);
 
   console.log('Express: Routes Loaded');
 };

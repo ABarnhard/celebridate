@@ -1,0 +1,29 @@
+extends ../shared/template
+block content
+  h2 Tell Everyone A Litle About Yourself
+  .row
+    .col-xs-6
+      form(role='form', method='post', action='/profile/init')
+        input(type='hidden', name='_method', value='put')
+        input(type='hidden', name='coordinates', data-name='lat')
+        input(type='hidden', name='coordinates', data-name='lng')
+        input(type='hidden', name='location', data-name='loc')
+        .form-group
+          label Alias (How you will Appear to other users)
+          input.form-control(type='text', name='alias', placeholder='AlisterISwear', autofocus=true)
+        .form-group
+          label Email
+          input.form-control(type='email', name='email', placeholder='bob@aol.com', value=user.email)
+        .form-group
+          label Phone
+          input.form-control(type='text', name='phone', placeholder='xxx-xxx-xxxx')
+        .form-group
+          label Zip (Where You Are)
+          input.form-control(type='text', name='zip')
+        button.btn.btn-success(type='submit') Submit
+    .col-xs-6
+
+block scripts
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKBptUxmWBtYmtT8hfD67-TcrUhu4cl8&sensor=true')
+  script(src='/js/user/init-info.js')
+
