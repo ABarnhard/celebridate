@@ -11,13 +11,15 @@ block content
               thead
                 th From
                 th Date
-                th Message
+                th Time
+                th Subject
               tbody
                 each msg in msgs
-                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
-                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
-                    td= msg.date.toDateString()
-                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
+                  tr(style='background-color:#{msg.isRead ? "lightblue" : "#8C8A8D"}')
+                    td: a(href='/users/#{msg.sender.alias}')= msg.sender.alias
+                    td= moment(msg.date).format('MM/DD/YYYY')
+                    td= moment(msg.date).fromNow()
+                    td: a(href='/messages/#{msg._id}')= msg.subject
     .col-xs-12
   .row
     .col-xs-9
