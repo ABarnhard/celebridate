@@ -1,0 +1,20 @@
+// TRIGGER
+button.btn.btn-warning-btn-mini(data-toggle='modal', data-target='#editAbout'): i.fa.fa-edit
+// MODAL
+#editAbout.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editAboutLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4#editAboutLabel.modal-title Edit your about me
+      .modal-body
+        form#about_form(role='form', method='post', action='/profile/about')
+          input(type='hidden', name='_method', value='put')
+          .form-group
+            label.control-label(for='aboutMe') About Me
+              textarea#aboutMe.form-control(rows='4', name='aboutMe')
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-success(type='submit') Save changes
