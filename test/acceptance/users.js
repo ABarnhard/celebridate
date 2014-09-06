@@ -269,5 +269,18 @@ describe('users', function(){
     });
   });
 
+  describe('get /messages/messageId', function(){
+    it('should return a message for the user', function(done){
+      request(app)
+      .get('/messages/c00000000000000000000001')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('message');
+        done();
+      });
+    });
+  });
+
 });
 
