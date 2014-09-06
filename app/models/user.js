@@ -141,11 +141,23 @@ User.prototype.setProfilePhoto = function(index, cb){
     User.collection.update({_id:data._id}, {$set:{photos:data.photos}}, cb);
   });
 };
-// NEED TO TOUCH BASE BEFORE FINISHING
-/*
+
 User.prototype.updateContact = function(data, cb){
+  var self = this,
+      message;
+  User.collection.findOne({alias:data.alias}, function(err, obj){
+    if(obj && obj.alias !== self.alias){
+      message = 'Desired alias in use, didn\'t update';
+      data.alias = self.alias;
+    }
+    data.coordinates.forEach(function(c, i){
+      data.coordinates[i] = parseFloat(c);
+    });
+    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, location:data.location, coordinates:data.coordinates, phone:data.phone, zip:data.address.zip, address:data.address}}, function(){
+      cb(message);
+    });
+  });
 };
-*/
 
 User.prototype.unread = function(cb){
   Message.unread(this._id, cb);

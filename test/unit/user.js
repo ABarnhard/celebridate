@@ -86,7 +86,7 @@ describe('User', function(){
       var test1 = __dirname + '/../img/test1.jpg',
           test2 = __dirname + '/../img/test2.jpg',
           files = {photos: [{size:'5kb', path:test1}, {size:'5kb', path:test2}]};
-      console.log(test1, test2);
+      // console.log(test1, test2);
       User.findById('000000000000000000000002', function(err, u){
         User.addPhotos(u, files, function(){
           User.findById('000000000000000000000002', function(err2, u2){

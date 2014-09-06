@@ -47,7 +47,7 @@ module.exports = function(app, express){
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
   app.put('/profile/details', users.details);
-  // app.put('/profile/contact', users.contact);
+  app.put('/profile/contact', users.contact);
   app.put('/profile/about', users.details);
   app.post('/message/:userId', users.send);
   app.get('/messages', users.messages);
