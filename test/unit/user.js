@@ -138,5 +138,19 @@ describe('User', function(){
     });
   });
 
+  describe('#setProfilePhoto', function(){
+    it('should mark a photo in photos array to primary', function(done){
+      User.findById('000000000000000000000003', function(err, u){
+        u.setProfilePhoto('2', function(){
+          User.findById('000000000000000000000003', function(err2, u2){
+            expect(u2.photos[0].isPrimary).to.equal(false);
+            expect(u2.photos[2].isPrimary).to.equal(true);
+            done();
+          });
+        });
+      });
+    });
+  });
+
 });
 

@@ -133,10 +133,12 @@ User.prototype.updateDetails = function(data, cb){
 };
 
 User.prototype.setProfilePhoto = function(index, cb){
-  var setString = 'photos.' + index + '.isPrimary',
-      setter    = {$set:{}};
-  setter.$set[setString] = true;
-  User.collection.update({_id:this._id}, setter, cb);
+  User.collection.findOne({_id:this._id}, {fields:{photos:1}}, function(err, data){
+    var i = data.photos.map(function(x){return x.isPrimary;}).indexOf(true);
+    if(i !== -1){data.photos[i].isPrimary = false;}
+    data.photos[index].isPrimary = true;
+    User.collection.update({_id:data._id}, {$set:{photos:data.photos}}, cb);
+  });
 };
 
 User.prototype.updateContact = function(data, cb){
