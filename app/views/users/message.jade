@@ -1,0 +1,17 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-12
+      h3 Message from sender.name
+      .panel.panel-success
+        .panel-body
+          p Date
+          h4 msg.message
+    .col-xs-12
+  .row
+    .col-xs-4
+      button.btn.btn-default.btn-(data-toggle='modal', data-target='#replymessage') Reply
+      include replymessage
+
+
+block scripts

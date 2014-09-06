@@ -1,56 +1,47 @@
-extends ../shared/template
-block content
-  h2 Edit Profile
-  .row
-    .col-xs-6
-      // TRIGGER
-      button.btn.btn-primary.btn-md(data-toggle='modal', data-target='#editContact')
-        | Edit Contact Information
-      // MODAL
-      #editContact.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editContactLabel', aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal')
-                span(aria-hidden='true') ×
-                span.sr-only Close
-              h4#editContactLabel.modal-title Edit your contact information
-            .modal-body
-              form.form-horizontal#contact_form(role='form', method='post', action='/profile')
-                input(type='hidden', name='_method', value='put')
-                .form-group
-                  label.col-xs-2.control-label(for='alias') Alias
-                  .col-xs-8
-                    input(type='hidden', name='_method', value='put')
-                    input.form-control#alias(type='text', name='alias', value=user.alias, autofocus=true)
-                    span.help-block
-                      | Other members can only see your alias.
-                .form-group
-                  label.col-xs-2.control-label(for='name') Name
-                  .col-xs-8
-                    input.form-control#name(type='text', name='name', value=user.name)
-                .form-group
-                  label.col-xs-2.control-label(for='email') Email
-                  .col-xs-8
-                    input.form-control#email(type='email', name='email', value=user.email)
-                .form-group
-                  label.col-xs-2.control-label(for='Phone') Phone
-                  .col-xs-8
-                    input.form-control#phone(type='tel', name='phone', value=user.phone)
-                .form-group
-                  label.col-xs-2.control-label(for='address') Address
-                  br
-                  .col-xs-8
-                    label.input_separator(for='address[street]') Street
-                    input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.')
-                    label.input_separator(for='address[city]') City
-                    input.form-control#city(type='text', name='address.[city]', placeholder='Hollywood')
-                    label.input_separator(for='address[state]') State
-                    input.form-control#state(type='text', name='address.[state]', placeholder='CA')
-                    label.input_separator(for='address[zip]') ZIP
-                    input.form-control#zip(type='text', name='address.[zip]', placeholder='90028')
-            // MODAL FOOTER
-            .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
-              button.btn.btn-success(type='button') Save changes
-
+// TRIGGER
+button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editContact'): i.fa.fa-edit
+// MODAL
+#editContact.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editContactLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4#editContactLabel.modal-title Edit your contact information
+      .modal-body
+        form.form-horizontal#contact_form(role='form', method='post', action='/profile/contact')
+          input(type='hidden', name='_method', value='put')
+          .form-group
+            label.col-xs-2.control-label(for='alias') Alias
+            .col-xs-8
+              input.form-control#alias(type='text', name='alias', value=user.alias, autofocus=true)
+              span.help-block
+                | Other members can only see your alias.
+          .form-group
+            label.col-xs-2.control-label(for='name') Name
+            .col-xs-8
+              input.form-control#name(type='text', name='name', value=user.name)
+          .form-group
+            label.col-xs-2.control-label(for='email') Email
+            .col-xs-8
+              input.form-control#email(type='email', name='email', value=user.email)
+          .form-group
+            label.col-xs-2.control-label(for='Phone') Phone
+            .col-xs-8
+              input.form-control#phone(type='tel', name='phone', value=user.phone)
+          .form-group
+            label.col-xs-2.control-label(for='address') Address
+            br
+            .col-xs-8
+              label.input_separator(for='address[street]') Street
+              input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.')
+              label.input_separator(for='address[city]') City
+              input.form-control#city(type='text', name='address.[city]', placeholder='Hollywood')
+              label.input_separator(for='address[state]') State
+              input.form-control#state(type='text', name='address.[state]', placeholder='CA')
+              label.input_separator(for='address[zip]') ZIP
+              input.form-control#zip(type='text', name='address.[zip]', placeholder='90028')
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-success(type='submit') Save changes

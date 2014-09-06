@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/user'),
+    Message = require('../models/message'),
     mp     = require('multiparty');
 
 exports.new = function(req, res){
@@ -32,19 +33,19 @@ exports.profile = function(req, res){
   res.render('users/profile');
 };
 
-exports.addPhoto = function(req, res){
+exports.addPhotos = function(req, res){
   var form = new mp.Form();
   form.parse(req, function(err, fields, files){
     // console.log('fields', fields);
     // console.log('files', files);
-    User.addPhotos(req.user, fields, files, function(){
+    User.addPhotos(req.user, files, function(){
       res.redirect('/profile');
     });
   });
 };
 
 exports.setProfilePhoto = function(req, res){
-  req.user.setProfilePhoto(req.body, function(){
+  req.user.setProfilePhoto(req.body.index, function(){
     res.redirect('/profile');
   });
 };
@@ -67,15 +68,44 @@ exports.contact = function(req, res){
   });
 };
 
-// For creating modals - please DELETE me!
-exports.editDetails = function(req, res){
-  res.render('users/details');
+exports.verify = function(req, res){
+  if(!req.user.alias){
+    res.render('users/init-info');
+  }else{
+    res.redirect('/profile');
+  }
 };
-exports.editAbout = function(req, res){
-  res.render('users/about');
-};
-exports.editContact = function(req, res){
-  res.render('users/contact');
-};
-// END DELETE NOTE
 
+exports.initUpdate = function(req, res){
+  req.user.initUpdate(req.body, function(err){
+    if(err){
+      req.flash('error', err);
+      res.redirect('/verify');
+    }else{
+      res.redirect('/profile');
+    }
+  });
+};
+
+exports.send = function(req, res){
+  User.findById(req.params.userId, function(err, receiver){
+    res.locals.user.send(receiver, req.body, function(){
+      res.redirect('/users/' + receiver.email);
+    });
+  });
+};
+
+exports.messages = function(req, res){
+  res.locals.user.messages(function(err, msgs){
+    res.render('users/messages', {msgs:msgs});
+  });
+};
+
+exports.message = function(req, res){
+  Message.read(req.params.msgId, function(err, msg){
+    res.render('users/message', {msg:msg});
+  });
+};
+exports.alias = function(req, res){
+  res.render('users/alias');
+};

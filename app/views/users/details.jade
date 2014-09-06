@@ -1,338 +1,325 @@
-extends ../shared/template
-block content
-  h2 Edit Profile
-  .row
-    .col-xs-6
-      // TRIGGER
-      button.btn.btn-primary.btn-md(data-toggle='modal', data-target='#editDetails')
-        | Edit Details
-      // MODAL
-      #editDetails.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editDetailsLabel', aria-hidden='true')
-        .modal-dialog.modal-lg
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal')
-                span(aria-hidden='true') ×
-                span.sr-only Close
-              h4#editDetailsLabel.modal-title Edit your details
-            .modal-body
-              form.form-horizontal#details_form(role='form', method='post', action='/profile')
-                input(type='hidden', name='_method', value='put')
-                .form-group
-                  label.col-lg-2.control-label(for='orientation') Orientation
-                  .col-lg-10
-                    select#orientation.form-control
-                      option(selected='') -
-                      option Asexual
-                      option Bisexual
-                      option Exploring
-                      option Gay
-                      option Heterosexual / Straight
-                    br
-                .form-group
-                  label.col-lg-2.control-label(for='ethnicities') Ethnicity
-                  .col-lg-3
-                  label.checkbox(for='ethnicity1')
-                    input#ethnicity1(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Asian
-                  label.checkbox(for='ethnicity2')
-                    input#ethnicity2(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Middle Eastern
-                  label.checkbox(for='ethnicity3')
-                    input#ethnicity3(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Black
-                .col-lg-3
-                  label.checkbox(for='ethnicity4')
-                    input#ethnicity4(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Native American
-                  label.checkbox(for='ethnicity5')
-                    input#ethnicity5(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Indian
-                  label.checkbox(for='ethnicity6')
-                    input#ethnicity6(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Pacific Islander
-                .col-lg-3
-                  label.checkbox(for='ethnicity7')
-                    input#ethnicity7(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Hispanic / Latin
-                  label.checkbox(for='ethnicity8')
-                    input#ethnicity8(type='checkbox', name='ethnicities')
-                    span.icon
-                    | White
-                  label.checkbox(for='ethnicity9')
-                    input#ethnicity9(type='checkbox', name='ethnicities')
-                    span.icon
-                    | Other
-              .form-group
-                label.col-lg-2.control-label(for='feet') Height
-                #feetContainer.inputcontainer.select
-                  select#feet(name='feet')
-                    option —
-                    option 7
-                    option 6
-                    option 5
-                    option 4
-                    option 3
-                label.input_separator(for='feet') feet
-                #inchesContainer.inputcontainer.select
-                  select#inches(name='inches')
-                    option 0
-                    option 1
-                    option 2
-                    option 3
-                    option 4
-                    option 5
-                    option 6
-                    option 7
-                    option 8
-                    option 9
-                    option 10
-                    option 11
-                label.input_separator(for='inches') inches
-              .form-group
-                label(for='bodyType') Body Type
-                #bodyTypeContainer.inputcontainer.select
-                  select#bodyType(name='bodyType')
-                    option(selected='') —
-                    option Rather not say
-                    option Thin
-                    option Overweight
-                    option Skinny
-                    option Average
-                    option Fit
-                    option Athletic
-                    option Jacked
-                    option A little extra
-                    option Curvy
-                    option Full figured
-                    option Used up
-              .form-group
-                label(for='diet') Diet
-                #dietContainer.inputcontainer.select
-                  select#diet(name='diet')
-                    option —
-                    option anything
-                    option halal
-                    option kosher
-                    option vegan
-                    option vegetarian
-                    option other
-                #dietSeriousContainer.inputcontainer.select
-                  select#dietSerious(name='dietSerious')
-                    option —
-                    option Mostly
-                    option Strictly
-              .form-group
-                label(for='smoking') Smokes
-                #smokingContainer.inputcontainer.select
-                  select#smoking(name='smoking')
-                    option(selected='') —
-                    option Yes
-                    option Sometimes
-                    option When drinking
-                    option Trying to quit
-                    option No
-              .form-group
-                label(for='drinking') Drinks
-                #drinkingContainer.inputcontainer.select
-                  select#drinking(name='drinking')
-                    option(selected='') —
-                    option Very often
-                    option Often
-                    option Socially
-                    option Rarely
-                    option Desperately
-                    option Not at all
-              .form-group
-                label(for='drug') Drug of Choice
-                #drugContainer.inputcontainer.select
-                  select#drug(name='drug')
-                    option(selected='') —
-                    optgroup(label='Narcotics')
-                      option Heroin
-                      option Hydromorphone
-                      option Methadone
-                      option Morphine
-                      option Opium
-                      option Oxycodone
-                    optgroup(label='Stimulants')
-                      option Amphetamines
-                      option Cocaine
-                      option Khat
-                      option Methamphetamine
-                    optgroup(label='Depressants')
-                      option Barbiturates
-                      option Benzodiazepines
-                      option GHB
-                      option Rohypnol
-                    optgroup(label='Hallucinogens')
-                      option Ecstasy / MDMA
-                      option K2 / Spice
-                      option Ketamine
-                      option LSD
-                      option Peyote & Mescaline
-                      option Psilocybin
-                      option Marijuana / Cannabis
-                      option Steroids
-                      option Inhalants
-                    optgroup(label='Other')
-                      option Bath Salts / Designer Cathinones
-                      option DXM
-                      option Salvia Divinorum
-              .form-group
-                label(for='religion') Religion
-                #religionContainer.inputcontainer.select
-                  select#religion(name='religion')
-                    option(selected='') —
-                    option Agnosticism
-                    option Atheism
-                    option Christianity
-                    option Judaism
-                    option Catholicism
-                    option Islam
-                    option Hinduism
-                    option Buddhism
-                    option Other
-                #religionSeriousContainer.inputcontainer.select
-                  select#religionSerious(name='religionSerious')
-                    option(selected='') —
-                    option and very serious about it
-                    option and somewhat serious about it
-                    option but not too serious about it
-                    option and laughing about it
-              .form-group
-                label(for='sign') Sign
-                #signContainer.inputcontainer.select
-                  select#sign(name='sign')
-                    option(selected='') —
-                    option Aquarius
-                    option Pisces
-                    option Aries
-                    option Taurus
-                    option Gemini
-                    option Cancer
-                    option Leo
-                    option Virgo
-                    option Libra
-                    option Scorpio
-                    option Sagittarius
-                    option Capricorn
-                #signSeriousContainer.inputcontainer.select
-                  select#signSerious(name='signSerious')
-                    option —
-                    option but it doesn’t matter
-                    option and it matters a lot
-                    option and it’s fun to think about
-              .form-group
-                label(for='educationStatus') Education
-                #educationStatusContainer.inputcontainer.select
-                  select#educationStatus(name='educationStatus')
-                    option(selected='') —
-                    option Graduated from
-                    option Working on
-                    option Dropped out of
-                #educationLevelContainer.inputcontainer.select
-                  select#educationLevel(name='educationLevel')
-                    option(selected='') —
-                    option high school
-                    option acting school
-                    option two-year college
-                    option university
-                    option masters program
-                    option law school
-                    option med school
-                    option Ph.D program
-                    option space camp
-                    option school of hard knocks
-              .form-group
-                label(for='job') Ulmer Status
-                #ulmerContainer.inputcontainer.select
-                  select#ulmer(name='ulmer')
-                    option(selected='')  —
-                    option A+
-                    option A
-                    option B+
-                    option B
-                    option C
-                    option D
-                    option Z (What am I doing with my life?!)
-                label.input_separator(for='ulmer') -list
-              .form-group
-                label(for='income') Income
-                #incomeContainer.inputcontainer.select
-                  select#income(name='income')
-                    option(selected='')  —
-                    option  Less than $20,000
-                    option  $20,000–$30,000
-                    option  $30,000–$40,000
-                    option  $40,000–$50,000
-                    option  $50,000–$60,000
-                    option  $60,000–$70,000
-                    option  $70,000–$80,000
-                    option  $80,000–$100,000
-                    option  $100,000–$150,000
-                    option  $150,000–$250,000
-                    option  $250,000–$500,000
-                    option  $500,000–$1,000,000
-                    option  More than $1,000,000
-                    option  Rather not say
-              .form-group
-                label(for='relationshipStatus') Relationship Status
-                #relationshipStatusContainer.inputcontainer.select.autowidth
-                  select#relationshipStatus(name='relationshipStatus')
-                    option(selected='') Its complicated
-                    option Single
-                    option Seeing someone
-                    option Married
-                    option In an open relationship
-              .form-group
-                label(for='monogamous') Relationship Type
-                #monogamyFlexContainer.inputcontainer.select
-                  select#monogamyFlex(name='monogamyFlex')
-                    option —
-                    option Mostly
-                    option Strictly
-                #monogamousContainer.inputcontainer.select
-                  select#monogamous(name='monogamous')
-                    option —
-                    option monogamous
-                    option non-monogamous
-              .form-group
-                label(for='childrenQ1') Offspring
-                #childrenQ1Container.inputcontainer.select
-                  select#childrenQ1(name='children')
-                    option(selected='')  —
-                    option  Has a kid
-                    option  Has kids
-                    option  Doesn’t have kids
-                #childrenQ2Container.inputcontainer.select
-                  select#childrenQ2(name='children2')
-                    option(selected='') —
-                    option Might want kids
-                    option Wants kids
-                    option Doesn’t want kids
-              .form-group
-                label(for='dogs') Pets
-                #dogsContainer.inputcontainer.select
-                  select#dogs(name='dogs')
-                    option(selected='')  —
-                    option  Has dogs
-                    option  Likes dogs
-                    option  Dislikes dogs
-                #catsContainer.inputcontainer.select
-                  select#cats(name='cats')
-                    option(selected='')  —
-                    option  Has cats
-                    option  Likes cats
-                    option  Dislikes cats
-            // MODAL FOOTER
-            .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
-              button.btn.btn-success(type='button') Save changes
+// TRIGGER
+button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): i.fa.fa-edit
+// MODAL
+#editDetails.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editDetailsLabel', aria-hidden='true')
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4#editDetailsLabel.modal-title Edit your details
+      .modal-body
+        form.form-horizontal#details_form(role='form', method='post', action='/profile/details')
+          input(type='hidden', name='_method', value='put')
+          .form-group
+            label.col-lg-2.control-label(for='orientation') Orientation
+            .col-lg-10
+              select#orientation.form-control
+                option(selected='') -
+                option Asexual
+                option Bisexual
+                option Exploring
+                option Gay
+                option Heterosexual / Straight
+              br
+          .form-group
+            label.col-lg-2.control-label(for='ethnicities') Ethnicity
+            .col-lg-3
+              label.checkbox(for='ethnicity1')
+                input#ethnicity1(type='checkbox', name='ethnicities')
+                span.icon
+                | Asian
+              label.checkbox(for='ethnicity2')
+                input#ethnicity2(type='checkbox', name='ethnicities')
+                span.icon
+                | Middle Eastern
+              label.checkbox(for='ethnicity3')
+                input#ethnicity3(type='checkbox', name='ethnicities')
+                span.icon
+                | Black
+            .col-lg-3
+              label.checkbox(for='ethnicity4')
+                input#ethnicity4(type='checkbox', name='ethnicities')
+                span.icon
+                | Native American
+              label.checkbox(for='ethnicity5')
+                input#ethnicity5(type='checkbox', name='ethnicities')
+                span.icon
+                | Indian
+              label.checkbox(for='ethnicity6')
+                input#ethnicity6(type='checkbox', name='ethnicities')
+                span.icon
+                | Pacific Islander
+            .col-lg-3
+              label.checkbox(for='ethnicity7')
+                input#ethnicity7(type='checkbox', name='ethnicities')
+                span.icon
+                | Hispanic / Latin
+              label.checkbox(for='ethnicity8')
+                input#ethnicity8(type='checkbox', name='ethnicities')
+                span.icon
+                | White
+              label.checkbox(for='ethnicity9')
+                input#ethnicity9(type='checkbox', name='ethnicities')
+                span.icon
+                | Other
+          .form-group
+            label.col-lg-2.control-label(for='feet') Height
+            #feetContainer.inputcontainer.select
+              select#feet(name='feet')
+                option —
+                option 7
+                option 6
+                option 5
+                option 4
+                option 3
+            label.input_separator(for='feet') feet
+            #inchesContainer.inputcontainer.select
+              select#inches(name='inches')
+                option 0
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+                option 10
+                option 11
+            label.input_separator(for='inches') inches
+          .form-group
+            label(for='bodyType') Body Type
+            #bodyTypeContainer.inputcontainer.select
+              select#bodyType(name='bodyType')
+                option(selected='') —
+                option Rather not say
+                option Thin
+                option Overweight
+                option Skinny
+                option Average
+                option Fit
+                option Athletic
+                option Jacked
+                option A little extra
+                option Curvy
+                option Full figured
+                option Used up
+          .form-group
+            label(for='diet') Diet
+            #dietContainer.inputcontainer.select
+              select#diet(name='diet')
+                option —
+                option anything
+                option halal
+                option kosher
+                option vegan
+                option vegetarian
+                option other
+            #dietSeriousContainer.inputcontainer.select
+              select#dietSerious(name='dietSerious')
+                option —
+                option Mostly
+                option Strictly
+          .form-group
+            label(for='smoking') Smokes
+            #smokingContainer.inputcontainer.select
+              select#smoking(name='smoking')
+                option(selected='') —
+                option Yes
+                option Sometimes
+                option When drinking
+                option Trying to quit
+                option No
+          .form-group
+            label(for='drinking') Drinks
+            #drinkingContainer.inputcontainer.select
+              select#drinking(name='drinking')
+                option(selected='') —
+                option Very often
+                option Often
+                option Socially
+                option Rarely
+                option Desperately
+                option Not at all
+          .form-group
+            label(for='drug') Drug of Choice
+            #drugContainer.inputcontainer.select
+              select#drug(name='drug')
+                option(selected='') —
+                optgroup(label='Narcotics')
+                  option Heroin
+                  option Hydromorphone
+                  option Methadone
+                  option Morphine
+                  option Opium
+                  option Oxycodone
+                optgroup(label='Stimulants')
+                  option Amphetamines
+                  option Cocaine
+                  option Khat
+                  option Methamphetamine
+                optgroup(label='Depressants')
+                  option Barbiturates
+                  option Benzodiazepines
+                  option GHB
+                  option Rohypnol
+                optgroup(label='Hallucinogens')
+                  option Ecstasy / MDMA
+                  option K2 / Spice
+                  option Ketamine
+                  option LSD
+                  option Peyote & Mescaline
+                  option Psilocybin
+                  option Marijuana / Cannabis
+                  option Steroids
+                  option Inhalants
+                optgroup(label='Other')
+                  option Bath Salts / Designer Cathinones
+                  option DXM
+                  option Salvia Divinorum
+          .form-group
+            label(for='religion') Religion
+            #religionContainer.inputcontainer.select
+              select#religion(name='religion')
+                option(selected='') —
+                option Agnosticism
+                option Atheism
+                option Christianity
+                option Judaism
+                option Catholicism
+                option Islam
+                option Hinduism
+                option Buddhism
+                option Other
+            #religionSeriousContainer.inputcontainer.select
+              select#religionSerious(name='religionSerious')
+                option(selected='') —
+                option and very serious about it
+                option and somewhat serious about it
+                option but not too serious about it
+                option and laughing about it
+          .form-group
+            label(for='sign') Sign
+            #signContainer.inputcontainer.select
+              select#sign(name='sign')
+                option(selected='') —
+                option Aquarius
+                option Pisces
+                option Aries
+                option Taurus
+                option Gemini
+                option Cancer
+                option Leo
+                option Virgo
+                option Libra
+                option Scorpio
+                option Sagittarius
+                option Capricorn
+          .form-group
+            label(for='educationStatus') Education
+            #educationStatusContainer.inputcontainer.select
+              select#educationStatus(name='educationStatus')
+                option(selected='') —
+                option Graduated from
+                option Working on
+                option Dropped out of
+            #educationLevelContainer.inputcontainer.select
+              select#educationLevel(name='educationLevel')
+                option(selected='') —
+                option high school
+                option acting school
+                option two-year college
+                option university
+                option masters program
+                option law school
+                option med school
+                option Ph.D program
+                option space camp
+                option school of hard knocks
+          .form-group
+            label(for='job') Ulmer Status
+            #ulmerContainer.inputcontainer.select
+              select#ulmer(name='ulmer')
+                option(selected='')  —
+                option A+
+                option A
+                option B+
+                option B
+                option C
+                option D
+                option Z (What am I doing with my life?!)
+            label.input_separator(for='ulmer')-List
+          .form-group
+            label(for='income') Income
+            #incomeContainer.inputcontainer.select
+              select#income(name='income')
+                option(selected='')  —
+                option  Less than $20,000
+                option  $20,000–$30,000
+                option  $30,000–$40,000
+                option  $40,000–$50,000
+                option  $50,000–$60,000
+                option  $60,000–$70,000
+                option  $70,000–$80,000
+                option  $80,000–$100,000
+                option  $100,000–$150,000
+                option  $150,000–$250,000
+                option  $250,000–$500,000
+                option  $500,000–$1,000,000
+                option  More than $1,000,000
+                option  Rather not say
+          .form-group
+            label(for='relationshipStatus') Relationship Status
+            #relationshipStatusContainer.inputcontainer.select.autowidth
+              select#relationshipStatus(name='relationshipStatus')
+                option(selected='') Its complicated
+                option Single
+                option Seeing someone
+                option Married
+                option In an open relationship
+          .form-group
+            label(for='monogamous') Relationship Type
+            #monogamyFlexContainer.inputcontainer.select
+              select#monogamyFlex(name='monogamyFlex')
+                option —
+                option Mostly
+                option Strictly
+            #monogamousContainer.inputcontainer.select
+              select#monogamous(name='monogamous')
+                option —
+                option monogamous
+                option non-monogamous
+          .form-group
+            label(for='childrenQ1') Offspring
+            #childrenQ1Container.inputcontainer.select
+              select#childrenQ1(name='children')
+                option(selected='')  —
+                option  Has a kid
+                option  Has kids
+                option  Doesn’t have kids
+            #childrenQ2Container.inputcontainer.select
+              select#childrenQ2(name='children2')
+                option(selected='') —
+                option Might want kids
+                option Wants kids
+                option Doesn’t want kids
+          .form-group
+            label(for='dogs') Pets
+            #dogsContainer.inputcontainer.select
+              select#dogs(name='dogs')
+                option(selected='')  —
+                option  Has dogs
+                option  Likes dogs
+                option  Dislikes dogs
+            #catsContainer.inputcontainer.select
+              select#cats(name='cats')
+                option(selected='')  —
+                option  Has cats
+                option  Likes cats
+                option  Dislikes cats
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-success(type='submit') Save changes
