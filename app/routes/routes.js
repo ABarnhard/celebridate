@@ -47,8 +47,10 @@ module.exports = function(app, express){
   app.put('/profile/contact', users.contact);
 
   // For creating modal - please DELETE me!
-  app.get('/profile/details', users.edit);
+  app.get('/profile/details', users.editDetails);
+  app.get('/profile/contact', users.editContact);
+  app.get('/profile/about', users.editAbout);
+  // END DELETE NOTE
 
   console.log('Express: Routes Loaded');
 };
-
