@@ -1,0 +1,52 @@
+#gift.modal.fade(tabindex='-1', role='dialog', aria-labelledby='giftlLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+      h4.modal-title Send a Gift
+    .modal-body
+      table#gifts.table.table-bordered
+        thead
+          tr
+            th Product
+            th Image
+            th Price
+            th Quantity
+            th SubTotal
+        tbody
+          loop each id in ids
+            tr
+              td = gifts[id].g.name
+              td(style='background-image:url("# {gifts[id].g.photo}")')
+              td $# {gifts[id].g.price.toFixed(2)}
+              td = gifts[id].c
+              td = '$' + (gifts[id].g.price * gifts[id].c).toFixed(2)
+          tr
+            td
+            td
+            td
+            td Subtotal
+            td = '$' + subtotal.toFixed(2)
+          tr
+            td
+            td
+            td
+            td Tax
+            td = '$' + tax.toFixed(2)
+        tfoot
+          tr
+            td
+            td
+            td
+            td Total
+            td = '$' + total.toFixed(2)
+    .modal-footer
+      button#close.btn.btn-default(type='button', data-dismiss='modal') Close
+        form#cart(method='post', action='/cart')
+          input(type='hidden', name='_method', value='delete')
+          button.stripe-button(type='submit') Clear Cart
+        form#cart(action='/charge', method='post')
+          script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=key, data-image='/img/marketplace.png', data-name='AmazonSP', data-amount=Math.round((total * 100)))
+
+
+
