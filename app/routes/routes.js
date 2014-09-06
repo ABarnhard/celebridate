@@ -54,6 +54,8 @@ module.exports = function(app, express){
   app.get('/messages/:msgId', users.message);
   app.get('/users/alias', users.alias);
   app.get('/gifts', gifts.index);
+  app.get('/proposal', users.proposal);
+  app.get('/proposal/view', users.proposalView);
 
   console.log('Express: Routes Loaded');
 };
