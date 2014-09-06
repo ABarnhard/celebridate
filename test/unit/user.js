@@ -94,5 +94,21 @@ describe('User', function(){
       });
     });
   });
+
+  describe('#initUpdate', function(){
+    it('should add required initial info to a new user & update record in database', function(done){
+      User.findById('000000000000000000000005', function(err, u){
+        var data = {alias:'SweetJonney', email:'sw@mailinator.com', location:'Nashville, TN 37201, USA', coordinates:['0', '0'], phone:'555-555-5555', zip:'99999'};
+        u.initUpdate(data, function(){
+          User.findById('000000000000000000000005', function(err2, u2){
+            expect(u2.alias).to.equal('SweetJonney');
+            expect(u2.coordinates[0]).to.equal(0);
+            done();
+          });
+        });
+      });
+    });
+  });
+
 });
 
