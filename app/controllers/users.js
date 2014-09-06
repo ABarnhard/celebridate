@@ -78,7 +78,7 @@ exports.send = function(req, res){
 
 exports.messages = function(req, res){
   res.locals.user.messages(function(err, msgs){
-    res.render('users/messages');
+    res.render('users/messages', {msgs:msgs});
   });
 };
 

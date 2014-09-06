@@ -143,7 +143,7 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
-        expect(res.text).to.include('test message');
+        expect(res.text).to.include('message');
         done();
       });
     });

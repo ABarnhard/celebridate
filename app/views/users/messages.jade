@@ -13,10 +13,11 @@ block content
                 th Date
                 th Message
               tbody
-                  tr
-                    td
-                    td
-                    td
+                each msg in msgs
+                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
+                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
+                    td= msg.date.toDateString()
+                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
     .col-xs-12
   .row
     .col-xs-9
