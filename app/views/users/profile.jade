@@ -7,7 +7,7 @@ block content
         .row
           .col-xs-2
             a.thumbnail#profile(href='/profile/photos')
-              img(src='/img/node.png')
+              img(src='#{userData.profilePhoto}')
           .col-xs-6
             a(href='/profile/about')
               h2=user.alias
@@ -19,7 +19,6 @@ block content
               li
                 h5=user.location
           .col-xs-2
-
   .row
     .col-xs-6
       .row

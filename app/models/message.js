@@ -3,9 +3,10 @@
 var async = require('async'),
     Mongo  = require('mongodb');
 
-function Message(senderId, receiverId, message){
+function Message(senderId, receiverId, subject, message){
   this.senderId   = senderId;
   this.receiverId = receiverId;
+  this.subject    = subject;
   this.message    = message;
   this.date       = new Date();
   this.isRead     = false;
@@ -22,8 +23,8 @@ Message.read = function(id, cb){
   });
 };
 
-Message.send = function(senderId, receiverId, message, cb){
-  var m = new Message(senderId, receiverId, message);
+Message.send = function(senderId, receiverId, subject, message, cb){
+  var m = new Message(senderId, receiverId, subject, message);
   Message.collection.save(m, cb);
 };
 
