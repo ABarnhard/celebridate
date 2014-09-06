@@ -9,6 +9,7 @@ var bcrypt = require('bcrypt'),
 
 function User(){
   this.coordinates = [];
+  this.profilePhoto = '/img/placeholder.gif';
 }
 
 Object.defineProperty(User, 'collection', {
@@ -17,7 +18,7 @@ Object.defineProperty(User, 'collection', {
 
 User.findByIdSession = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  User.collection.findOne({_id:_id}, {fields:{alias:1, email:1, coordinates:1, type:1, location:1, zip:1}}, function(err, obj){
+  User.collection.findOne({_id:_id}, {fields:{alias:1, age:1, sex:1, email:1, coordinates:1, type:1, location:1, zip:1}}, function(err, obj){
     var user = Object.create(User.prototype);
     user = _.extend(user, obj);
     cb(err, user);
@@ -104,9 +105,6 @@ User.prototype.moveFiles = function(files){
     return relPath;
   });
   photos = _.compact(photos);
-  photos = photos.map(function(photo){
-    return {url:photo, isPrimary:false};
-  });
   this.photos = this.photos.concat(photos);
 };
 
@@ -118,7 +116,18 @@ User.prototype.initUpdate = function(data, cb){
     data.coordinates.forEach(function(c, i){
       data.coordinates[i] = parseFloat(c);
     });
-    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, location:data.location, coordinates:data.coordinates, phone:data.phone, zip:data.zip}}, cb);
+    User.collection.update({_id:self._id}, {
+      $set:{
+        alias:data.alias,
+        email:data.email,
+        location:data.location,
+        coordinates:data.coordinates,
+        phone:data.phone,
+        sex:data.sex,
+        orientation:data.orientation,
+        address:{zip:data.zip}
+      }
+    }, cb);
   });
 };
 
@@ -135,10 +144,8 @@ User.prototype.updateDetails = function(data, cb){
 
 User.prototype.setProfilePhoto = function(index, cb){
   User.collection.findOne({_id:this._id}, {fields:{photos:1}}, function(err, data){
-    var i = data.photos.map(function(x){return x.isPrimary;}).indexOf(true);
-    if(i !== -1){data.photos[i].isPrimary = false;}
-    data.photos[index].isPrimary = true;
-    User.collection.update({_id:data._id}, {$set:{photos:data.photos}}, cb);
+    var profile = data.photos[index];
+    User.collection.update({_id:data._id}, {$set:{profilePhoto:profile}}, cb);
   });
 };
 
@@ -153,7 +160,16 @@ User.prototype.updateContact = function(data, cb){
     data.coordinates.forEach(function(c, i){
       data.coordinates[i] = parseFloat(c);
     });
-    User.collection.update({_id:self._id}, {$set:{alias:data.alias, email:data.email, location:data.location, coordinates:data.coordinates, phone:data.phone, zip:data.address.zip, address:data.address}}, function(){
+    User.collection.update({_id:self._id}, {
+      $set:{
+        alias:data.alias,
+        email:data.email,
+        location:data.location,
+        coordinates:data.coordinates,
+        phone:data.phone,
+        address:data.address
+      }
+    }, function(){
       cb(message);
     });
   });

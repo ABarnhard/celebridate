@@ -15,53 +15,50 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
           .form-group
             label.col-lg-2.control-label(for='orientation') Orientation
             .col-lg-10
-              select#orientation.form-control
-                option(selected='') -
-                option Asexual
-                option Bisexual
-                option Exploring
-                option Gay
-                option Heterosexual / Straight
+              select#orientation.form-control(name='orientation')
+                option(value='S') Straight
+                option(value='G') Gay
+                option(value='B') Bisexual
               br
           .form-group
             label.col-lg-2.control-label(for='ethnicities') Ethnicity
             .col-lg-3
               label.checkbox(for='ethnicity1')
-                input#ethnicity1(type='checkbox', name='ethnicities')
+                input#ethnicity1(type='radio', name='ethnicity', value='Asian')
                 span.icon
                 | Asian
               label.checkbox(for='ethnicity2')
-                input#ethnicity2(type='checkbox', name='ethnicities')
+                input#ethnicity2(type='radio', name='ethnicity', value='Middle Eastern')
                 span.icon
                 | Middle Eastern
               label.checkbox(for='ethnicity3')
-                input#ethnicity3(type='checkbox', name='ethnicities')
+                input#ethnicity3(type='radio', name='ethnicity', value='Black')
                 span.icon
                 | Black
             .col-lg-3
               label.checkbox(for='ethnicity4')
-                input#ethnicity4(type='checkbox', name='ethnicities')
+                input#ethnicity4(type='radio', name='ethnicity', value='Native American')
                 span.icon
                 | Native American
               label.checkbox(for='ethnicity5')
-                input#ethnicity5(type='checkbox', name='ethnicities')
+                input#ethnicity5(type='radio', name='ethnicity', value='Indian')
                 span.icon
                 | Indian
               label.checkbox(for='ethnicity6')
-                input#ethnicity6(type='checkbox', name='ethnicities')
+                input#ethnicity6(type='radio', name='ethnicity', value='Pacific Islander')
                 span.icon
                 | Pacific Islander
             .col-lg-3
               label.checkbox(for='ethnicity7')
-                input#ethnicity7(type='checkbox', name='ethnicities')
+                input#ethnicity7(type='radio', name='ethnicity', value='Hispanic / Latin')
                 span.icon
                 | Hispanic / Latin
               label.checkbox(for='ethnicity8')
-                input#ethnicity8(type='checkbox', name='ethnicities')
+                input#ethnicity8(type='radio', name='ethnicity', value='White')
                 span.icon
                 | White
               label.checkbox(for='ethnicity9')
-                input#ethnicity9(type='checkbox', name='ethnicities')
+                input#ethnicity9(type='radio', name='ethnicity', value='Other')
                 span.icon
                 | Other
           .form-group

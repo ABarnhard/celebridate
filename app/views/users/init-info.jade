@@ -12,6 +12,20 @@ block content
           label Alias (How you will Appear to other users)
           input.form-control(type='text', name='alias', placeholder='AlisterISwear', autofocus=true)
         .form-group
+          label Age
+          input.form-control(type='number', name='age')
+        .form-group
+          label Sex
+          select.form-control(name='sex')
+            option(value='M') Male
+            option(value='F') Female
+        .form-group
+          label Orientation
+          select.form-control(name='orientation')
+            option(value='S') Straight
+            option(value='G') Gay
+            option(value='B') Bisexual
+        .form-group
           label Email
           input.form-control(type='email', name='email', placeholder='bob@aol.com', value=user.email)
         .form-group

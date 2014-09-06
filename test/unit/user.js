@@ -42,7 +42,7 @@ describe('User', function(){
   describe('.findByIdSession', function(){
     it('should return a user object with limited fields', function(done){
       User.findByIdSession('000000000000000000000002', function(err, u){
-        expect(Object.keys(u)).to.have.length(7);
+        expect(Object.keys(u)).to.have.length(9);
         expect(u).to.respondTo('moveFiles');
         expect(u._id.toString()).to.equal('000000000000000000000002');
         done();
@@ -55,7 +55,7 @@ describe('User', function(){
       User.findById('000000000000000000000002', function(err, u){
         expect(u).to.respondTo('moveFiles');
         expect(u._id.toString()).to.equal('000000000000000000000002');
-        expect(Object.keys(u).length).to.be.at.least(7);
+        expect(Object.keys(u).length).to.be.at.least(9);
         done();
       });
     });
@@ -142,12 +142,11 @@ describe('User', function(){
   });
 
   describe('#setProfilePhoto', function(){
-    it('should mark a photo in photos array to primary', function(done){
+    it('should update the profilePhoto field with the selected image', function(done){
       User.findById('000000000000000000000003', function(err, u){
         u.setProfilePhoto('2', function(){
           User.findById('000000000000000000000003', function(err2, u2){
-            expect(u2.photos[0].isPrimary).to.equal(false);
-            expect(u2.photos[2].isPrimary).to.equal(true);
+            expect(u2.profilePhoto).to.equal('photo3.jpg');
             done();
           });
         });

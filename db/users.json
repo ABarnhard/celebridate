@@ -1,5 +1,8 @@
 {
   "_id" : {"$oid":"000000000000000000000001"},
+  "profilePhoto" : "photo1.jpg",
+  "age" : 29,
+  "sex" : "M",
   "coordinates" : [36.1003494, -86.77180169999997],
   "email" : "bob@mailinator.com",
   "password" : "$2a$10$ZvS/Y7WPMK5DLSVZwDaq3euj.WIzSDJsgGkMaQUZg/YYCU7kuzicy",
@@ -8,10 +11,13 @@
   "location" : "Nashville, TN 37204, USA",
   "phone" : "316-650-0346",
   "zip" : "37204",
-  "photos" : [{url:'photo1.jpg', isPrimary:true}, {url:'photo2.jpg', isPrimary:false}, {url:'photo3.jpg', isPrimary:false}]
+  "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},
+  "profilePhoto" : "/img/placeholder.gif",
+  "age" : 39,
+  "sex" : "F",
   "coordinates" : [36.1724885, -86.78059610000003],
   "email" : "sue@mailinator.com",
   "password" : "$2a$10$FpmjBzpoRgl2upGrwhNFAOKTOqFifZeYAPZ8BssCLGbRxhxf9Bafy",
@@ -23,6 +29,9 @@
 }
 {
   "_id" : {"$oid":"000000000000000000000003"},
+  "profilePhoto" : "/img/placeholder.gif",
+  "age" : 49,
+  "sex" : "M",
   "coordinates" : [39.6487896, -105.0148322],
   "googleId" : "000000000000000000001",
   "type" : "google",
@@ -31,10 +40,13 @@
   "location" : "Englewood, CO 80110, USA",
   "phone" : "316-650-0346",
   "zip" : "80110",
-  "photos" : [{url:'photo1.jpg', isPrimary:true}, {url:'photo2.jpg', isPrimary:false}, {url:'photo3.jpg', isPrimary:false}]
+  "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
   "_id" : {"$oid":"000000000000000000000004"},
+  "profilePhoto" : "/img/placeholder.gif",
+  "age" : 29,
+  "sex" : "F",
   "coordinates" : [33.9697897, -118.2468148],
   "facebookId" : "90000000000000001",
   "type" : "facebook",
@@ -46,6 +58,8 @@
 }
 {
   "_id" : {"$oid":"000000000000000000000005"},
+  "profilePhoto" : "/img/placeholder.gif",
+  "coordinates" : [],
   "facebookId" : "90000000000000002",
   "type" : "facebook"
 }
