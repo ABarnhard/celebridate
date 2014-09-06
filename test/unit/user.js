@@ -1,10 +1,11 @@
 /* jshint expr:true */
-/* global describe, it, before, beforeEach */
+/* global describe, it, before, beforeEach, after */
 
 'use strict';
 
 var expect    = require('chai').expect,
     User      = require('../../app/models/user'),
+    Mongo     = require('mongodb'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'celebridate-test';
@@ -18,6 +19,14 @@ describe('User', function(){
 
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+      cp.execFile(__dirname + '/../scripts/make-img.sh', [], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+        done();
+      });
+    });
+  });
+
+  after(function(done){
+    cp.execFile(__dirname + '/../scripts/make-img.sh', [], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
       done();
     });
   });
@@ -52,5 +61,38 @@ describe('User', function(){
     });
   });
 
+  describe('.googleAuth', function(){
+    it('should create a new user in DB', function(done){
+      var obj = {id:'0009090'};
+      User.googleAuth({}, {}, obj, function(err, u){
+        expect(u._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+
+  describe('.facebookAuth', function(){
+    it('should create a new user in DB', function(done){
+      var obj = {id:'9090909'};
+      User.facebookAuth({}, {}, obj, function(err, u){
+        expect(u._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+
+  describe('.addPhotos', function(){
+    it('should move & rename files uploaded by user', function(done){
+      var files = {photos: [{size:'5kb', path:__dirname + '/../img/test1.jpg'}, {size:'5kb', path:__dirname + '/../img/test2.jpg'}]};
+      User.findById('000000000000000000000002', function(err, u){
+        User.addPhotos(u, files, function(){
+          User.findById('000000000000000000000002', function(err2, u2){
+            expect(u2.photos).to.have.length(2);
+            done();
+          });
+        });
+      });
+    });
+  });
 });
 

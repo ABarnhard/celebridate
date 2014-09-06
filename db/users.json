@@ -29,7 +29,8 @@
   "email" : "john@mailinator.com",
   "location" : "Englewood, CO 80110, USA",
   "phone" : "316-650-0346",
-  "zip" : "80110"
+  "zip" : "80110",
+  "photos" : [{url:'photo1.jpg', isPrimary:true}, {url:'photo2.jpg', isPrimary:false}, {url:'photo3.jpg', isPrimary:false}]
 }
 {
   "_id" : {"$oid":"000000000000000000000004"},
