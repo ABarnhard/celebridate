@@ -1,0 +1,30 @@
+{
+    "_id" : ObjectId("000000000000000000000001"),
+    "name" : "Cowboy Hat",
+    "photo" : "http://kevinunderhill.typepad.com/.a/6a00d83451bd4469e201901e2db724970b-pi",
+    "price" : 75
+}
+{
+    "_id" : ObjectId("000000000000000000000002"),
+    "name" : "coffee mug",
+    "photo" : "http://ecx.images-amazon.com/images/I/41KwWFJNfTL.jpg",
+    "price" : 3.5
+}
+{
+    "_id" : ObjectId("000000000000000000000003"),
+    "name" : "iPhone5",
+    "photo" : "http://www.hdwallpapersinn.com/wp-content/uploads/2014/07/iphone_5_folders_hero.jpg",
+    "price" : 299
+}
+{
+    "_id" : ObjectId("000000000000000000000004"),
+    "name" : "Buffy the Vampire Slayer Box Set",
+    "photo" : "http://www.dvdspecialonline.com/product_images/d/228/buffy-1-7-2__92479_zoom.jpg",
+    "price" : 100
+}
+{
+    "_id" : ObjectId("000000000000000000000005"),
+    "name" : "West Wing Box Set",
+    "photo" : "http://www.tvshowsondvd.com/graphics/news3/WestWingComplete-Inside.jpg",
+    "price" : 105
+}

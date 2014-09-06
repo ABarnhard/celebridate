@@ -12,11 +12,14 @@
       ul.nav.navbar-nav.navbar-right
         if user
           li: a(href='/Profile') Profile
+          li: a(href='/messages')
+            span.fa.fa-envelope &nbsp Inbox &nbsp;
+            span.badge= 0
           li
             form.navbar-form(method='post', action='/logout')
               .form-group
                 input(type='hidden', name='_method', value='delete')
-                button.btn.btn-danger= user.alias || 'New User'
+                button.btn.btn-danger Log Out
         else
           li: a(href='/register') Register
           li: a(href='/login') Login
