@@ -1,0 +1,51 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-12
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title Messages
+        .panel-body
+          .table-responsive
+            table.table.table-hover.table-bordered#messagesTable
+              thead
+                th From
+                th Date
+                th Message
+              tbody
+                each msg in msgs
+                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
+                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
+                    td= msg.date.toDateString()
+                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
+    .col-xs-12
+  .row
+    .col-xs-6
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title Proposals
+        .panel-body
+          .table-responsive
+            table.table.table-hover.table-bordered#proposalsTable
+              thead
+                th From
+                th Date
+                th Activity
+                th Message
+              tbody
+                each msg in msgs
+                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
+                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
+                    td= msg.date.toDateString()
+                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
+    .col-xs-6
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title Proposals
+        .panel-body
+          .table-responsive
+            table.table.table-hover.table-bordered#proposalsTable
+              thead
+                th From
+
+block scripts
