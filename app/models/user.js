@@ -163,6 +163,7 @@ User.prototype.updateContact = function(data, cb){
     User.collection.update({_id:self._id}, {
       $set:{
         alias:data.alias,
+        name:data.name,
         email:data.email,
         location:data.location,
         coordinates:data.coordinates,
