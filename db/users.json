@@ -7,7 +7,8 @@
   "alias" : "BobBoberson",
   "location" : "Nashville, TN 37204, USA",
   "phone" : "316-650-0346",
-  "zip" : "37204"
+  "zip" : "37204",
+  "photos" : [{url:'photo1.jpg', isPrimary:true}, {url:'photo2.jpg', isPrimary:false}, {url:'photo3.jpg', isPrimary:false}]
 }
 {
   "_id" : {"$oid":"000000000000000000000002"},

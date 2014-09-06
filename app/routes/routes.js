@@ -45,8 +45,8 @@ module.exports = function(app, express){
   app.post('/profile/photos', users.addPhotos);
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
-  app.put('/profile/about', users.details);
-  app.put('/profile/about', users.contact);
+  app.put('/profile/details', users.details);
+  // app.put('/profile/contact', users.contact);
 
   console.log('Express: Routes Loaded');
 };

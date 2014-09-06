@@ -61,11 +61,14 @@ exports.details = function(req, res){
   });
 };
 
+// NEED TO TOUCH BASE
+/*
 exports.contact = function(req, res){
   req.user.updateContact(req.body, function(){
     res.redirect('/profile');
   });
 };
+*/
 
 exports.verify = function(req, res){
   if(!req.user.alias){

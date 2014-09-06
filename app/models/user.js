@@ -140,11 +140,11 @@ User.prototype.setProfilePhoto = function(index, cb){
     User.collection.update({_id:data._id}, {$set:{photos:data.photos}}, cb);
   });
 };
-
+// NEED TO TOUCH BASE BEFORE FINISHING
+/*
 User.prototype.updateContact = function(data, cb){
-  Object.keys(data).forEach();
 };
-
+*/
 
 module.exports = User;
 

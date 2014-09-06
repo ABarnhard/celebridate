@@ -173,5 +173,75 @@ describe('users', function(){
     });
   });
 
+  describe('get /profile', function(){
+    it('should display the user\'s profile page', function(done){
+      request(app)
+      .get('/profile')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Profile');
+        expect(res.text).to.include('BobBoberson');
+        done();
+      });
+    });
+  });
+
+  describe('put /profile/photos/primary', function(){
+    it('should redirect to profile after setting primary profile photo', function(done){
+      request(app)
+      .post('/profile/photos/primary')
+      .set('cookie', cookie)
+      .send('_method=put&index=1')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+  });
+
+  describe('put /profile/about', function(){
+    it('should redirect to profile after updating about info', function(done){
+      request(app)
+      .post('/profile/about')
+      .set('cookie', cookie)
+      .send('_method=put&summary=Test')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+  });
+
+  describe('put /profile/about', function(){
+    it('should redirect to profile after updating about info', function(done){
+      request(app)
+      .post('/profile/about')
+      .set('cookie', cookie)
+      .send('_method=put&summary=Test')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+  });
+
+  describe('put /profile/details', function(){
+    it('should redirect to profile after updating details info', function(done){
+      request(app)
+      .post('/profile/details')
+      .set('cookie', cookie)
+      .send('_method=put&bodyType=thin')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers.location).to.equal('/profile');
+        done();
+      });
+    });
+  });
+
 });
 
