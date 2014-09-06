@@ -110,5 +110,33 @@ describe('User', function(){
     });
   });
 
+  describe('#updateAbout', function(){
+    it('should update the user\'s about informaion', function(done){
+      User.findById('000000000000000000000005', function(err, u){
+        var data = {summary:'I\'m a lonely celebrity', favoriteStuff:'Being famous'};
+        u.updateAbout(data, function(){
+          User.findById('000000000000000000000005', function(err2, u2){
+            expect(u2.about.summary).to.equal('I\'m a lonely celebrity');
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  describe('#updateDetails', function(){
+    it('should update the user\'s detail informaion', function(done){
+      User.findById('000000000000000000000005', function(err, u){
+        var data = {drugs:'Always', diet:'cocain', bodyType:'thin'};
+        u.updateDetails(data, function(){
+          User.findById('000000000000000000000005', function(err2, u2){
+            expect(u2.details.diet).to.equal('cocain');
+            done();
+          });
+        });
+      });
+    });
+  });
+
 });
 
