@@ -7,15 +7,14 @@ block content
         a.thumbnail#profile(href='/profile/photos')
           img(src='/img/node.png')
       .col-xs-6
-        a(href='/profile/about') 
-          h2 user.alias
+        h2= user.alias
         ul.list-inline
           li
-            h5 user.age
+            h5= user.age
           li
-            h5 user.gender
+            h5= user.gender
           li
-            h5 user.location
+            h5= user.location
       .col-xs-2
 
   .panel.panel-info

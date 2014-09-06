@@ -166,7 +166,11 @@ User.prototype.messages = function(cb){
 };
 
 User.prototype.send = function(receiver, obj, cb){
-  Message.send(this._id, receiver._id, obj.message, cb);
+  Message.send(this._id, receiver._id, obj. subject, obj.message, cb);
+};
+
+User.findOne = function(filter, cb){
+  User.collection.findOne(filter, cb);
 };
 
 module.exports = User;
