@@ -10,16 +10,12 @@
   });
 
   function geocodeAndSubmit(e){
-    // console.log('****I Happened 2');
     var geocoder = new google.maps.Geocoder(),
         zip = $('#zip').val();
-    // console.log('*****zip', zip);
     geocoder.geocode({address:zip}, function(results, status){
-      // console.log('results', results);
       var name = results[0].formatted_address,
           lat  = results[0].geometry.location.lat(),
           lng  = results[0].geometry.location.lng();
-      // console.log(name, lat, lng);
       // debugger;
       $('input[name=location]').val(name);
       $('input[data-name=lat]').val(lat);

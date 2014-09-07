@@ -2,16 +2,36 @@ extends ../shared/template
 block content
   .row
     .col-xs-12
-      table.table-condensed.table-hover.users
-        thead
-          th Photo
-          th Name
-          th Location
-        tbody
-          each user in users
-            tr
-              td
-              td
-              td
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-xs-12
+              form.form-horizontal(role='form', method='post', action='#')
+                h3 Filter By:
+                .form-group
+                  label.control-label.col-sm-2 Age:
+                  .col-sm-10
+                    select.form-control.col-sm-10(name='age')
+                      option(value='18-25') 18 - 25
+                      option(value='26-35') 26 - 35
+                      option(value='36-45') 36 - 45
+                      option(value='46-200') > 46
+
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-body
+          table.table-condensed.table-hover.users
+            thead
+              th Photo
+              th Name
+              th Location
+            tbody
+              each profile in profiles
+                tr
+                  td
+                  td
+                  td
 
 block scripts
+  script(src='/js/user/users-index.js')

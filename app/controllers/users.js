@@ -100,6 +100,8 @@ exports.alias = function(req, res){
 };
 
 exports.index = function(req, res){
-
+  User.find(req.quary, function(err, users){
+    res.render('users/index', {profiles:users});
+  });
 };
 

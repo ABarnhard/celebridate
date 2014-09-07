@@ -91,6 +91,10 @@ User.addPhotos = function(user, files, cb){
   User.collection.save(user, cb);
 };
 
+User.find = function(query, cb){
+  cb(null, []);
+};
+
 User.prototype.moveFiles = function(files){
   this.photos = this.photos || [];
   var baseDir = __dirname + '/../static',
