@@ -130,7 +130,7 @@ describe('users', function(){
       .send('email=bob%40mailinator.com&password=1234')
       .end(function(err, res){
         expect(res.status).to.equal(302);
-        expect(res.headers.location).to.equal('/profile');
+        expect(res.headers.location).to.equal('/verify');
         done();
       });
     });
