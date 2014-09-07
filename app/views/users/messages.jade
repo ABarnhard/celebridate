@@ -34,11 +34,11 @@ block content
                 th Activity
                 th Message
               tbody
+                each prop in props
                   tr
-                    td
-                    td
-                    td
-                    td
+                    td= sender.senderId
+                    td= proposal.activity
+                    td: a(href='/messages/#{msg._id}')= (prop.message.slice(0, 20) + '.....')
     .col-xs-3
       .panel.panel-danger
         .panel-heading

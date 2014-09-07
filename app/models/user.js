@@ -1,11 +1,13 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    Mongo  = require('mongodb'),
-    _      = require('underscore-contrib'),
-    Message = require('./message'),
-    fs     = require('fs'),
-    path   = require('path');
+var bcrypt   = require('bcrypt'),
+    Mongo    = require('mongodb'),
+    _        = require('underscore-contrib'),
+    Message  = require('./message'),
+    Proposal = require('./proposal'),
+    Wink     = require('./wink'),
+    fs       = require('fs'),
+    path     = require('path');
 
 function User(){
   this.coordinates = [];
@@ -204,6 +206,14 @@ User.prototype.save = function(o, cb){
 
 User.prototype.messages = function(cb){
   Message.messages(this._id, cb);
+};
+
+User.prototype.proposals = function(cb){
+  Proposal.proposals(this._id, cb);
+};
+
+User.prototype.winks = function(cb){
+  Wink.findAllByOwner(this._id, cb);
 };
 
 User.prototype.send = function(receiver, obj, cb){

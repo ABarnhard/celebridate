@@ -28,8 +28,7 @@ block content
       input(type='hidden', name='receiverId', value=client._id)
       button.btn.btn-default.btn-(type='submit') Wink
       span.glyphicon.glyphicon-eye-open
-    a.btn.btn-default(href='/proposal') Send Proposal
-  
+    a.btn.btn-default(href='/proposals/#{client._id}/new') Send Propsal
   .row
     .col-xs-12
   .panel.panel-default
