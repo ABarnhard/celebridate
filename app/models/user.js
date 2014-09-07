@@ -91,10 +91,6 @@ User.addPhotos = function(user, files, cb){
   User.collection.save(user, cb);
 };
 
-User.find = function(query, cb){
-  cb(null, []);
-};
-
 User.prototype.moveFiles = function(files){
   this.photos = this.photos || [];
   var baseDir = __dirname + '/../static',
@@ -139,6 +135,7 @@ User.prototype.initUpdate = function(data, cb){
         phone:data.phone,
         sex:data.sex,
         orientation:data.orientation,
+        age: parseInt(data.age),
         address:{zip:data.zip}
       }
     }, cb);
@@ -216,6 +213,12 @@ User.prototype.send = function(receiver, obj, cb){
 
 User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
+};
+
+User.prototype.find = function(query, cb){
+  var filter = {},
+      sort   = {};
+  User.collection.find(filter).sort(sort).toArray(cb);
 };
 
 module.exports = User;

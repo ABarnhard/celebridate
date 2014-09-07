@@ -55,19 +55,7 @@ block content
         .col-xs-12
           .panel.panel-default
             .panel-body
-              .row
-                .col-xs-12
-                  table.table.table-hover
-                    thead
-                      th Photo
-                      th Name
-                      th Location
-                    tbody
-                      each profile in profiles
-                        tr
-                          td
-                          td
-                          td
+              include search-results
 
 block scripts
   script(src='/js/user/users-index.js')
