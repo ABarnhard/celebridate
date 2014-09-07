@@ -30,6 +30,12 @@ block content
               .panel-body
                 ul.list-group
                   li.list-group-item
+                    | Alias:&nbsp
+                    | #{userData.alias}
+                  li.list-group-item
+                    | Name:&nbsp
+                    | #{userData.name}
+                  li.list-group-item
                     | Email:&nbsp
                     a(href='mailto:#{userData.email}?Subject=Email%20from%20CelebriDate', target='_top')=userData.email
                   li.list-group-item
@@ -42,10 +48,9 @@ block content
         .col-xs-12
           .panel.panel-info
             .panel-heading
-                h3#about.panel-title My self summary
+                h3#about.panel-title About me
                   include about
               .panel-body
-                h6 My self summary
     .col-xs-6
       .row
         .col-xs-12

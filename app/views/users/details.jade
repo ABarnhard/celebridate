@@ -13,26 +13,27 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
         form.form-horizontal#details_form(role='form', method='post', action='/profile/details')
           input(type='hidden', name='_method', value='put')
           .form-group
-            label.col-xs-2.control-label(for='orientation') Orientation
-            .col-xs-10
+            label.col-xs-3.control-label(for='orientation') Orientation
+            .col-xs-9
               select#orientation(name='orientation')
-                option(selected='') —
+                option -
                 option(value='S') Straight
                 option(value='G') Gay
                 option(value='B') Bisexual
           .form-group
-            label.col-xs-2.control-label(for='feet') Height
-            .col-xs-5
+            label.col-xs-3.control-label(for='feet') Height
+            .col-xs-2
               select#feet(name='feet')
-                option(selected='') —
+                option -
                 option 7
                 option 6
                 option 5
                 option 4
                 option 3
-              label.input_separator(for='feet') &nbsp; feet &nbsp;&nbsp;
+              label.input_separator(for='feet') &nbsp; feet
+            .col-xs-3
               select#inches(name='inches')
-                option(selected='') —
+                option -
                 option 0
                 option 1
                 option 2
@@ -47,10 +48,10 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option 11
               label.input_separator(for='inches') &nbsp; inches
           .form-group
-            label.col-xs-2.control-label(for='bodyType') Body Type
-            .col-xs-10
+            label.col-xs-3.control-label(for='bodyType') Body Type
+            .col-xs-9
               select#bodyType(name='bodyType')
-                option(selected='') —
+                option -
                 option Rather not say
                 option Thin
                 option Overweight
@@ -64,31 +65,32 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option Full figured
                 option Used up
           .form-group
-            label.col-xs-2.control-label(for='diet') Diet
-            .col-xs-10
+            label.col-xs-3.control-label(for='diet') Diet
+            .col-xs-9
               select#diet(name='diet')
-                option —
+                option -
                 option anything
+                option bacon
                 option halal
                 option kosher
                 option vegan
                 option vegetarian
                 option other
           .form-group
-            label.col-xs-2.control-label(for='smoking') Smokes
-            .col-xs-10
+            label.col-xs-3.control-label(for='smoking') Smokes
+            .col-xs-9
               select#smoking(name='smoking')
-                option(selected='') —
+                option -
                 option Yes
                 option Sometimes
                 option When drinking
                 option Trying to quit
                 option No
           .form-group
-            label.col-xs-2.control-label(for='drinking') Drinks
-            .col-xs-10
+            label.col-xs-3.control-label(for='drinking') Drinks
+            .col-xs-9
               select#drinking(name='drinking')
-                option(selected='') —
+                option -
                 option Very often
                 option Often
                 option Socially
@@ -96,10 +98,10 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option Desperately
                 option Not at all
           .form-group
-            label.col-xs-2.control-label(for='drug') Drug of Choice
-            .col-xs-10
+            label.col-xs-3.control-label(for='drug') Drug of Choice
+            .col-xs-9
               select#drug(name='drug')
-                option(selected='') —
+                option -
                 optgroup(label='Narcotics')
                   option Heroin
                   option Hydromorphone
@@ -132,10 +134,10 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                   option DXM
                   option Salvia Divinorum
           .form-group
-            label.col-xs-2.control-label(for='religion') Religion
-            .col-xs-10
+            label.col-xs-3.control-label(for='religion') Religion
+            .col-xs-3
               select#religion(name='religion')
-                option(selected='') —
+                option -
                 option Agnosticism
                 option Atheism
                 option Christianity
@@ -145,17 +147,18 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option Hinduism
                 option Buddhism
                 option Other
+            .col-xs-3
               select#religionSerious(name='religionSerious')
-                option(selected='') —
+                option -
                 option and very serious about it
                 option and somewhat serious about it
                 option but not too serious about it
                 option and laughing about it
           .form-group
-            label.col-xs-2.control-label(for='sign') Sign
-            .col-xs-10
+            label.col-xs-3.control-label(for='sign') Sign
+            .col-xs-3
               select#sign(name='sign')
-                option(selected='') —
+                option -
                 option Aquarius
                 option Pisces
                 option Aries
@@ -168,21 +171,23 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option Scorpio
                 option Sagittarius
                 option Capricorn
+            .col-xs-3
               select#signSerious(name='signSerious')
-                option(selected='') —
+                option -
                 option but it doesn't matter
                 option and it matters a lot
                 option and it is fun to think about
           .form-group
-            label.col-xs-2.control-label(for='educationStatus') Education
-            .col-xs-10
+            label.col-xs-3.control-label(for='educationStatus') Education
+            .col-xs-3
               select#educationStatus(name='educationStatus')
-                option(selected='') —
+                option -
                 option Graduated from
                 option Working on
                 option Dropped out of
+            .col-xs-3
               select#educationLevel(name='educationLevel')
-                option(selected='') —
+                option -
                 option high school
                 option acting school
                 option two-year college
@@ -194,82 +199,85 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editDetails
                 option space camp
                 option school of hard knocks
           .form-group
-            label.col-xs-2.control-label(for='job') Ulmer Status
-            .col-xs-10
+            label.col-xs-3.control-label(for='job') Ulmer Status
+            .col-xs-9
               select#ulmer(name='ulmer')
-                option(selected='') —
+                option -
                 option A
                 option B
                 option C
                 option D
                 option Z (What am I doing with my life?!)
-            label.col-xs-2.control-label.input_separator(for='ulmer')-List
+              label.input_separator(for='ulmer')-List
           .form-group
-            label.col-xs-2.control-label(for='income') Income
-            .col-xs-10
+            label.col-xs-3.control-label(for='income') Income
+            .col-xs-9
               select#income(name='income')
-                option(selected='')  —
-                option  Less than $20,000
-                option  $20,000–$30,000
-                option  $30,000–$40,000
-                option  $40,000–$50,000
-                option  $50,000–$60,000
-                option  $60,000–$70,000
-                option  $70,000–$80,000
-                option  $80,000–$100,000
-                option  $100,000–$150,000
-                option  $150,000–$250,000
-                option  $250,000–$500,000
-                option  $500,000–$1,000,000
-                option  More than $1,000,000
-                option  Rather not say
+                option -
+                option Less than $20,000
+                option $20,000–$30,000
+                option $30,000–$40,000
+                option $40,000–$50,000
+                option $50,000–$60,000
+                option $60,000–$70,000
+                option $70,000–$80,000
+                option $80,000–$100,000
+                option $100,000–$150,000
+                option $150,000–$250,000
+                option $250,000–$500,000
+                option $500,000–$1,000,000
+                option More than $1,000,000
+                option Rather not say
           .form-group
-            label.col-xs-2.control-label(for='relationshipStatus') Relationship Status
-            .col-xs-10
+            label.col-xs-3.control-label(for='relationshipStatus') Relationship Status
+            .col-xs-9
               select#relationshipStatus(name='relationshipStatus')
-                option(selected='') -
+                option -
                 option Its complicated
                 option Single
                 option Seeing someone
                 option Married
                 option In an open relationship
           .form-group
-            label.col-xs-2.control-label(for='monogamous') Relationship Type
-            .col-xs-10
+            label.col-xs-3.control-label(for='monogamous') Relationship Type
+            .col-xs-2
               select#monogamyFlex(name='monogamyFlex')
-                option —
+                option -
                 option Mostly
                 option Strictly
+            .col-xs-3
               select#monogamous(name='monogamous')
-                option —
+                option -
                 option monogamous
                 option non-monogamous
           .form-group
-            label.col-xs-2.control-label(for='childrenQ1') Offspring
-            .col-xs-10
-              select#childrenQ1(name='children')
-                option(selected='')  —
-                option  Has a kid
-                option  Has kids
-                option  Doesn’t have kids
-              select#childrenQ2(name='children2')
-                option(selected='') —
+            label.col-xs-3.control-label(for='children') Offspring
+            .col-xs-3
+              select#childrenQ1(name='childrenQ1')
+                option -
+                option Has a kid
+                option Has kids
+                option Doesn’t have kids
+            .col-xs-3
+              select#childrenQ2(name='childrenQ2')
+                option -
                 option Might want kids
                 option Wants kids
                 option Doesn’t want kids
           .form-group
-            label.col-xs-2.control-label(for='dogs') Pets
-            .col-xs-10
+            label.col-xs-3.control-label(for='pets') Pets
+            .col-xs-3
               select#dogs(name='dogs')
-                option(selected='')  —
-                option  Has dogs
-                option  Likes dogs
-                option  Dislikes dogs
-              select#cats(name='cats')
-                option(selected='')  —
-                option  Has cats
-                option  Likes cats
-                option  Dislikes cats
+                option -
+                option Has dogs
+                option Likes dogs
+                option Dislikes dogs
+            .col-xs-3
+              select#cats(name='.cats')
+                option -
+                option Has cats
+                option Likes cats
+                option Dislikes cats
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success(type='submit') Save changes
