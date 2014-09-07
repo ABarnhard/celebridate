@@ -5,8 +5,8 @@ block content
     .col-xs-6
       form(role='form', method='post', action='/profile/init')
         input(type='hidden', name='_method', value='put')
-        input(type='hidden', name='coordinates', data-name='lat')
         input(type='hidden', name='coordinates', data-name='lng')
+        input(type='hidden', name='coordinates', data-name='lat')
         input(type='hidden', name='location', data-name='loc')
         .form-group
           label Alias (How you will Appear to other users)

@@ -163,20 +163,18 @@ User.prototype.setProfilePhoto = function(index, cb){
 
 User.prototype.updateContact = function(data, cb){
   var self   = this,
-      coords = [],
       message;
   User.collection.findOne({alias:data.alias}, function(err, obj){
     if(obj && obj.alias !== self.alias){
       message = 'Desired alias in use, didn\'t update';
       data.alias = self.alias;
     }
-    data.coordinates.forEach(function(c){
-      coords.push(parseFloat(c));
+    data.coordinates.forEach(function(c, i){
+      data.coordinates[i] = parseFloat(c);
     });
-    console.log('****coordinates', coords);
     User.collection.update({_id:self._id}, {
       $set:{
-        coordinates:[],
+        coordinates:data.coordinates,
         alias:data.alias,
         name:data.name,
         email:data.email,
@@ -185,13 +183,7 @@ User.prototype.updateContact = function(data, cb){
         address:data.address
       }
     }, function(err, obj){
-      console.log('err', err);
-      console.log('obj', obj);
-      User.collection.update({_id:self._id}, {$set:{coordinates:coords}}, function(err, obj){
-        console.log('err', err);
-        console.log('obj', obj);
-        cb(message);
-      });
+      cb(message);
     });
   });
 };

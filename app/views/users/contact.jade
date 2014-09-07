@@ -12,8 +12,8 @@ button.btn.fa.fa-edit(data-toggle='modal', data-target='#editContact')
       .modal-body
         form.form-horizontal#contact_form(role='form', method='post', action='/profile/contact')
           input(type='hidden', name='_method', value='put')
-          input(type='hidden', name='coordinates', data-name='lat', value=user.coordinates[0])
-          input(type='hidden', name='coordinates', data-name='lng', value=user.coordinates[1])
+          input(type='hidden', name='coordinates', data-name='lng', value=user.coordinates[0])
+          input(type='hidden', name='coordinates', data-name='lat', value=user.coordinates[1])
           input(type='hidden', name='location', data-name='loc', value=user.location)
           .form-group
             label.col-xs-2.control-label(for='alias') Alias
