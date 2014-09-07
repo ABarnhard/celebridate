@@ -1,7 +1,6 @@
 'use strict';
 
 var User = require('../models/user'),
-    Message = require('../models/message'),
     mp     = require('multiparty');
 
 exports.new = function(req, res){
@@ -30,7 +29,9 @@ exports.create = function(req, res){
 };
 
 exports.profile = function(req, res){
-  res.render('users/profile');
+  User.findById(req.user._id.toString(), function(err, user){
+    res.render('users/profile', {userData:user});
+  });
 };
 
 exports.addPhotos = function(req, res){
@@ -62,14 +63,12 @@ exports.details = function(req, res){
   });
 };
 
-// NEED TO TOUCH BASE
-/*
 exports.contact = function(req, res){
-  req.user.updateContact(req.body, function(){
+  req.user.updateContact(req.body, function(message){
+    if(message){req.flash('error', message);}
     res.redirect('/profile');
   });
 };
-*/
 
 exports.verify = function(req, res){
   if(!req.user.alias){
@@ -90,26 +89,13 @@ exports.initUpdate = function(req, res){
   });
 };
 
-exports.send = function(req, res){
-  User.findById(req.params.userId, function(err, receiver){
-    res.locals.user.send(receiver, req.body, function(){
-      res.redirect('/users/' + receiver.email);
-    });
-  });
-};
-
-exports.messages = function(req, res){
-  res.locals.user.messages(function(err, msgs){
-    res.render('users/messages', {msgs:msgs});
-  });
-};
-
-exports.message = function(req, res){
-  Message.read(req.params.msgId, function(err, msg){
-    res.render('users/message', {msg:msg});
-  });
-};
 exports.alias = function(req, res){
-  res.render('users/alias');
+  User.findOne({alias:req.params.alias}, function(err, client){
+    if(client){
+      res.render('users/alias', {client:client});
+    }else{
+      res.redirect('/profile');
+    }
+  });
 };
 

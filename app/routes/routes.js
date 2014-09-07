@@ -13,8 +13,13 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     gifts          = require('../controllers/gifts'),
+<<<<<<< HEAD
     users          = require('../controllers/users'),
     proposals      = require('../controllers/proposals');
+=======
+    messages       = require('../controllers/messages'),
+    users          = require('../controllers/users');
+>>>>>>> 50a34e1e2de3f2f55a154c884b449ab7aed07e98
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -22,7 +27,7 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../static'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
-  app.use(session({store:new RedisStore(), secret:'WickedUnbreakableHash', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(session({store:new RedisStore(), secret:'HashLikeABoss', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
   app.use(flash());
   passportConfig(passport, app);
 
@@ -42,12 +47,13 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/verify', users.verify);
-  app.get('/profile', users.profile);
   app.put('/profile/init', users.initUpdate);
+  app.get('/profile', users.profile);
   app.post('/profile/photos', users.addPhotos);
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
   app.put('/profile/details', users.details);
+<<<<<<< HEAD
   // app.put('/profile/contact', users.contact);
   app.put('/profile/about', users.details);
   app.post('/message/:userId', users.send);
@@ -57,8 +63,15 @@ module.exports = function(app, express){
   app.post('/proposal', proposals.proposal);
   app.get('/messages/:proposalId', proposals.view);
   app.get('/users/alias', users.alias);
+=======
+  app.put('/profile/contact', users.contact);
+  app.get('/users/:alias', users.alias);
+>>>>>>> 50a34e1e2de3f2f55a154c884b449ab7aed07e98
   app.get('/gifts', gifts.index);
+  app.post('/messages/:userId', messages.send);
+  app.get('/messages/:msgId', messages.message);
+  app.get('/messages', messages.messages);
 
   console.log('Express: Routes Loaded');
-};
 
+};
