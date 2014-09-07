@@ -31,15 +31,14 @@ block content
             table.table.table-hover.table-bordered#proposalsTable
               thead
                 th From
-                th Date
                 th Activity
                 th Message
               tbody
+                each prop in props
                   tr
-                    td
-                    td
-                    td
-                    td
+                    td= sender.senderId
+                    td= proposal.activity
+                    td: a(href='/messages/#{msg._id}')= (prop.message.slice(0, 20) + '.....')
     .col-xs-3
       .panel.panel-danger
         .panel-heading
@@ -51,6 +50,6 @@ block content
                 th From
               tbody
                 tr
-                  td
+                  td = wink.sender.alias
 
 block scripts

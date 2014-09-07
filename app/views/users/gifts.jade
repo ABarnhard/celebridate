@@ -1,7 +1,7 @@
 extends ../shared/template
 block content
   .row
-    .col-xs-12
+    .col-xs-9.col-xs-offset-1
       .panel.panel-success
         .panel-heading
           h3.panel-title Gift Options
@@ -18,11 +18,12 @@ block content
                     td
                       form(method='post', action='/cart')
                         input(type='hidden', name='giftId', value=gift._id)
-                        button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift')= gift.name
-                        include checkout
+                        button.btn.btn-primary.btn-sm(type='submit')= gift.name
+                        //button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift')= gift.name
                     td#giftImg
                       img(src=gift.photo)
                     td $#{gift.price.toFixed(2)}
+    .col-xs-2
     .col-xs-12
 
 

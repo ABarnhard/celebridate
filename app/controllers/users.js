@@ -1,7 +1,7 @@
 'use strict';
 
-var User = require('../models/user'),
-    mp     = require('multiparty');
+var User    = require('../models/user'),
+    mp      = require('multiparty');
 
 exports.new = function(req, res){
   res.render('users/new');

@@ -1,9 +1,10 @@
 'use strict';
-var async = require('async');
+var async = require('async'),
+    Mongo = require('mongodb');
 
 function Wink(senderId, receiverId){
-  this.senderId   = senderId;
-  this.receiverId = receiverId;
+  this.senderId   = Mongo.ObjectID(senderId);
+  this.receiverId = Mongo.ObjectID(receiverId);
   this.count      = 1;
   this.isRead     = false;
 }

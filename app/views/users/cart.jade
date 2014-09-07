@@ -1,0 +1,49 @@
+extends ../shared/template
+block content
+  form(method='post', action='/cart')
+    input(type='hidden', name='_method', value='delete')
+    button.btn.btn-warning(type='submit') Clear Cart
+
+  form(action='/charge', method='post')
+    script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=key, data-image='/img/CD.jpg', data-name='CelebriDate', data-amount=Math.round((total * 100)))
+
+  table#gifts.table.table-bordered
+    thead
+      tr
+        th Product
+        th Image
+        th Price
+        th Quantity
+        th SubTotal
+    tbody
+      each id in ids
+        tr
+          td= gifts[id].g.name
+          td: a.photo.thumbnail(style='background-image:url("#{gifts[id].g.photo}")')
+          td $#{gifts[id].g.price.toFixed(2)}
+          td= gifts[id].c
+          td= '$' + (gifts[id].g.price * gifts[id].c).toFixed(2)
+      tr
+        td
+        td
+        td
+        td Subtotal
+        td= '$' + subtotal.toFixed(2)
+      tr
+        td
+        td
+        td
+        td Tax
+        td= '$' + tax.toFixed(2)
+    tfoot
+      tr
+        td
+        td
+        td
+        td Total
+        td= '$' + total.toFixed(2)
+
+
+
+
+

@@ -12,7 +12,7 @@ block content
             li
               h5= client.gender
             li
-              h5= client.location
+              h5= client.Location
       .col-xs-2
         a.thumbnail#alias(href='#')
           img(src='#{user.photo}')
@@ -23,11 +23,12 @@ block content
     button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage') Message
     include newMessage
     a.btn.btn-default.btn(href='/gifts') Gift
-    //button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift') Gift
-    //include checkout
-    button.btn.btn-default.btn-(data-toggle='modal', data-target='wink') Wink
+    form.form(role='form', method='post', action='/message/#{client._id}')
+      input(type='hidden', name='senderId', value=user._id)
+      input(type='hidden', name='receiverId', value=client._id)
+      button.btn.btn-default.btn-(type='submit') Wink
       span.glyphicon.glyphicon-eye-open
-    a.btn.btn-default(href='/propsal/#{client._Id}') Send Propsal
+    a.btn.btn-default(href='/proposals/#{client._id}/new') Send Propsal
   .row
     .col-xs-12
   .panel.panel-default
@@ -38,19 +39,19 @@ block content
   .row
     .col-xs-12
       .c-wrapper
-      #carousel.carousel.slide(data-ride='carousel')
+      #carousel-example-generic.carousel.slide(data-ride='carousel')
         ol.carousel-indicators
-          li.active(data-target='#carouse', data-slide-to='0')
-          li.active(data-target='#carousel', data-slide-to='1')
-          li.active(data-target='#carousel', data-slide-to='2')
+          li.active(data-target='#carousel-example-generic', data-slide-to='0')
+          li.active(data-target='#carousel-example-generic', data-slide-to='1')
+          li.active(data-target='#carousel-example-generic', data-slide-to='2')
         .carousel-inner
           .item.active
             img(src='/img/node.png')
           .item
             img(src='/img/node.png')
-        a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
+        a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left
-        a.right.carousel-control(href='#carousel', role='button', data-slide='prev')
+        a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-right
 
 

@@ -1,0 +1,31 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-6
+      h3 Proposal
+      .panel.panel-default
+        .panel.body
+          .table-responsive
+            table.table.table-hover.table-bordered#proposalsTable
+              thead
+                th From
+                th Activity
+                th Message
+              tbody
+                  tr
+                    td
+                    td
+                    td
+    .col-xs-6
+      #map
+      #proposal(data-name=proposal.loc, data-lat=proposal.lat, data-lng=proposal.lng)
+  .row
+    .col-xs-6
+      button#accept.btn.btn-success Accept
+      span &nbsp
+      button#deny.btn.btn-danger Deny
+
+
+block scripts
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKBptUxmWBtYmtT8hfD67-TcrUhu4cl8&sensor=true')
+  script(src='/js/user/proposal-view.js')

@@ -13,7 +13,8 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     gifts          = require('../controllers/gifts'),
-    messages       = require('../controllers/messages'),
+    cart           = require('../controllers/cart'),
+    inbox          = require('../controllers/inbox'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -41,22 +42,29 @@ module.exports = function(app, express){
 
   app.use(security.bounce);
   app.delete('/logout', users.logout);
-  app.get('/verify', users.verify);
-  app.put('/profile/init', users.initUpdate);
   app.get('/profile', users.profile);
   app.post('/profile/photos', users.addPhotos);
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
+  app.get('/gifts', gifts.index);
+  app.post('/cart', cart.add);
+  app.get('/cart', cart.index);
+  app.get('/cart', cart.destroy);
   app.put('/profile/details', users.details);
+  app.put('/profile/about', users.details);
+  app.get('/users/alias', users.alias);
   app.put('/profile/contact', users.contact);
   app.get('/users/:alias', users.alias);
   app.get('/search', users.index);
   app.post('/search/custom', users.customSearch);
   app.get('/gifts', gifts.index);
-  app.post('/messages/:userId', messages.send);
-  app.get('/messages/:msgId', messages.message);
-  app.get('/messages', messages.messages);
+  app.post('/messages/:userId', inbox.sendMessage);
+  app.get('/messages/:msgId', inbox.message);
+  app.get('/inbox', inbox.index);
+  app.get('/proposals/:proposalId', inbox.proposalMessage);
+  app.get('/proposals/:receiverId/new', inbox.newProposal);
+  app.post('/proposals', inbox.sendProposal);
 
   console.log('Express: Routes Loaded');
-
 };
+
