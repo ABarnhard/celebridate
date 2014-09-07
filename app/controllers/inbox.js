@@ -3,7 +3,6 @@
 var User     = require('../models/user'),
     Message  = require('../models/message'),
     Proposal = require('../models/proposal'),
- //   Wink     = require('../models/wink'),
     moment   = require('moment');
 
 exports.sendMessage = function(req, res){
@@ -31,6 +30,7 @@ exports.message = function(req, res){
 };
 
 exports.sendProposal = function(req, res){
+  console.log('****************', req.body);
   Proposal.send(req.body.senderId, req.body.receiverId, req.body, function(){
     User.findById(req.body.receiverId, function(err, user){
       res.redirect('/users/' + user.alias);
