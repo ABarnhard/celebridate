@@ -1,37 +1,73 @@
 extends ../shared/template
 block content
-  .row
-    .col-xs-12
-      .panel.panel-default
-        .panel-body
-          .row
-            .col-xs-12
-              form.form-horizontal(role='form', method='post', action='#')
-                h3 Filter By:
-                .form-group
-                  label.control-label.col-sm-2 Age:
-                  .col-sm-10
-                    select.form-control.col-sm-10(name='age')
-                      option(value='18-25') 18 - 25
-                      option(value='26-35') 26 - 35
-                      option(value='36-45') 36 - 45
-                      option(value='46-200') > 46
-
-  .row
-    .col-xs-12
-      .panel.panel-default
-        .panel-body
-          table.table-condensed.table-hover.users
-            thead
-              th Photo
-              th Name
-              th Location
-            tbody
-              each profile in profiles
-                tr
-                  td
-                  td
-                  td
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-body
+              .row
+                .col-xs-12
+                  form.form-horizontal(role='form', method='post', action='#')
+                    h4 Show Me:
+                    .row
+                      .col-xs-12
+                        .form-group
+                          .col-sm-12
+                            select.form-control(name='gentation')
+                              option(value='F-S') Girls Who Like Guys
+                              option(value='F-G') Girls Who Like Girls
+                              option(value='F-B') Girls Who Like Both
+                              option(value='M-S') Guys Who Like Girls
+                              option(value='M-G') Guys Who Like Guys
+                              option(value='M-B') Guys Who Like Both
+                        .form-group
+                          .col-sm-12
+                            select.form-control(name='age')
+                              option(value='18-25') Ages 18 - 25
+                              option(value='26-35') Ages 26 - 35
+                              option(value='36-45') Ages 36 - 45
+                              option(value='46-200') Ages > 46
+                        .form-group
+                          .col-sm-12
+                            select.form-control(name='ulmer')
+                              option(value='A') A Listers
+                              option(value='B') B Listers
+                              option(value='C') C Listers
+                              option(value='D') D Listers
+                              option(value='Z') Daytime Soap Star
+                    h4 Order By:
+                    .row
+                      .col-xs-12
+                        .form-group
+                          .col-sm-12
+                            select.form-control(name='distance')
+                              option(value='') Order By Distance
+                              option(value='D-A') Nearest to Farthest
+                              option(value='D-D') Farthest to Nearest
+                        .form-group
+                          .col-sm-12
+                            select.form-control(name='orderAge')
+                              option(value='') Order By Age
+                              option(value='A-A') Youngest to Oldest
+                              option(value='A-D') Oldest to Youngest
+      .row
+        .col-xs-12
+          .panel.panel-default
+            .panel-body
+              .row
+                .col-xs-12
+                  table.table.table-hover
+                    thead
+                      th Photo
+                      th Name
+                      th Location
+                    tbody
+                      each profile in profiles
+                        tr
+                          td
+                          td
+                          td
 
 block scripts
   script(src='/js/user/users-index.js')
