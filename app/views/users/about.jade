@@ -1,5 +1,5 @@
 // TRIGGER
-button.btn.btn-warning-btn-mini(data-toggle='modal', data-target='#editAbout'): i.fa.fa-edit
+a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editAbout')
 // MODAL
 #editAbout.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editAboutLabel', aria-hidden='true')
   .modal-dialog
@@ -8,13 +8,34 @@ button.btn.btn-warning-btn-mini(data-toggle='modal', data-target='#editAbout'): 
         button.close(type='button', data-dismiss='modal')
           span(aria-hidden='true') ×
           span.sr-only Close
-        h4#editAboutLabel.modal-title Edit your about me
+        h4#editAboutLabel.modal-title Edit your self summary
       .modal-body
         form#about_form(role='form', method='post', action='/profile/about')
           input(type='hidden', name='_method', value='put')
           .form-group
-            label.control-label(for='aboutMe') About Me
-              textarea#aboutMe.form-control(rows='4', name='aboutMe')
+            label.h5.col-xs-3.control-label(for='aboutMe') My self summary
+            .col-xs-9
+              textarea#aboutMe.form-control(rows='4', name='aboutMe', placeholder='Write a little about yourself. Just a paragraph will do.')
+          .form-group
+            label.h5.col-xs-3.control-label(for='life') What I'm doing with my life...
+            .col-xs-9
+              textarea#life.form-control(rows='4', name='life', placeholder='Don’t overthink this one; tell us what you’re doing day-to-day.')
+          .form-group
+            label.h5.col-xs-3.control-label(for='brag') I'm really good at...
+            .col-xs-9
+              textarea#brag.form-control(rows='4', name='brag', placeholder='Go on, brag a little (or a lot). We won’t judge.')
+          .form-group
+            label.h5.col-xs-3.control-label(for='interests') My interests (favorite books, music, food, etc.)...
+            .col-xs-9
+              textarea#interests.form-control(rows='4', name='interests', placeholder='Help your potential matches find common interests.')
+          .form-group
+            label.h5.col-xs-3.control-label(for='roll') My favorite roll I played...
+            .col-xs-9
+              textarea#roll.form-control(rows='4', name='roll', placeholder='Did you prefer playing that serious doctor on that one show? or the goofy geek in that one movie?')
+          .form-group
+            label.h5.col-xs-3.control-label(for='nightLife') On a typical Friday night I am...
+            .col-xs-9
+              textarea#nightLife.form-control(rows='4', name='nightLife', placeholder='Netflix and takeout, or getting your party on — how do you let loose?')
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success(type='submit') Save changes
