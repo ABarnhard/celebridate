@@ -124,7 +124,7 @@ describe('users', function(){
   });
 
   describe('post /login', function(){
-    it('should redirect to the home page', function(done){
+    it('should redirect to the profile page', function(done){
       request(app)
       .post('/login')
       .send('email=bob%40mailinator.com&password=1234')

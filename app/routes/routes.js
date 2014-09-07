@@ -13,6 +13,7 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     gifts          = require('../controllers/gifts'),
+    messages       = require('../controllers/messages'),
     users          = require('../controllers/users');
 
 module.exports = function(app, express){
@@ -21,7 +22,7 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../static'));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(methodOverride());
-  app.use(session({store:new RedisStore(), secret:'WickedUnbreakableHash', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
+  app.use(session({store:new RedisStore(), secret:'HashLikeABoss', resave:true, saveUninitialized:true, cookie:{maxAge:null}}));
   app.use(flash());
   passportConfig(passport, app);
 
@@ -41,19 +42,19 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/verify', users.verify);
-  app.get('/profile', users.profile);
   app.put('/profile/init', users.initUpdate);
+  app.get('/profile', users.profile);
   app.post('/profile/photos', users.addPhotos);
   app.put('/profile/photos/primary', users.setProfilePhoto);
   app.put('/profile/about', users.about);
   app.put('/profile/details', users.details);
   app.put('/profile/contact', users.contact);
-  app.put('/profile/about', users.details);
-  app.post('/message/:userId', users.send);
-  app.get('/messages', users.messages);
-  app.get('/messages/:msgId', users.message);
-  app.get('/users/alias', users.alias);
+  app.get('/users/:alias', users.alias);
   app.get('/gifts', gifts.index);
+  app.post('/messages/:userId', messages.send);
+  app.get('/messages/:msgId', messages.message);
+  app.get('/messages', messages.messages);
 
   console.log('Express: Routes Loaded');
+
 };

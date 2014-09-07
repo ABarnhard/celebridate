@@ -1,5 +1,5 @@
 // TRIGGER
-button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editContact'): i.fa.fa-edit
+button.btn.fa.fa-edit(data-toggle='modal', data-target='#editContact')
 // MODAL
 #editContact.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editContactLabel', aria-hidden='true')
   .modal-dialog
@@ -12,6 +12,9 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editContact'): 
       .modal-body
         form.form-horizontal#contact_form(role='form', method='post', action='/profile/contact')
           input(type='hidden', name='_method', value='put')
+          input(type='hidden', name='coordinates', data-name='lat', value=user.coordinates[0])
+          input(type='hidden', name='coordinates', data-name='lng', value=user.coordinates[1])
+          input(type='hidden', name='location', data-name='loc', value=user.location)
           .form-group
             label.col-xs-2.control-label(for='alias') Alias
             .col-xs-8
@@ -21,27 +24,27 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editContact'): 
           .form-group
             label.col-xs-2.control-label(for='name') Name
             .col-xs-8
-              input.form-control#name(type='text', name='name', value=user.name)
+              input.form-control#name(type='text', name='name', value=userData.name)
           .form-group
             label.col-xs-2.control-label(for='email') Email
             .col-xs-8
-              input.form-control#email(type='email', name='email', value=user.email)
+              input.form-control#email(type='email', name='email', value=userData.email)
           .form-group
             label.col-xs-2.control-label(for='Phone') Phone
             .col-xs-8
-              input.form-control#phone(type='tel', name='phone', value=user.phone)
+              input.form-control#phone(type='tel', name='phone', value=userData.phone)
           .form-group
             label.col-xs-2.control-label(for='address') Address
             br
             .col-xs-8
               label.input_separator(for='address[street]') Street
-              input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.')
+              input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.', value=userData.address.street)
               label.input_separator(for='address[city]') City
-              input.form-control#city(type='text', name='address.[city]', placeholder='Hollywood')
+              input.form-control#city(type='text', name='address[city]', placeholder='Hollywood', value=userData.address.city)
               label.input_separator(for='address[state]') State
-              input.form-control#state(type='text', name='address.[state]', placeholder='CA')
+              input.form-control#state(type='text', name='address[state]', placeholder='CA', value=userData.address.state)
               label.input_separator(for='address[zip]') ZIP
-              input.form-control#zip(type='text', name='address.[zip]', placeholder='90028')
+              input.form-control#zip(type='text', name='address[zip]', placeholder='90028', value=userData.address.zip)
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-            button.btn.btn-success(type='submit') Save changes
+            button.btn.btn-success#updateContact(type='submit') Save changes
