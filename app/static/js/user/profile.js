@@ -5,21 +5,26 @@
   'use strict';
 
   $(document).ready(function(){
-    $('button[type=submit]').click(geocodeAndSubmit);
+    console.log('****I Happened');
+    $('#updateContact').click(geocodeAndSubmit);
   });
 
   function geocodeAndSubmit(e){
+    // console.log('****I Happened 2');
     var geocoder = new google.maps.Geocoder(),
-        zip = $('input[name=zip]').val();
+        zip = $('#zip').val();
+    // console.log('*****zip', zip);
     geocoder.geocode({address:zip}, function(results, status){
-      console.log('results', results);
+      // console.log('results', results);
       var name = results[0].formatted_address,
           lat  = results[0].geometry.location.lat(),
           lng  = results[0].geometry.location.lng();
+      // console.log(name, lat, lng);
+      // debugger;
       $('input[name=location]').val(name);
       $('input[data-name=lat]').val(lat);
       $('input[data-name=lng]').val(lng);
-      $('form').submit();
+      $('#contact_form').submit();
     });
     e.preventDefault();
   }
