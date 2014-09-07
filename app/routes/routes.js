@@ -13,7 +13,8 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     home           = require('../controllers/home'),
     gifts          = require('../controllers/gifts'),
-    users          = require('../controllers/users');
+    users          = require('../controllers/users'),
+    proposals      = require('../controllers/proposals');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -51,11 +52,12 @@ module.exports = function(app, express){
   app.put('/profile/about', users.details);
   app.post('/message/:userId', users.send);
   app.get('/messages', users.messages);
+  app.get('/messages'. proposals.messages);
   app.get('/messages/:msgId', users.message);
+  app.post('/proposal', proposals.proposal);
+  app.get('/messages/:proposalId', proposals.view);
   app.get('/users/alias', users.alias);
   app.get('/gifts', gifts.index);
-  app.get('/proposal', users.proposal);
-  app.get('/proposal/view', users.proposalView);
 
   console.log('Express: Routes Loaded');
 };

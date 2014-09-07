@@ -113,10 +113,3 @@ exports.alias = function(req, res){
   res.render('users/alias');
 };
 
-exports.proposal = function(req, res){
-  res.render('users/proposal');
-};
-
-exports.proposalView = function(req, res){
-  res.render('users/proposal-view');
-};
