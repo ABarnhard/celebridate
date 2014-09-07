@@ -15,12 +15,12 @@ block content
                         .form-group
                           .col-sm-12
                             select.form-control(name='gentation')
-                              option(value='F-S') Girls Who Like Guys
+                              option(value='M-S') Girls Who Like Guys
                               option(value='F-G') Girls Who Like Girls
-                              option(value='F-B') Girls Who Like Both
-                              option(value='M-S') Guys Who Like Girls
+                              option(value='F-S') Guys Who Like Girls
                               option(value='M-G') Guys Who Like Guys
-                              option(value='M-B') Guys Who Like Both
+                              option(value='F-B') Everyone Who Like Girls
+                              option(value='M-B') Everyone Who Like Guys
                         .form-group
                           .col-sm-12
                             select.form-control(name='age')
@@ -51,7 +51,7 @@ block content
                               option(value='') Order By Age
                               option(value='A-A') Youngest to Oldest
                               option(value='A-D') Oldest to Youngest
-                  button.btn.btn-primary(type='submit') Search
+                    button.btn.btn-primary(type='submit') Search
       .row
         .col-xs-12
           .panel.panel-default

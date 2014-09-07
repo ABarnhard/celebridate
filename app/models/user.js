@@ -21,6 +21,7 @@ User.findByIdSession = function(id, cb){
   User.collection.findOne({_id:_id}, {
     fields:{
       alias:1,
+      orientation:1,
       age:1,
       sex:1,
       email:1,
@@ -215,11 +216,97 @@ User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
 
-User.prototype.find = function(query, cb){
-  var filter = {},
+User.prototype.find = function(data, cb){
+  data = data || {};
+  var filter,
       sort   = {};
-  User.collection.find(filter).sort(sort).toArray(cb);
+  if(data.gentation){
+    var options = data.gentation.split('-');
+    filter = makeFilter(options[0], options[1]);
+  }else{
+    filter = makeFilter(this.sex, this.orientation);
+  }
+  if(data.age){
+    var range = data.age.split('-').map(function(s){return parseInt(s);});
+    filter.age = {$gte:range[0], $lt:range[1]};
+  }
+  filter._id = {$ne:this._id};
+
+  User.collection.find(filter).sort(sort).toArray(function(err, obj){
+    cb(err, obj);
+  });
 };
 
 module.exports = User;
 
+// Helper Functions
+function makeFilter(sex, orientation){
+  var filter = {};
+  switch(sex){
+    case 'M':
+      switch(orientation){
+        case 'S':
+          filter.$and = [
+            {sex:'F'},
+            {orientation:{$ne:'G'}}
+          ];
+          break;
+        case 'G':
+          filter.$and = [
+            {sex:'M'},
+            {orientation:{$ne:'S'}}
+          ];
+          break;
+        case 'B':
+          filter.$or = [
+            {
+              $and:[
+                {sex:'M'},
+                {orientation:{$ne:'S'}}
+              ]
+            },
+            {
+              $and:[
+                {sex:'F'},
+                {orientation:{$ne:'G'}}
+              ]
+            }
+          ];
+          break;
+      }
+      break;
+    case 'F':
+      switch(orientation){
+        case 'S':
+          filter.$and = [
+            {sex:'M'},
+            {orientation:{$ne:'G'}}
+          ];
+          break;
+        case 'G':
+          filter.$and = [
+            {sex:'F'},
+            {orientation:{$ne:'S'}}
+          ];
+          break;
+        case 'B':
+          filter.$or = [
+            {
+              $and:[
+                {sex:'F'},
+                {orientation:{$ne:'S'}}
+              ]
+            },
+            {
+              $and:[
+                {sex:'M'},
+                {orientation:{$ne:'G'}}
+              ]
+            }
+          ];
+          break;
+      }
+      break;
+  }
+  return filter;
+}
