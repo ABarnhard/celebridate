@@ -154,7 +154,7 @@ User.prototype.updateAbout = function(data, cb){
 };
 
 User.prototype.updateDetails = function(data, cb){
-  var orientation = data.orientation;
+  var orientation = data.orientation === '-' ? this.orientation : data.orientation;
   delete data.orientation;
   User.collection.update({_id:this._id}, {$set:{orientation:orientation, details:data}}, cb);
 };
