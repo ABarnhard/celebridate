@@ -4,9 +4,8 @@ var async = require('async'),
     Mongo  = require('mongodb');
 
 function Proposal(p){
-  this.id         = Mongo.ObjectID;
-  this.senderId   = p.senderId;
-  this.receiverId = p.receiverId;
+  this.senderId   = Mongo.ObjectID(p.senderId);
+  this.receiverId = Mongo.ObjectID(p.receiverId);
   this.loc        = p.loc;
   this.lat        = parseFloat(p.lat);
   this.lng        = parseFloat(p.lng);
@@ -20,6 +19,7 @@ function Proposal(p){
 Object.defineProperty(Proposal, 'collection', {
   get: function(){return global.mongodb.collection('proposals');}
 });
+
 
 Proposal.read = function(id, cb){
   var _id = Mongo.ObjectID(id);
@@ -41,17 +41,17 @@ Proposal.accept = function(receiverId, cb){
   Proposal.collection.find({receiverId:receiverId, isAccepted:false}).count(cb);
 };
 
-Proposal.messages = function(receiverId, cb){
-  Proposal.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, msgs){
-    async.map(msgs, iterator, cb);
+Proposal.proposals = function(receiverId, cb){
+  Proposal.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, props){
+    async.map(props, iterator, cb);
   });
 };
 
 module.exports = Proposal;
 
-function iterator(msg, cb){
-  require('./user').findById(msg.senderId, function(err, sender){
-    msg.sender = sender;
-    cb(null, msg);
+function iterator(prop, cb){
+  require('./user').findById(prop.senderId, function(err, sender){
+    prop.sender = sender;
+    cb(null, prop);
   });
 }

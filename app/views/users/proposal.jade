@@ -3,11 +3,12 @@ block content
   h2 Propose a Date:
   .row
     .col-xs-6
-      form(role='form', method='post', action='/messages')
-        input(type='hidden', name='_method', value='put')
+      form(role='form', method='post', action='/proposals')
+        input(type='hidden', name='receiverId', value='#{receiverId}')
+        input(type='hidden', name='senderId', value='#{user._id}')
         input(type='hidden', name='coordinates', data-name='lat')
         input(type='hidden', name='coordinates', data-name='lng')
-        input(type='hidden', name='location', data-name='loc')
+        input(type='hidden', name='loc', data-name='loc')
         .form-group
           label Activity
           input.form-control#activity(type='text', name='activity', placeholder='ie. Sailing, Skydiving...', autofocus=true)
