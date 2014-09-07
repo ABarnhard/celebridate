@@ -33,7 +33,7 @@ module.exports = function(app, express){
   app.get('/register', users.new);
   app.post('/register', users.create);
   app.get('/login', users.login);
-  app.post('/login',                 passport.authenticate('local', {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Login failed'}));
+  app.post('/login',                 passport.authenticate('local',    {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Login failed'}));
   app.get('/auth/google',            passport.authenticate('google',   {scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']}));
   app.get('/auth/google/callback',   passport.authenticate('google',   {successRedirect:'/verify', failureRedirect:'/login', failureFlash:'Google Login failed'}));
   app.get('/auth/facebook',          passport.authenticate('facebook'));
@@ -50,6 +50,7 @@ module.exports = function(app, express){
   app.put('/profile/details', users.details);
   app.put('/profile/contact', users.contact);
   app.get('/users/:alias', users.alias);
+  app.get('/search', users.index);
   app.get('/gifts', gifts.index);
   app.post('/messages/:userId', messages.send);
   app.get('/messages/:msgId', messages.message);
