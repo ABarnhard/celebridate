@@ -8,7 +8,7 @@ block content
             .panel-body
               .row
                 .col-xs-12
-                  form.form-horizontal(role='form', method='post', action='#')
+                  form#searchForm.form-horizontal(role='form', method='post', action='/search/custom')
                     h4 Show Me:
                     .row
                       .col-xs-12
@@ -19,23 +19,14 @@ block content
                               option(value='F-G') Girls Who Like Girls
                               option(value='F-S') Guys Who Like Girls
                               option(value='M-G') Guys Who Like Guys
-                              option(value='F-B') Everyone Who Like Girls
-                              option(value='M-B') Everyone Who Like Guys
                         .form-group
                           .col-sm-12
                             select.form-control(name='age')
+                              option(value='') Any
                               option(value='18-25') Ages 18 - 25
                               option(value='26-35') Ages 26 - 35
                               option(value='36-45') Ages 36 - 45
                               option(value='46-200') Ages > 46
-                        .form-group
-                          .col-sm-12
-                            select.form-control(name='ulmer')
-                              option(value='A') A Listers
-                              option(value='B') B Listers
-                              option(value='C') C Listers
-                              option(value='D') D Listers
-                              option(value='Z') Daytime Soap Star
                     h4 Order By:
                     .row
                       .col-xs-12
@@ -51,11 +42,11 @@ block content
                               option(value='') Order By Age
                               option(value='A-A') Youngest to Oldest
                               option(value='A-D') Oldest to Youngest
-                    button.btn.btn-primary(type='submit') Search
+                    button.btn.btn-primary#search(type='button') Search
       .row
         .col-xs-12
           .panel.panel-default
-            .panel-body
+            .panel-body#results
               include search-results
 
 block scripts

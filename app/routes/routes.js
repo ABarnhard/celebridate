@@ -51,6 +51,7 @@ module.exports = function(app, express){
   app.put('/profile/contact', users.contact);
   app.get('/users/:alias', users.alias);
   app.get('/search', users.index);
+  app.post('/search/custom', users.customSearch);
   app.get('/gifts', gifts.index);
   app.post('/messages/:userId', messages.send);
   app.get('/messages/:msgId', messages.message);

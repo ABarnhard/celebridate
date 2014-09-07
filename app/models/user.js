@@ -231,9 +231,10 @@ User.prototype.find = function(data, cb){
     filter.age = {$gte:range[0], $lt:range[1]};
   }
   filter._id = {$ne:this._id};
-
-  User.collection.find(filter).sort(sort).toArray(function(err, obj){
-    cb(err, obj);
+  console.log('*******FILTER', filter);
+  User.collection.find(filter).sort(sort).toArray(function(err, objs){
+    console.log(objs);
+    cb(err, objs);
   });
 };
 
