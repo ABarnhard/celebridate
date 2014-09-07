@@ -5,6 +5,7 @@
 
 var expect    = require('chai').expect,
     Wink      = require('../../app/models/wink'),
+    Mongo     = require('mongodb'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
     db        = 'celebridate-test';
@@ -42,8 +43,9 @@ describe('Wink', function(){
 
   describe('.findAllByOwner', function(){
     it('should return all the winks of ownerId from the database', function(done){
-      Wink.findAllByOwner('000000000000000000000002', function(err, w){
-        expect(w._id.toString()).to.equal('000000000000000000000002');
+      Wink.findAllByOwner(Mongo.ObjectID('000000000000000000000001'), function(err, winks){
+        // console.log(winks);
+        expect(winks).to.have.length(1);
         done();
       });
     });
