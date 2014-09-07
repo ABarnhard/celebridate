@@ -10,10 +10,11 @@
 
   function geocodeAndSubmit(e){
     var geocoder = new google.maps.Geocoder(),
-        loc = $('input[name=loc]').val();
+        loc = $('#loc').val();
+    console.log(loc);
     geocoder.geocode({address:loc}, function(results, status){
       console.log('results', results);
-      var name = results[0].formatted_address,
+      var loc  = results[0].formatted_address,
           lat  = results[0].geometry.location.lat(),
           lng  = results[0].geometry.location.lng();
       $('input[name=loc]').val(name);
