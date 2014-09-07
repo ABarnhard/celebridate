@@ -38,13 +38,13 @@ button.btn.fa.fa-edit(data-toggle='modal', data-target='#editContact')
             br
             .col-xs-8
               label.input_separator(for='address[street]') Street
-              input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.', value=userData.address.street)
+              input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.')
               label.input_separator(for='address[city]') City
-              input.form-control#city(type='text', name='address[city]', placeholder='Hollywood', value=userData.address.city)
+              input.form-control#city(type='text', name='address[city]', placeholder='Hollywood')
               label.input_separator(for='address[state]') State
-              input.form-control#state(type='text', name='address[state]', placeholder='CA', value=userData.address.state)
+              input.form-control#state(type='text', name='address[state]', placeholder='CA')
               label.input_separator(for='address[zip]') ZIP
-              input.form-control#zip(type='text', name='address[zip]', placeholder='90028', value=userData.address.zip)
+              input.form-control#zip(type='text', name='address[zip]', placeholder='90028')
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success#updateContact(type='submit') Save changes

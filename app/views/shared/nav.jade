@@ -11,10 +11,10 @@
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
         if user
-          li: a(href='/Profile'): span.fa.fa-user &nbsp Profile
           li: a(href='/messages')
-            span.fa.fa-envelope &nbsp Inbox &nbsp;
+            span.fa.fa-envelope &nbsp; Inbox &nbsp;
             span.badge= 0
+          li: a(href='/profile'): span.fa.fa-user &nbsp; #{user.alias}
           li
             form.navbar-form(method='post', action='/logout')
               .form-group

@@ -21,46 +21,16 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option(value='B') Bisexual
               br
           .form-group
-            label.col-lg-2.control-label(for='ethnicities') Ethnicity
-            .col-lg-3
-              label.checkbox(for='ethnicity1')
-                input#ethnicity1(type='radio', name='ethnicity', value='Asian')
-                span.icon
-                | Asian
-              label.checkbox(for='ethnicity2')
-                input#ethnicity2(type='radio', name='ethnicity', value='Middle Eastern')
-                span.icon
-                | Middle Eastern
-              label.checkbox(for='ethnicity3')
-                input#ethnicity3(type='radio', name='ethnicity', value='Black')
-                span.icon
-                | Black
-            .col-lg-3
-              label.checkbox(for='ethnicity4')
-                input#ethnicity4(type='radio', name='ethnicity', value='Native American')
-                span.icon
-                | Native American
-              label.checkbox(for='ethnicity5')
-                input#ethnicity5(type='radio', name='ethnicity', value='Indian')
-                span.icon
-                | Indian
-              label.checkbox(for='ethnicity6')
-                input#ethnicity6(type='radio', name='ethnicity', value='Pacific Islander')
-                span.icon
-                | Pacific Islander
-            .col-lg-3
-              label.checkbox(for='ethnicity7')
-                input#ethnicity7(type='radio', name='ethnicity', value='Hispanic / Latin')
-                span.icon
-                | Hispanic / Latin
-              label.checkbox(for='ethnicity8')
-                input#ethnicity8(type='radio', name='ethnicity', value='White')
-                span.icon
-                | White
-              label.checkbox(for='ethnicity9')
-                input#ethnicity9(type='radio', name='ethnicity', value='Other')
-                span.icon
-                | Other
+            .col-lg-10
+              select#ethnicity.form-control(name='ethnicity')
+                option(value='W') White / Caucasian
+                option(value='B') Black / African American
+                option(value='H') Hispanic / Latino
+                option(value='AI') American Indian or Alaska Native
+                option(value='A') Asian
+                option(value='P') Pacific Islander
+                option(value='M') I identify with multiple ethnicities.
+                option(value='O') Other
           .form-group
             label.col-lg-2.control-label(for='feet') Height
             #feetContainer.inputcontainer.select
@@ -115,11 +85,6 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option vegan
                 option vegetarian
                 option other
-            #dietSeriousContainer.inputcontainer.select
-              select#dietSerious(name='dietSerious')
-                option —
-                option Mostly
-                option Strictly
           .form-group
             label(for='smoking') Smokes
             #smokingContainer.inputcontainer.select
