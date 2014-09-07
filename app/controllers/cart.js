@@ -31,8 +31,8 @@ exports.index = function(req, res){
 
   req.session.totalCents = Math.round(total * 100);
   req.session.save(function(){
-
-    res.render('users/checkout', {key:config.stripe.publishKey, ids:Object.keys(gifts), gifts:gifts, subtotal:subtotal, tax:tax, total:total});
+    res.render('users/cart', {ids:Object.keys(gifts), gifts:gifts, subtotal:subtotal, tax:tax, total:total});
+    //res.render('users/cart', {key:config.stripe.publishKey, ids:Object.keys(gifts), gifts:gifts, subtotal:subtotal, tax:tax, total:total});
   });
 };
 
