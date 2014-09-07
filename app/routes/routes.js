@@ -56,4 +56,5 @@ module.exports = function(app, express){
   app.get('/messages', messages.messages);
 
   console.log('Express: Routes Loaded');
+
 };
