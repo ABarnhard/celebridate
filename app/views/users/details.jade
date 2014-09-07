@@ -2,7 +2,7 @@
 button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): i.fa.fa-edit
 // MODAL
 #editDetails.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editDetailsLabel', aria-hidden='true')
-  .modal-dialog.modal-lg
+  .modal-dialog
     .modal-content
       .modal-header
         button.close(type='button', data-dismiss='modal')
@@ -13,37 +13,26 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
         form.form-horizontal#details_form(role='form', method='post', action='/profile/details')
           input(type='hidden', name='_method', value='put')
           .form-group
-            label.col-lg-2.control-label(for='orientation') Orientation
-            .col-lg-10
-              select#orientation.form-control(name='orientation')
+            label.col-xs-2.control-label(for='orientation') Orientation
+            .col-xs-10
+              select#orientation(name='orientation')
+                option(selected='') —
                 option(value='S') Straight
                 option(value='G') Gay
                 option(value='B') Bisexual
-              br
           .form-group
-            .col-lg-10
-              select#ethnicity.form-control(name='ethnicity')
-                option(value='W') White / Caucasian
-                option(value='B') Black / African American
-                option(value='H') Hispanic / Latino
-                option(value='AI') American Indian or Alaska Native
-                option(value='A') Asian
-                option(value='P') Pacific Islander
-                option(value='M') I identify with multiple ethnicities.
-                option(value='O') Other
-          .form-group
-            label.col-lg-2.control-label(for='feet') Height
-            #feetContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='feet') Height
+            .col-xs-5
               select#feet(name='feet')
-                option —
+                option(selected='') —
                 option 7
                 option 6
                 option 5
                 option 4
                 option 3
-            label.input_separator(for='feet') feet
-            #inchesContainer.inputcontainer.select
+              label.input_separator(for='feet') &nbsp; feet &nbsp;&nbsp;
               select#inches(name='inches')
+                option(selected='') —
                 option 0
                 option 1
                 option 2
@@ -56,10 +45,10 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option 9
                 option 10
                 option 11
-            label.input_separator(for='inches') inches
+              label.input_separator(for='inches') &nbsp; inches
           .form-group
-            label(for='bodyType') Body Type
-            #bodyTypeContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='bodyType') Body Type
+            .col-xs-10
               select#bodyType(name='bodyType')
                 option(selected='') —
                 option Rather not say
@@ -75,8 +64,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option Full figured
                 option Used up
           .form-group
-            label(for='diet') Diet
-            #dietContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='diet') Diet
+            .col-xs-10
               select#diet(name='diet')
                 option —
                 option anything
@@ -86,8 +75,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option vegetarian
                 option other
           .form-group
-            label(for='smoking') Smokes
-            #smokingContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='smoking') Smokes
+            .col-xs-10
               select#smoking(name='smoking')
                 option(selected='') —
                 option Yes
@@ -96,8 +85,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option Trying to quit
                 option No
           .form-group
-            label(for='drinking') Drinks
-            #drinkingContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='drinking') Drinks
+            .col-xs-10
               select#drinking(name='drinking')
                 option(selected='') —
                 option Very often
@@ -107,8 +96,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option Desperately
                 option Not at all
           .form-group
-            label(for='drug') Drug of Choice
-            #drugContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='drug') Drug of Choice
+            .col-xs-10
               select#drug(name='drug')
                 option(selected='') —
                 optgroup(label='Narcotics')
@@ -143,8 +132,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                   option DXM
                   option Salvia Divinorum
           .form-group
-            label(for='religion') Religion
-            #religionContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='religion') Religion
+            .col-xs-10
               select#religion(name='religion')
                 option(selected='') —
                 option Agnosticism
@@ -156,7 +145,6 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option Hinduism
                 option Buddhism
                 option Other
-            #religionSeriousContainer.inputcontainer.select
               select#religionSerious(name='religionSerious')
                 option(selected='') —
                 option and very serious about it
@@ -164,8 +152,8 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option but not too serious about it
                 option and laughing about it
           .form-group
-            label(for='sign') Sign
-            #signContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='sign') Sign
+            .col-xs-10
               select#sign(name='sign')
                 option(selected='') —
                 option Aquarius
@@ -180,15 +168,19 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option Scorpio
                 option Sagittarius
                 option Capricorn
+              select#signSerious(name='signSerious')
+                option(selected='') —
+                option but it doesn't matter
+                option and it matters a lot
+                option and it is fun to think about
           .form-group
-            label(for='educationStatus') Education
-            #educationStatusContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='educationStatus') Education
+            .col-xs-10
               select#educationStatus(name='educationStatus')
                 option(selected='') —
                 option Graduated from
                 option Working on
                 option Dropped out of
-            #educationLevelContainer.inputcontainer.select
               select#educationLevel(name='educationLevel')
                 option(selected='') —
                 option high school
@@ -202,21 +194,19 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option space camp
                 option school of hard knocks
           .form-group
-            label(for='job') Ulmer Status
-            #ulmerContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='job') Ulmer Status
+            .col-xs-10
               select#ulmer(name='ulmer')
-                option(selected='')  —
-                option A+
+                option(selected='') —
                 option A
-                option B+
                 option B
                 option C
                 option D
                 option Z (What am I doing with my life?!)
-            label.input_separator(for='ulmer')-List
+            label.col-xs-2.control-label.input_separator(for='ulmer')-List
           .form-group
-            label(for='income') Income
-            #incomeContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='income') Income
+            .col-xs-10
               select#income(name='income')
                 option(selected='')  —
                 option  Less than $20,000
@@ -234,55 +224,52 @@ button.btn.btn-primary-btn-sm(data-toggle='modal', data-target='#editDetails'): 
                 option  More than $1,000,000
                 option  Rather not say
           .form-group
-            label(for='relationshipStatus') Relationship Status
-            #relationshipStatusContainer.inputcontainer.select.autowidth
+            label.col-xs-2.control-label(for='relationshipStatus') Relationship Status
+            .col-xs-10
               select#relationshipStatus(name='relationshipStatus')
-                option(selected='') Its complicated
+                option(selected='') -
+                option Its complicated
                 option Single
                 option Seeing someone
                 option Married
                 option In an open relationship
           .form-group
-            label(for='monogamous') Relationship Type
-            #monogamyFlexContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='monogamous') Relationship Type
+            .col-xs-10
               select#monogamyFlex(name='monogamyFlex')
                 option —
                 option Mostly
                 option Strictly
-            #monogamousContainer.inputcontainer.select
               select#monogamous(name='monogamous')
                 option —
                 option monogamous
                 option non-monogamous
           .form-group
-            label(for='childrenQ1') Offspring
-            #childrenQ1Container.inputcontainer.select
+            label.col-xs-2.control-label(for='childrenQ1') Offspring
+            .col-xs-10
               select#childrenQ1(name='children')
                 option(selected='')  —
                 option  Has a kid
                 option  Has kids
                 option  Doesn’t have kids
-            #childrenQ2Container.inputcontainer.select
               select#childrenQ2(name='children2')
                 option(selected='') —
                 option Might want kids
                 option Wants kids
                 option Doesn’t want kids
           .form-group
-            label(for='dogs') Pets
-            #dogsContainer.inputcontainer.select
+            label.col-xs-2.control-label(for='dogs') Pets
+            .col-xs-10
               select#dogs(name='dogs')
                 option(selected='')  —
                 option  Has dogs
                 option  Likes dogs
                 option  Dislikes dogs
-            #catsContainer.inputcontainer.select
               select#cats(name='cats')
                 option(selected='')  —
                 option  Has cats
                 option  Likes cats
                 option  Dislikes cats
-            include about
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success(type='submit') Save changes
