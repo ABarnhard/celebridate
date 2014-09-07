@@ -1,5 +1,5 @@
 // TRIGGER
-button.btn.btn-warning-btn-mini(data-toggle='modal', data-target='#editAbout'): i.fa.fa-edit
+a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editAbout')
 // MODAL
 #editAbout.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editAboutLabel', aria-hidden='true')
   .modal-dialog
@@ -14,7 +14,7 @@ button.btn.btn-warning-btn-mini(data-toggle='modal', data-target='#editAbout'): 
           input(type='hidden', name='_method', value='put')
           .form-group
             label.control-label(for='aboutMe') About Me
-              textarea#aboutMe.form-control(rows='4', name='aboutMe')
+            textarea#aboutMe.form-control(rows='4', name='aboutMe', placeholder='Write a little about yourself. Just a paragraph will do.')
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success(type='submit') Save changes
