@@ -180,21 +180,20 @@ describe('users', function(){
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
-        expect(res.text).to.include('Profile');
-        expect(res.text).to.include('About Me');
+        expect(res.text).to.include('Contact');
         done();
       });
     });
   });
 
-  describe('get /messages', function(){
-    it('should return the messages page', function(done){
+  describe('get /inbbox', function(){
+    it('should return the inbox main page', function(done){
       request(app)
-      .get('/messages')
+      .get('/inbox')
       .set('cookie', cookie)
       .end(function(err, res){
         expect(res.status).to.equal(200);
-        expect(res.text).to.include('Message');
+        expect(res.text).to.include('Messages');
         done();
       });
     });

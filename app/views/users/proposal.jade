@@ -1,0 +1,28 @@
+extends ../shared/template
+block content
+  h2 Propose a Date:
+  .row
+    .col-xs-6
+      form(role='form', method='post', action='/proposals')
+        input(type='hidden', name='receiverId', value='#{receiverId}')
+        input(type='hidden', name='senderId', value='#{user._id}')
+        .form-group
+          label Activity
+          input.form-control#activity(type='text', name='activity', placeholder='ie. Sailing, Skydiving...', autofocus=true)
+        .form-group
+          label Location
+          input.form-control#loc(type='text', name='loc', placeholder= '1234 21st Ave. Nashville, TN 37209')
+        .form-group
+          label(for='proposal') Message
+          textarea.form-control#message(name='message')
+          input(type='hidden' name='mtype' value='internal')
+        .form-group
+          button.btn.btn-success(type='submit') Submit
+
+
+
+
+
+block scripts
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKBptUxmWBtYmtT8hfD67-TcrUhu4cl8&sensor=true')
+  script(src='/js/user/proposal.js')

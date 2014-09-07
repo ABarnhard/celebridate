@@ -1,7 +1,7 @@
 'use strict';
 
-var User = require('../models/user'),
-    mp     = require('multiparty');
+var User    = require('../models/user'),
+    mp      = require('multiparty');
 
 exports.new = function(req, res){
   res.render('users/new');
@@ -99,3 +99,14 @@ exports.alias = function(req, res){
   });
 };
 
+exports.index = function(req, res){
+  req.user.find(req.body, function(err, profiles){
+    res.render('users/index', {profiles:profiles});
+  });
+};
+
+exports.customSearch = function(req, res){
+  req.user.find(req.body, function(err, profiles){
+    res.render('users/search-results', {profiles:profiles});
+  });
+};

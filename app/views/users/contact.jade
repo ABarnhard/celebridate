@@ -1,5 +1,5 @@
 // TRIGGER
-button.btn.fa.fa-edit(data-toggle='modal', data-target='#editContact')
+a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editContact')
 // MODAL
 #editContact.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editContactLabel', aria-hidden='true')
   .modal-dialog
@@ -12,39 +12,47 @@ button.btn.fa.fa-edit(data-toggle='modal', data-target='#editContact')
       .modal-body
         form.form-horizontal#contact_form(role='form', method='post', action='/profile/contact')
           input(type='hidden', name='_method', value='put')
-          input(type='hidden', name='coordinates', data-name='lat', value=user.coordinates[0])
-          input(type='hidden', name='coordinates', data-name='lng', value=user.coordinates[1])
+          input(type='hidden', name='coordinates', data-name='lng', value=user.coordinates[0])
+          input(type='hidden', name='coordinates', data-name='lat', value=user.coordinates[1])
           input(type='hidden', name='location', data-name='loc', value=user.location)
           .form-group
             label.col-xs-2.control-label(for='alias') Alias
-            .col-xs-8
+            .col-xs-6
               input.form-control#alias(type='text', name='alias', value=user.alias, autofocus=true)
               span.help-block
-                | Other members can only see your alias.
+                | Other members can see your alias.
           .form-group
             label.col-xs-2.control-label(for='name') Name
-            .col-xs-8
+            .col-xs-6
               input.form-control#name(type='text', name='name', value=userData.name)
+              span.help-block
+                | Your name will not be displayed publically.
           .form-group
             label.col-xs-2.control-label(for='email') Email
-            .col-xs-8
+            .col-xs-6
               input.form-control#email(type='email', name='email', value=userData.email)
+              span.help-block
+                | Your email address will not be published or leaked.
           .form-group
             label.col-xs-2.control-label(for='Phone') Phone
-            .col-xs-8
+            .col-xs-6
               input.form-control#phone(type='tel', name='phone', value=userData.phone)
+              span.help-block
+                | Your phone number will not be published or leaked.
           .form-group
             label.col-xs-2.control-label(for='address') Address
             br
-            .col-xs-8
-              label.input_separator(for='address[street]') Street
+            .col-xs-6
+              label(for='address[street]') Street
               input.form-control#street(type='text', name='address[street]', placeholder= '7018 Hollywood Blvd.', value=userData.address.street)
-              label.input_separator(for='address[city]') City
+              label(for='address[city]') City
               input.form-control#city(type='text', name='address[city]', placeholder='Hollywood', value=userData.address.city)
-              label.input_separator(for='address[state]') State
+              label(for='address[state]') State
               input.form-control#state(type='text', name='address[state]', placeholder='CA', value=userData.address.state)
-              label.input_separator(for='address[zip]') ZIP
+              label(for='address[zip]') ZIP Code
               input.form-control#zip(type='text', name='address[zip]', placeholder='90028', value=userData.address.zip)
+              span.help-block
+                | Gifts purchased through CelebriDate will be sent to this address. Your address will not be published or leaked.
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             button.btn.btn-success#updateContact(type='submit') Save changes

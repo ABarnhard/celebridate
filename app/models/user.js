@@ -1,14 +1,17 @@
 'use strict';
 
-var bcrypt = require('bcrypt'),
-    Mongo  = require('mongodb'),
-    _      = require('underscore-contrib'),
-    Message = require('./message'),
-    fs     = require('fs'),
-    path   = require('path');
+var bcrypt   = require('bcrypt'),
+    Mongo    = require('mongodb'),
+    _        = require('underscore-contrib'),
+    Message  = require('./message'),
+    Proposal = require('./proposal'),
+    Wink     = require('./wink'),
+    fs       = require('fs'),
+    path     = require('path');
 
 function User(){
   this.coordinates = [];
+  this.about = {};
   this.profilePhoto = '/img/placeholder.gif';
 }
 
@@ -21,6 +24,7 @@ User.findByIdSession = function(id, cb){
   User.collection.findOne({_id:_id}, {
     fields:{
       alias:1,
+      orientation:1,
       age:1,
       sex:1,
       email:1,
@@ -135,6 +139,7 @@ User.prototype.initUpdate = function(data, cb){
         phone:data.phone,
         sex:data.sex,
         orientation:data.orientation,
+        age: parseInt(data.age),
         address:{zip:data.zip}
       }
     }, cb);
@@ -162,7 +167,7 @@ User.prototype.setProfilePhoto = function(index, cb){
 };
 
 User.prototype.updateContact = function(data, cb){
-  var self = this,
+  var self   = this,
       message;
   User.collection.findOne({alias:data.alias}, function(err, obj){
     if(obj && obj.alias !== self.alias){
@@ -174,15 +179,15 @@ User.prototype.updateContact = function(data, cb){
     });
     User.collection.update({_id:self._id}, {
       $set:{
+        coordinates:data.coordinates,
         alias:data.alias,
         name:data.name,
         email:data.email,
         location:data.location,
-        coordinates:data.coordinates,
         phone:data.phone,
         address:data.address
       }
-    }, function(){
+    }, function(err, obj){
       cb(message);
     });
   });
@@ -206,6 +211,14 @@ User.prototype.messages = function(cb){
   Message.messages(this._id, cb);
 };
 
+User.prototype.proposals = function(cb){
+  Proposal.proposals(this._id, cb);
+};
+
+User.prototype.winks = function(cb){
+  Wink.findAllByOwner(this._id, cb);
+};
+
 User.prototype.send = function(receiver, obj, cb){
   Message.send(this._id, receiver._id, obj. subject, obj.message, cb);
 };
@@ -214,5 +227,98 @@ User.findOne = function(filter, cb){
   User.collection.findOne(filter, cb);
 };
 
+User.prototype.find = function(data, cb){
+  data = data || {};
+  var filter,
+      sort   = {};
+  if(data.gentation){
+    var options = data.gentation.split('-');
+    filter = makeFilter(options[0], options[1]);
+  }else{
+    filter = makeFilter(this.sex, this.orientation);
+  }
+  if(data.age){
+    var range = data.age.split('-').map(function(s){return parseInt(s);});
+    filter.age = {$gte:range[0], $lt:range[1]};
+  }
+  filter._id = {$ne:this._id};
+  console.log('*******FILTER', filter);
+  User.collection.find(filter).sort(sort).toArray(function(err, objs){
+    console.log(objs);
+    cb(err, objs);
+  });
+};
+
 module.exports = User;
 
+// Helper Functions
+function makeFilter(sex, orientation){
+  var filter = {};
+  switch(sex){
+    case 'M':
+      switch(orientation){
+        case 'S':
+          filter.$and = [
+            {sex:'F'},
+            {orientation:{$ne:'G'}}
+          ];
+          break;
+        case 'G':
+          filter.$and = [
+            {sex:'M'},
+            {orientation:{$ne:'S'}}
+          ];
+          break;
+        case 'B':
+          filter.$or = [
+            {
+              $and:[
+                {sex:'M'},
+                {orientation:{$ne:'S'}}
+              ]
+            },
+            {
+              $and:[
+                {sex:'F'},
+                {orientation:{$ne:'G'}}
+              ]
+            }
+          ];
+          break;
+      }
+      break;
+    case 'F':
+      switch(orientation){
+        case 'S':
+          filter.$and = [
+            {sex:'M'},
+            {orientation:{$ne:'G'}}
+          ];
+          break;
+        case 'G':
+          filter.$and = [
+            {sex:'F'},
+            {orientation:{$ne:'S'}}
+          ];
+          break;
+        case 'B':
+          filter.$or = [
+            {
+              $and:[
+                {sex:'F'},
+                {orientation:{$ne:'S'}}
+              ]
+            },
+            {
+              $and:[
+                {sex:'M'},
+                {orientation:{$ne:'G'}}
+              ]
+            }
+          ];
+          break;
+      }
+      break;
+  }
+  return filter;
+}
