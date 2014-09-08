@@ -1,60 +1,61 @@
 extends ../shared/template
 block content
-  .panel.panel-default
-    .panel-body
-    .row
-      .col-xs-4
-        h2= client.alias
-        .col-xs-4
-          ul.list-inline
-            li
-              h5= client.age
-            li
-              h5= client.gender
-            li
-              h5= client.Location
-      .col-xs-2
-        a.thumbnail#alias(href='#')
-          img(src='#{user.photo}')
-        .col-xs-2.col-xs-offset-1
-          span.glyphicon.glyphicon-heart
-      .col-xs-4
-
-    button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage') Message
-    include newMessage
-    a.btn.btn-default.btn(href='/gifts') Gift
-    form.form(role='form', method='post', action='/message/#{client._id}')
-      input(type='hidden', name='senderId', value=user._id)
-      input(type='hidden', name='receiverId', value=client._id)
-      button.btn.btn-default.btn-(type='submit') Wink
-      span.glyphicon.glyphicon-eye-open
-    a.btn.btn-default(href='/proposals/#{client._id}/new') Send Propsal
   .row
     .col-xs-12
-  .panel.panel-default
-    .panel-heading
-        h3.panel-title About #{client.alias}
-      .panel-body
-        h6 This is the About Me Section of the Profile Page
-  .row
-    .col-xs-12
-      .c-wrapper
-      #carousel-example-generic.carousel.slide(data-ride='carousel')
-        ol.carousel-indicators
-          li.active(data-target='#carousel-example-generic', data-slide-to='0')
-          li.active(data-target='#carousel-example-generic', data-slide-to='1')
-          li.active(data-target='#carousel-example-generic', data-slide-to='2')
-        .carousel-inner
-          .item.active
-            img(src='/img/node.png')
-          .item
-            img(src='/img/node.png')
-        a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left
-        a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-right
+      .panel.panel-default
+        .panel-body
+        .row
+          .col-xs-4
+            .row
+              .col-xs-1
+              .col-xs-6
+                h2=client.alias
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-birthday-cake &nbsp; #{client.age}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-male /
+                h5.i.fa.fa-female &nbsp; #{client.sex}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-map-marker &nbsp; #{client.location}
+          .col-xs-4
+            a.thumbnail#alias(href='#')
+              img(src='#{client.profilePhoto}')
+            .col-xs-2.col-xs-offset-1
+              span.fa.fa-heart
+          .col-xs-4
+        button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage'): i.fa.fa-envelope &nbsp; Message
+        include newMessage
+        a.btn.btn-default.btn(href='/gifts'): i.fa.fa-gift &nbsp; Send a Gift
+        form.form(role='form', method='post', action='/message/#{client._id}')
+          input(type='hidden', name='senderId', value=user._id)
+          input(type='hidden', name='receiverId', value=client._id)
+          button.btn.btn-default.btn-(type='submit'): i.fa.fa-eye &nbsp; Wink
+        a.btn.btn-default(href='/proposals/#{client._id}/new'): i.fa.fa-calendar &nbsp; Request a Date
 
 
-
-
+      .row
+        .col-xs-2
+        .col-xs-8
+          .c-wrapper
+          #carousel-example-generic.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+              li.active(data-target='#carousel-example-generic', data-slide-to='0')
+              li.active(data-target='#carousel-example-generic', data-slide-to='1')
+              li.active(data-target='#carousel-example-generic', data-slide-to='2')
+            .carousel-inner
+              .item.active
+                img(src='/img/node.png')
+              .item
+                img(src='/img/node.png')
+            a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+            a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-right
+        .col-xs-2
 block scripts
