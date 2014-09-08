@@ -79,8 +79,53 @@ block content
                   include details
               .panel-body
                 dl.dl-horizontal
-                  dt My self summary
-                  dd #{userData.about.aboutMe}
+                  dt Orientation:&nbsp;
+                  dd #{userData.orientation}
+                  br
+                  dt Height:&nbsp;
+                  dd #{userData.details.feet} feet,&nbsp; #{userData.details.inches} inches
+                  br
+                  dt Body Type:&nbsp;
+                  dd #{userData.details.bodyType}
+                  br
+                  dt Diet:&nbsp;
+                  dd #{userData.details.diet}
+                  br
+                  dt Smokes:&nbsp;
+                  dd #{userData.details.smoking}
+                  br
+                  dt Drinks:&nbsp;
+                  dd #{userData.details.drinking}
+                  br
+                  dt Drug of Choice:&nbsp;
+                  dd #{userData.details.drug}
+                  br
+                  dt Religion:&nbsp;
+                  dd #{userData.details.religion}, &nbsp;#{userData.details.religionSerious}
+                  br
+                  dt Sign:&nbsp;
+                  dd #{userData.details.sign} &nbsp;#{userData.details.signSerious}
+                  br
+                  dt Education:&nbsp;
+                  dd #{userData.details.educationStatus} &nbsp;#{userData.details.educationLevel}
+                  br
+                  dt UlmerStatus:&nbsp;
+                  dd #{userData.details.ulmer}
+                  br
+                  dt Income:&nbsp;
+                  dd #{userData.details.income}
+                  br
+                  dt Relationship Status:&nbsp;
+                  dd #{userData.details.relationshipStatus}
+                  br
+                  dt Relationship Type:&nbsp;
+                  dd #{userData.details.monogamyFlex} &nbsp; #{userData.details.monogamous}
+                  br
+                  dt Offspring:&nbsp;
+                  dd #{userData.details.childrenQ1}, &nbsp; #{userData.details.childrenQ2}
+                  br
+                  dt Pets:&nbsp;
+                  dd #{userData.details.dogs}, &nbsp;#{userData.details.cats}
                   br
 block scripts
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKBptUxmWBtYmtT8hfD67-TcrUhu4cl8&sensor=true')
