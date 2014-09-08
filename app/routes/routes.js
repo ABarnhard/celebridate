@@ -51,7 +51,7 @@ module.exports = function(app, express){
   app.get('/gifts', gifts.index);
   app.post('/cart', cart.add);
   app.get('/cart', cart.index);
-  app.get('/cart', cart.destroy);
+  app.delete('/cart', cart.destroy);
   app.put('/profile/details', users.details);
   app.put('/profile/about', users.details);
   app.get('/users/alias', users.alias);
@@ -66,6 +66,7 @@ module.exports = function(app, express){
   app.get('/proposals/:proposalId', inbox.proposalMessage);
   app.get('/proposals/:receiverId/new', inbox.newProposal);
   app.post('/proposals', inbox.sendProposal);
+  app.post('/winks', inbox.createWink);
 
   console.log('Express: Routes Loaded');
 };

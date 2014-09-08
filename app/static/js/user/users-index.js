@@ -6,13 +6,12 @@
   });
 
   function search(e){
-    console.log('I Fired');
+    // console.log('I Fired');
     var data = $('#searchForm').serialize(),
         type = $('#searchForm').attr('method'),
         url  = $('#searchForm').attr('action'),
         $searchResults = $('#results'),
         $r;
-    //$('input, textarea').val('');
 
     $.ajax({url:url, xhrFields:{withCredentials: true}, type:type, data:data, dataType:'html', success:function(html){
       // console.log('html', html);

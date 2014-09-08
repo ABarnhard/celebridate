@@ -16,6 +16,10 @@ Object.defineProperty(Message, 'collection', {
   get: function(){return global.mongodb.collection('messages');}
 });
 
+Message.countForUser = function(userId, cb){
+  Message.collection.count({receiverId:userId, isRead:false}, cb);
+};
+
 Message.read = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Message.collection.findAndModify({_id:_id}, [], {$set:{isRead:true}}, function(err, msg){
@@ -32,7 +36,7 @@ Message.unread = function(receiverId, cb){
   Message.collection.find({receiverId:receiverId, isRead:false}).count(cb);
 };
 
-Message.messages = function(receiverId, cb){
+Message.findAllForUser = function(receiverId, cb){
   Message.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, msgs){
     async.map(msgs, iterator, cb);
   });

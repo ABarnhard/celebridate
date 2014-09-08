@@ -3,8 +3,8 @@ var async = require('async'),
     Mongo = require('mongodb');
 
 function Wink(senderId, receiverId){
-  this.senderId   = Mongo.ObjectID(senderId);
-  this.receiverId = Mongo.ObjectID(receiverId);
+  this.senderId   = senderId;
+  this.receiverId = receiverId;
   this.count      = 1;
   this.isRead     = false;
 }
@@ -13,7 +13,12 @@ Object.defineProperty(Wink, 'collection', {
   get: function(){return global.mongodb.collection('winks');}
 });
 
+Wink.countForUser = function(userId, cb){
+  Wink.collection.count({receiverId:userId, isRead:false}, cb);
+};
+
 Wink.send = function(senderId, receiverId, cb){
+  receiverId = Mongo.ObjectID(receiverId);
   Wink.collection.findOne(senderId, receiverId, function(err, wink){
     if(wink){
       Wink.collection.update({_id:wink._id}, {$set:{isRead:false}, $inc:{count:1}}, cb);
@@ -24,7 +29,7 @@ Wink.send = function(senderId, receiverId, cb){
   });
 };
 
-Wink.findAllByOwner = function(receiverId, cb){
+Wink.findAllForUser = function(receiverId, cb){
   Wink.collection.find({receiverId:receiverId, isRead:false}).toArray(function(err, winks){
     async.each(winks, iterator2, function(){
       async.map(winks, iterator, cb);

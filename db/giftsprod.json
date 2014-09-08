@@ -1,0 +1,60 @@
+{
+  "_id" : {"$oid": "000000000000000000000001"},
+  "name" : "Tibetian Mastiff",
+  "price" : 15000,
+  "photo" : "http://static5.therichestimages.com/cdn/650/480/90/cw/wp-content/uploads/33.jpeg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000002"},
+  "name" : "Tesla",
+  "price" : 95000,
+  "photo" : "http://wp.streetwise.co/wp-content/uploads//2014/08/tesla-model-s.0_standard_640.0.jpg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000003"},
+  "name" : "Vacation Home",
+  "price" : 20000000,
+  "photo" : "http://tradetotravel.com/images/p-sister-rock-4.jpg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000004"},
+  "name" : "Unicorn",
+  "price" : 100000000,
+  "photo" : "http://sybertraderllc.com/wp-content/uploads/2014/06/unicorn-europe.jpg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000005"},
+  "name" : "Diamond Earrings",
+  "price" : 15000,
+  "photo" : "http://cdn3.jamesallen.com/Images/Education/Jewelry/Four-Prong-Studs-Pair-of-Classic-0.25ctw-Ladies-18k-White-Gold-Four-Prong-Round-Brilliant-Diamond-Earrings-big02292.gif"
+}
+{
+  "_id" : {"$oid": "000000000000000000000006"},
+  "name" : "Private Jet",
+  "price" : 20000000,
+  "photo" : "http://blogs-images.forbes.com/mfonobongnsehe/files/2012/09/Private-Jet-Plane.jpg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000007"},
+  "name" : "Roses",
+  "price" : 30,
+  "photo" : "http://cimages.proflowers.com/is/image/ProvideCommerce/PF_12_00000000R023_VA1104_W1_SQ"
+}
+{
+  "_id" : {"$oid": "000000000000000000000008"},
+  "name" : "Lakers Tickets",
+  "price" : 150000,
+  "photo" : "http://i.ebayimg.com/00/s/MTQ0OFgxMTU2/z/St0AAMXQsmFRegWr/$T2eC16h,!)8E9s4l90(,BRegWrFJYQ~~60_35.JPG"
+}
+{
+  "_id" : {"$oid": "000000000000000000000009"},
+  "name" : "Harley Davidson",
+  "price" : 60000,
+  "photo" : "http://media1.santabanta.com/full1/Bikes/Harley%20Davidson/harley-davidson-79v.jpg"
+}
+{
+  "_id" : {"$oid": "000000000000000000000010"},
+  "name" : "Yacht",
+  "price" : 60000000,
+  "photo" : "http://www.charterworld.com/news/wp-content/uploads/2011/02/YN-15850-50-metre-semi-displacement-motor-yacht-by-Heesen-Yachts.jpg"
+}

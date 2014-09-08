@@ -10,7 +10,7 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editAbout')
           span.sr-only Close
         h4#editAboutLabel.modal-title Edit your self summary
       .modal-body
-        form#about_form(role='form', method='post', action='/profile/about')
+        form.form-horizontal#about_form(role='form', method='post', action='/profile/about')
           input(type='hidden', name='_method', value='put')
           .form-group
             label.h5.col-xs-3.control-label(for='aboutMe') My self summary
@@ -29,11 +29,11 @@ a.pull-right.fa.fa-edit(href='#', data-toggle='modal', data-target='#editAbout')
             .col-xs-9
               textarea#interests.form-control(rows='4', name='interests', placeholder='Help your potential matches find common interests.')
           .form-group
-            label.h5.col-xs-3.control-label(for='roll') My favorite roll I played...
+            label.h5.col-xs-3.control-label(for='roll') My favorite roll was...
             .col-xs-9
               textarea#roll.form-control(rows='4', name='roll', placeholder='Did you prefer playing that serious doctor on that one show? or the goofy geek in that one movie?')
           .form-group
-            label.h5.col-xs-3.control-label(for='nightLife') On a typical Friday night I am...
+            label.h5.col-xs-3.control-label(for='nightLife') On a typical Wednesday night I am...
             .col-xs-9
               textarea#nightLife.form-control(rows='4', name='nightLife', placeholder='Netflix and takeout, or getting your party on — how do you let loose?')
           .modal-footer

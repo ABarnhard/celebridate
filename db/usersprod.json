@@ -1,0 +1,442 @@
+{
+  "_id" : {"$oid": "540cf08fb7caf7eb52967979"},
+  "coordinates" : [
+    -118.3783347,
+    34.0931603
+  ],
+  "about" : {
+    "aboutMe" : "Biggest, badest female black comedian out there!",
+    "life" : "",
+    "brag" : "",
+    "interests" : "",
+    "roll" : "Myself.  If you've seen my comedy show then you know that my life is one laugh after another!  Who wouldn't want to be me",
+    "nightLife" : "Hanging with my famous friends. . do you want to be one of them?"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "sykesOut@wanda.com",
+  "password" : "$2a$10$iLlsyYNM/34sbdDESU9U.OcwL1CZhZ5Vd8d4XaA2btGkFT2pN/Y8i",
+  "type" : "local",
+  "alias" : "SykesOut",
+  "location" : "West Hollywood, CA 90069, USA",
+  "phone" : "316-650-0346",
+  "sex" : "F",
+  "orientation" : "G",
+  "age" : 50,
+  "address" : {
+    "street" : "6767 Hollywood Blvd",
+    "city" : "West Hollywood",
+    "state" : "CA",
+    "zip" : "90069"
+  },
+  "name" : "Wanda Sykes",
+  "details" : {
+    "feet" : "5",
+    "inches" : "2",
+    "bodyType" : "Jacked",
+    "diet" : "vegetarian",
+    "smoking" : "No",
+    "drinking" : "Very often",
+    "drug" : "Marijuana / Cannabis",
+    "religion" : "Atheism",
+    "religionSerious" : "-",
+    "sign" : "Pisces",
+    "signSerious" : "-",
+    "educationStatus" : "-",
+    "educationLevel" : "acting school",
+    "ulmer" : "C",
+    "income" : "Rather not say",
+    "relationshipStatus" : "In an open relationship",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "non-monogamous",
+    "childrenQ1" : "Has a kid",
+    "childrenQ2" : "Might want kids",
+    "dogs" : "-",
+    "cats" : "-"
+  }
+}
+{
+  "_id" : {"$oid": "540cf1abb7caf7eb5296797a"},
+  "coordinates" : [
+    -71.1002881,
+    42.3476181
+  ],
+  "about" : {},
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "notben@mattdamon.com",
+  "password" : "$2a$10$J/W2GkiS/rA1R1dZ5MfM6efk/1JVlAZoMN5jh/ES1VaCqOWm6myoS",
+  "type" : "local",
+  "alias" : "NotBen",
+  "location" : "Boston, MA 02215, USA",
+  "phone" : "316-650-0346",
+  "sex" : "M",
+  "orientation" : "S",
+  "age" : 43,
+  "address" : {
+    "street" : "4 Yawkey Way",
+    "city" : "Boston",
+    "state" : "MA",
+    "zip" : "02215"
+  },
+  "name" : "Matt Damon",
+  "details" : {
+    "feet" : "5",
+    "inches" : "11",
+    "bodyType" : "Athletic",
+    "diet" : "bacon",
+    "smoking" : "No",
+    "drinking" : "Socially",
+    "drug" : "-",
+    "religion" : "Catholicism",
+    "religionSerious" : "and very serious about it",
+    "sign" : "Libra",
+    "signSerious" : "-",
+    "educationStatus" : "-",
+    "educationLevel" : "university",
+    "ulmer" : "A",
+    "income" : "More than $1,000,000",
+    "relationshipStatus" : "Single",
+    "monogamyFlex" : "Strictly",
+    "monogamous" : "non-monogamous",
+    "childrenQ1" : "Doesn’t have kids",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "-",
+    "cats" : "-"
+  }
+}
+{
+  "_id" : {"$oid": "540cf62fb7caf7eb5296797b"},
+  "coordinates" : [
+    -118.4104684,
+    34.1030032
+  ],
+  "about" : {
+    "aboutMe" : "Hi Ya'll!  It is Britney and I am a singer, past restaurant owner, always gossip rang popular.",
+    "life" : "Usually messing it up any chance I get",
+    "brag" : "Drinking Starbucks coffee.  I stop at least 2 times a day!",
+    "interests" : "",
+    "roll" : "Crossroads! Ya'll",
+    "nightLife" : "I am avoiding my ex-husband Kevin and drinking Starbucks!"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "BritneyBitch@spears.com",
+  "password" : "$2a$10$9Upm1nE4KZM8hiXYhEihreolaN9J5dCmRV137TLdi.4PJDdz/XPBC",
+  "type" : "local",
+  "alias" : "NOLA",
+  "location" : "Beverly Hills, CA 90210, USA",
+  "phone" : "316-650-0346",
+  "sex" : "F",
+  "orientation" : "S",
+  "age" : 32,
+  "address" : {
+    "street" : "1675 E. Altadena Drive",
+    "city" : "Beverly Hills",
+    "state" : "CA",
+    "zip" : "90210"
+  },
+  "name" : "Britney Spears",
+  "details" : {
+    "feet" : "5",
+    "inches" : "4",
+    "bodyType" : "Average",
+    "diet" : "vegan",
+    "smoking" : "Sometimes",
+    "drinking" : "Often",
+    "drug" : "Bath Salts / Designer Cathinones",
+    "religion" : "Buddhism",
+    "religionSerious" : "and laughing about it",
+    "sign" : "Sagittarius",
+    "signSerious" : "and it matters a lot",
+    "educationStatus" : "-",
+    "educationLevel" : "space camp",
+    "ulmer" : "A",
+    "income" : "More than $1,000,000",
+    "relationshipStatus" : "Its complicated",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "non-monogamous",
+    "childrenQ1" : "Has a kid",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "Has dogs",
+    "cats" : "Dislikes cats"
+  }
+}
+{
+  "_id" : {"$oid": "540cf8fdb7caf7eb5296797c"},
+  "coordinates" : [
+    -118.2351192,
+    33.8803536
+  ],
+  "about" : {
+    "aboutMe" : "I am here looking for crack.  If you have any or can get me some you are the one for me.",
+    "life" : "Crack and a lot of it.",
+    "brag" : "Singing and crack.",
+    "interests" : "",
+    "roll" : "Bobby Brown's wife.",
+    "nightLife" : "on the streets of Compton looking for crack."
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "cracklinWhitney@mailinator.com",
+  "password" : "$2a$10$TIjRyxQDtZSIMNyOhoYR8eiuAZ.Rhk0egkGV/dRxYmP2YjWMvJEcC",
+  "type" : "local",
+  "alias" : "Crack-A-Lack",
+  "location" : "Compton, CA 90220, USA",
+  "phone" : "316-650-0346",
+  "sex" : "F",
+  "orientation" : "B",
+  "age" : 48,
+  "address" : {
+    "street" : "206 S Amantha Ave Compton, CA",
+    "city" : "Compton",
+    "state" : "CA",
+    "zip" : "90220"
+  },
+  "name" : "Whitney Houston",
+  "details" : {
+    "feet" : "5",
+    "inches" : "8",
+    "bodyType" : "Skinny",
+    "diet" : "other",
+    "smoking" : "Sometimes",
+    "drinking" : "Often",
+    "drug" : "Cocaine",
+    "religion" : "Christianity",
+    "religionSerious" : "-",
+    "sign" : "Leo",
+    "signSerious" : "-",
+    "educationStatus" : "-",
+    "educationLevel" : "school of hard knocks",
+    "ulmer" : "A",
+    "income" : "Less than $20,000",
+    "relationshipStatus" : "Seeing someone",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "non-monogamous",
+    "childrenQ1" : "Has a kid",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "-",
+    "cats" : "-"
+  }
+}
+{
+  "_id" : {"$oid": "540cfb21b7caf7eb5296797d"},
+  "coordinates" : [
+    -118.4338345,
+    34.1482691
+  ],
+  "about" : {
+    "aboutMe" : "You know my voice more than you know my face- lucky you!",
+    "life" : "I live in the Valley that should tell you a lot about what I'm doing with my life.",
+    "brag" : "voice over work and scaring people with my voice",
+    "interests" : "love 'em all.  I've got a lot of time to read.",
+    "roll" : "Afflec Duck!",
+    "nightLife" : "working at the local In-n-Out"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "quack@gottfried.com",
+  "password" : "$2a$10$s97GN2gM8whg9PHuu5PXve0lXrF34mxw9BROmCEU.fbqtn7PDKB7C",
+  "type" : "local",
+  "alias" : "Quack",
+  "location" : "Sherman Oaks, CA 91423, USA",
+  "phone" : "316-650-0346",
+  "sex" : "M",
+  "orientation" : "G",
+  "age" : 59,
+  "address" : {
+    "street" : "1230 Milan Ave",
+    "city" : "San Fernado Valley",
+    "state" : "CA",
+    "zip" : "91423"
+  },
+  "name" : "Gilbert Gottfried",
+  "details" : {
+    "feet" : "5",
+    "inches" : "3",
+    "bodyType" : "A little extra",
+    "diet" : "halal",
+    "smoking" : "No",
+    "drinking" : "Rarely",
+    "drug" : "-",
+    "religion" : "Buddhism",
+    "religionSerious" : "-",
+    "sign" : "Leo",
+    "signSerious" : "-",
+    "educationStatus" : "-",
+    "educationLevel" : "law school",
+    "ulmer" : "Z (What am I doing with my life?!)",
+    "income" : "Less than $20,000",
+    "relationshipStatus" : "Single",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "monogamous",
+    "childrenQ1" : "Doesn’t have kids",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "Likes dogs",
+    "cats" : "Likes cats"
+  }
+}
+{
+  "_id" : {"$oid": "540cfc6bb7caf7eb5296797e"},
+  "coordinates" : [
+    -74.08875760000001,
+    40.2240869
+  ],
+  "about" : {
+    "aboutMe" : "I'm an actor, director and producer.",
+    "life" : "",
+    "brag" : "",
+    "interests" : "\"The Dance of Reality\" Fantastic Jodorowsky!!!",
+    "roll" : "I almost did a movie with Phil Collins, & Bob Hoskins! It would have been called The Three Bears!  that would have been the best",
+    "nightLife" : "drinking my own lemocello"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "DantheMan@alwaysSunny.com",
+  "password" : "$2a$10$E6Vrerm6.xmMnrVLR19HaurhfOnf7TEdG/lYXY4pucuhZPD2YH5S6",
+  "type" : "local",
+  "alias" : "DantheMan",
+  "location" : "Neptune, NJ 07753, USA",
+  "phone" : "316-650-0346",
+  "sex" : "M",
+  "orientation" : "S",
+  "age" : 69,
+  "address" : {
+    "street" : "6233 Hollywood Blvd.",
+    "city" : "Neptune",
+    "state" : "NJ",
+    "zip" : "07753"
+  },
+  "name" : "Danny Devito",
+  "details" : {
+    "feet" : "4",
+    "inches" : "11",
+    "bodyType" : "Full figured",
+    "diet" : "anything",
+    "smoking" : "Sometimes",
+    "drinking" : "Socially",
+    "drug" : "Marijuana / Cannabis",
+    "religion" : "Buddhism",
+    "religionSerious" : "and laughing about it",
+    "sign" : "Scorpio",
+    "signSerious" : "-",
+    "educationStatus" : "-",
+    "educationLevel" : "two-year college",
+    "ulmer" : "C",
+    "income" : "$70,000–$80,000",
+    "relationshipStatus" : "Single",
+    "monogamyFlex" : "Strictly",
+    "monogamous" : "non-monogamous",
+    "childrenQ1" : "Has a kid",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "Dislikes dogs",
+    "cats" : "Dislikes cats"
+  }
+}
+{
+  "_id" : {"$oid": "540cfdeab7caf7eb5296797f"},
+  "coordinates" : [
+    -118.8363756,
+    34.0615492
+  ],
+  "about" : {
+    "aboutMe" : "I act some. Dig variety acts, Pixar, puppets, theme parks and great meals.",
+    "life" : "a little of this, a little of that and then a lot of all of it",
+    "brag" : "Everything I try",
+    "interests" : "",
+    "roll" : "Doogie Houser, M.D.",
+    "nightLife" : "Playing with the kids"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "Doogie@barney.com",
+  "password" : "$2a$10$sWX2qTDTfLChVo6zbUjmmeGnmqd1qNu9e3vvz/aZ6trTBBUh2N16W",
+  "type" : "local",
+  "alias" : "Doogie",
+  "location" : "Malibu, CA 90265, USA",
+  "phone" : "316-650-0346",
+  "sex" : "M",
+  "orientation" : "G",
+  "age" : 41,
+  "address" : {
+    "street" : "3500 The Strand",
+    "city" : "Malibu",
+    "state" : "CA",
+    "zip" : "90265"
+  },
+  "name" : "Neil Harris",
+  "details" : {
+    "feet" : "5",
+    "inches" : "11",
+    "bodyType" : "Fit",
+    "diet" : "vegan",
+    "smoking" : "No",
+    "drinking" : "Socially",
+    "drug" : "-",
+    "religion" : "-",
+    "religionSerious" : "-",
+    "sign" : "Gemini",
+    "signSerious" : "and it matters a lot",
+    "educationStatus" : "Graduated from",
+    "educationLevel" : "acting school",
+    "ulmer" : "B",
+    "income" : "$500,000–$1,000,000",
+    "relationshipStatus" : "In an open relationship",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "monogamous",
+    "childrenQ1" : "Has a kid",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "Has dogs",
+    "cats" : "Has cats"
+  }
+}
+{
+  "_id" : {"$oid": "540cff7db7caf7eb52967980"},
+  "coordinates" : [
+    -118.3783347,
+    34.0931603
+  ],
+  "about" : {
+    "aboutMe" : "This may seem strange but we are looking for a third.  Everyone knows us together and we're great that way but just think a third will bring new life!",
+    "life" : "makin' people laugh and money hand over fist",
+    "brag" : "making people laugh",
+    "interests" : "",
+    "roll" : "Ellen!",
+    "nightLife" : "swimming in our money bank - like Uncle Scrooge!"
+  },
+  "profilePhoto" : "/img/placeholder.gif",
+  "email" : "Portllen@mailinator.com",
+  "password" : "$2a$10$XXh5idc/.aOzqbxA4CRB7emJ3gVLdQV0NZDU1VZJ.hu3uQ12erYau",
+  "type" : "local",
+  "alias" : "Portllen",
+  "location" : "West Hollywood, CA 90069, USA",
+  "phone" : "316-650-0346",
+  "sex" : "F",
+  "orientation" : "G",
+  "age" : 40,
+  "address" : {
+    "street" : "12334 Cantura Street",
+    "city" : "West Hollywood",
+    "state" : "CA",
+    "zip" : "90069"
+  },
+  "name" : "Ellen & Portia",
+  "details" : {
+    "feet" : "5",
+    "inches" : "10",
+    "bodyType" : "Thin",
+    "diet" : "vegan",
+    "smoking" : "No",
+    "drinking" : "Often",
+    "drug" : "-",
+    "religion" : "Christianity",
+    "religionSerious" : "but not too serious about it",
+    "sign" : "Aquarius",
+    "signSerious" : "-",
+    "educationStatus" : "Dropped out of",
+    "educationLevel" : "two-year college",
+    "ulmer" : "A",
+    "income" : "More than $1,000,000",
+    "relationshipStatus" : "Married",
+    "monogamyFlex" : "Mostly",
+    "monogamous" : "monogamous",
+    "childrenQ1" : "Doesn’t have kids",
+    "childrenQ2" : "Doesn’t want kids",
+    "dogs" : "Has dogs",
+    "cats" : "Has cats"
+  }
+}
+

@@ -2,14 +2,14 @@
   .col-xs-12
     table.table.table-hover
       thead
-        th Photo
-        th Info
+        th
+        th
       tbody
         each profile in profiles
           tr
             td: .search-photo(style='background-image:url(#{profile.profilePhoto});')
             td
               a(href='/users/#{profile.alias}')
-                .row: .col-xs-12= profile.alias
-                .row: .col-xs-12 #{profile.sex} #{profile.age} #{profile.location}
+                .row: .col-xs-12(style='text-align:left;')= profile.alias
+                .row: .col-xs-12(style='text-align:left;') #{profile.sex} #{profile.age} #{profile.location}
 

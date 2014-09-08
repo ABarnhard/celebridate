@@ -20,6 +20,9 @@ Object.defineProperty(Proposal, 'collection', {
   get: function(){return global.mongodb.collection('proposals');}
 });
 
+Proposal.countForUser = function(userId, cb){
+  Proposal.collection.count({receiverId:userId, isRead:false}, cb);
+};
 
 Proposal.read = function(id, cb){
   var _id = Mongo.ObjectID(id);
@@ -41,7 +44,7 @@ Proposal.accept = function(receiverId, cb){
   Proposal.collection.find({receiverId:receiverId, isAccepted:false}).count(cb);
 };
 
-Proposal.proposals = function(receiverId, cb){
+Proposal.findAllForUser = function(receiverId, cb){
   Proposal.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, props){
     async.map(props, iterator, cb);
   });

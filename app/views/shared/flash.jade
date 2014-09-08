@@ -10,12 +10,10 @@ each notice in flash.notice || []
     button.close(type="button", data-dismiss="alert")
       span(aria-hidden="true") &times;
       span.sr-only Close
-    strong Notice! &nbsp;
     span= notice
 each success in flash.success || []
   .alert.alert-success.alert-dismissible(role='alert')
     button.close(type="button", data-dismiss="alert")
       span(aria-hidden="true") &times;
       span.sr-only Close
-    strong Success! &nbsp;
     span= success

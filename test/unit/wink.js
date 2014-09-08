@@ -41,9 +41,9 @@ describe('Wink', function(){
   });
 
 
-  describe('.findAllByOwner', function(){
+  describe('.findAllForUser', function(){
     it('should return all the winks of ownerId from the database', function(done){
-      Wink.findAllByOwner(Mongo.ObjectID('000000000000000000000001'), function(err, winks){
+      Wink.findAllForUser(Mongo.ObjectID('000000000000000000000001'), function(err, winks){
         // console.log(winks);
         expect(winks).to.have.length(1);
         done();

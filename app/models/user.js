@@ -12,6 +12,7 @@ var bcrypt   = require('bcrypt'),
 function User(){
   this.coordinates = [];
   this.about = {};
+  this.details = {};
   this.profilePhoto = '/img/placeholder.gif';
 }
 
@@ -91,8 +92,16 @@ User.facebookAuth = function(accessToken, refreshToken, profile, cb){
 };
 
 User.addPhotos = function(user, files, cb){
-  user.moveFiles(files);
-  User.collection.save(user, cb);
+  User.findById(user._id.toString(), function(err, u){
+    u.moveFiles(files);
+    u.setProfilePic();
+    User.collection.save(u, cb);
+  });
+};
+
+User.prototype.setProfilePic = function(){
+  if(!this.photos.length){return;}
+  this.profilePhoto = this.photos[_.random(0, this.photos.length - 1)];
 };
 
 User.prototype.moveFiles = function(files){
@@ -154,7 +163,7 @@ User.prototype.updateAbout = function(data, cb){
 };
 
 User.prototype.updateDetails = function(data, cb){
-  var orientation = data.orientation;
+  var orientation = data.orientation === '-' ? this.orientation : data.orientation;
   delete data.orientation;
   User.collection.update({_id:this._id}, {$set:{orientation:orientation, details:data}}, cb);
 };
@@ -241,11 +250,19 @@ User.prototype.find = function(data, cb){
     var range = data.age.split('-').map(function(s){return parseInt(s);});
     filter.age = {$gte:range[0], $lt:range[1]};
   }
+  if(data.distance){
+    filter.coordinates = {$nearSphere:[this.coordinates[0], this.coordinates[1]]};
+  }
   filter._id = {$ne:this._id};
-  console.log('*******FILTER', filter);
-  User.collection.find(filter).sort(sort).toArray(function(err, objs){
-    console.log(objs);
-    cb(err, objs);
+  if(data.orderAge){
+    var dir = data.orderAge === 'A' ? 1 : -1;
+    sort.age = dir;
+  }
+  // console.log('*******FILTER', filter);
+  User.collection.find(filter).sort(sort).toArray(function(err, profiles){
+    if(data.distance === 'D-D'){profiles.reverse();}
+   // console.log(profiles);
+    cb(err, profiles);
   });
 };
 

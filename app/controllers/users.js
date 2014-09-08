@@ -58,6 +58,7 @@ exports.about = function(req, res){
 };
 
 exports.details = function(req, res){
+  console.log(req.body);
   req.user.updateDetails(req.body, function(){
     res.redirect('/profile');
   });

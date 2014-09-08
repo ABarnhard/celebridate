@@ -15,10 +15,10 @@ exports.sendMessage = function(req, res){
 };
 
 exports.index = function(req, res){
-  res.locals.user.messages(function(err, msgs){
-    res.locals.user.proposals(function(err, props){
-      res.locals.user.winks(function(err, winks){
-        res.render('users/messages', {msgs:msgs, props:props, winks:winks, moment:moment});
+  Message.findAllForUser(req.user._id, function(err, msgs){
+    Proposal.findAllForUser(req.user._id, function(err, props){
+      Wink.findAllForUser(req.user._id, function(err, winks){
+        res.render('users/inbox', {msgs:msgs, props:props, winks:winks, moment:moment});
       });
     });
   });
@@ -55,9 +55,10 @@ exports.newProposal = function(req, res){
   res.render('users/proposal', {receiverId:req.params.receiverId});
 };
 
-exports.sendWink = function(req, res){
-  Wink.send(req.body.senderId, req.body.receiverId, req.body, function(){
+exports.createWink = function(req, res){
+  Wink.send(req.user._id, req.body.receiverId, function(){
     User.findById(req.body.receiverId, function(err, user){
+      req.flash('notice', 'Nice Wink! Nothing gets you laid faster than passive communication on the internet!');
       res.redirect('/users/' + user.alias);
     });
   });

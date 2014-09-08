@@ -1,0 +1,19 @@
+#uploadPhotos.modal.fade(tabindex='-1', role='dialog', aria-labelledby='uploadPhotosLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal')
+          span(aria-hidden='true') ×
+          span.sr-only Close
+        h4#uploadPhotosLabel.modal-title Edit your contact information
+      .modal-body
+        form.form-horizontal#upload_form(role='form', method='post', action='/profile/photos', enctype='multipart/form-data')
+          .form-group
+            label.col-xs-2.control-label(for='photos') Upload Photos:
+            .col-xs-6
+              input.form-control#photos(type='file', name='photos', multiple=true)
+              span.help-block
+                | Other members can see photos.
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-success#uploadSubmit(type='submit') Save changes
