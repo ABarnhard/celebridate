@@ -92,8 +92,16 @@ User.facebookAuth = function(accessToken, refreshToken, profile, cb){
 };
 
 User.addPhotos = function(user, files, cb){
-  user.moveFiles(files);
-  User.collection.save(user, cb);
+  User.findById(user._id.toString(), function(err, u){
+    u.moveFiles(files);
+    u.setProfilePic();
+    User.collection.save(u, cb);
+  });
+};
+
+User.prototype.setProfilePic = function(){
+  if(!this.photos.length){return;}
+  this.profilePhoto = this.photos[_.random(0, this.photos.length - 1)];
 };
 
 User.prototype.moveFiles = function(files){
