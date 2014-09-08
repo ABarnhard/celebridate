@@ -11,6 +11,8 @@
   "location" : "Nashville, TN 37204, USA",
   "phone" : "316-650-0346",
   "address" : {"zip":"37204"},
+  "details" : {},
+  "about" : {},
   "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
@@ -25,6 +27,8 @@
   "alias" : "SueJones",
   "location" : "Nashville, TN 37201, USA",
   "phone" : "316-650-0346",
+  "details" : {},
+  "about" : {},
   "address" : {"zip" : "37201"}
 }
 {
@@ -40,6 +44,8 @@
   "location" : "Englewood, CO 80110, USA",
   "phone" : "316-650-0346",
   "address" : {"zip" : "80110"},
+  "details" : {},
+  "about" : {},
   "photos" : ["photo1.jpg", "photo2.jpg", "photo3.jpg"]
 }
 {
@@ -54,12 +60,16 @@
   "email" : "jen@mailinator.com",
   "location" : "Los Angeles, CA 90001, USA",
   "phone" : "316-650-0346",
+  "details" : {},
+  "about" : {},
   "address" : {"zip" : "90001"}
 }
 {
   "_id" : {"$oid":"000000000000000000000005"},
   "profilePhoto" : "/img/placeholder.gif",
   "coordinates" : [],
+  "details" : {},
+  "about" : {},
   "facebookId" : "90000000000000002",
   "type" : "facebook"
 }
