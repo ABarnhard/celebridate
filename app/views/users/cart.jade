@@ -5,7 +5,6 @@ block content
       form(method='post', action='/cart')
         input(type='hidden', name='_method', value='delete')
         button.btn.btn-warning(type='submit') Clear Cart
-
       table#gifts.table.table-bordered
         thead
           tr
@@ -41,8 +40,6 @@ block content
             td
             td Total
             td= '$' + total.toFixed(2)
-
-
 
       form(action='/charge', method='post')
         script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key=key, data-image='/img/CD.jpg', data-name='CelebriDate', data-amount=Math.round((total * 100)))

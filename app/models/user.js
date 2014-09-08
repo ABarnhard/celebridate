@@ -12,6 +12,7 @@ var bcrypt   = require('bcrypt'),
 function User(){
   this.coordinates = [];
   this.about = {};
+  this.details = {};
   this.profilePhoto = '/img/placeholder.gif';
 }
 

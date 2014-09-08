@@ -8,42 +8,48 @@ block content
           .col-xs-2
             a.thumbnail#profile(href='/profile/photos')
               img(src='#{userData.profilePhoto}')
-          .col-xs-6
-            a(href='/profile/about')
-              h2=user.alias
-            ul.list-inline
-              li
-                h5=user.age
-              li
-                h5=user.sex
-              li
-                h5=user.location
-          .col-xs-2
+          .col-xs-10
+            .row
+              .col-xs-1
+              .col-xs-6
+                h2=user.alias
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-birthday-cake &nbsp; #{user.age}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-male /
+                h5.i.fa.fa-female &nbsp; #{user.sex}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-map-marker &nbsp; #{user.location}
   .row
     .col-xs-6
       .row
         .col-xs-12
           .panel.panel-info
             .panel-heading
-                h3#contact.panel-title Contact Information
-                  include contact
-              .panel-body
-                ul.list-group
-                  li.list-group-item
-                    | Alias:&nbsp
-                    | #{userData.alias}
-                  li.list-group-item
-                    | Name:&nbsp
-                    | #{userData.name}
-                  li.list-group-item
-                    | Email:&nbsp
-                    a(href='mailto:#{userData.email}?Subject=Email%20from%20CelebriDate', target='_top')=userData.email
-                  li.list-group-item
-                    | Phone:&nbsp
-                    | #{userData.phone}
-                  li.list-group-item
-                    | Address:&nbsp
-                    | #{userData.address.street}, &nbsp; #{userData.address.city}, &nbsp; #{userData.address.state}&nbsp;&nbsp; #{userData.address.zip}
+              h3#contact.panel-title Contact Information
+                include contact
+            .panel-body
+                dl.dl-horizontal
+                  dt Alias:&nbsp
+                  dd #{userData.alias}
+                  br
+                  dt Name:&nbsp
+                  dd #{userData.name}
+                  br
+                  dt Email:&nbsp
+                  dd: a(href='mailto:#{userData.email}?Subject=Email%20from%20CelebriDate', target='_top')=userData.email
+                  br
+                  dt Phone:&nbsp
+                  dd #{userData.phone}
+                  br
+                  dt Address:&nbsp
+                  dd #{userData.address.street}, &nbsp; #{userData.address.city}, &nbsp; #{userData.address.state}&nbsp;&nbsp; #{userData.address.zip}
       .row
         .col-xs-12
           .panel.panel-info
@@ -51,6 +57,26 @@ block content
                 h3#about.panel-title About me
                   include about
               .panel-body
+                dl
+                  dt My self summary
+                  br
+                  dd #{userData.about.aboutMe}
+                  br
+                  dt What I'm doing with my life...
+                  dd #{userData.about.life}
+                  br
+                  dt I'm really good at...
+                  dd #{userData.about.brag}
+                  br
+                  dt My interestes (favorite books, music, food, etc.)...
+                  dd #{userData.about.interests}
+                  br
+                  dt My favorite roll was...
+                  dd #{userData.about.roll}
+                  br
+                  dt On a typical Wednesday night I am...
+                  dd #{userData.about.nightLife}
+                  br
     .col-xs-6
       .row
         .col-xs-12
@@ -59,7 +85,55 @@ block content
                 h3#details.panel-title Details
                   include details
               .panel-body
-
+                dl.dl-horizontal
+                  dt Orientation:&nbsp;
+                  dd #{userData.orientation}
+                  br
+                  dt Height:&nbsp;
+                  dd #{userData.details.feet} feet,&nbsp; #{userData.details.inches} inches
+                  br
+                  dt Body Type:&nbsp;
+                  dd #{userData.details.bodyType}
+                  br
+                  dt Diet:&nbsp;
+                  dd #{userData.details.diet}
+                  br
+                  dt Smokes:&nbsp;
+                  dd #{userData.details.smoking}
+                  br
+                  dt Drinks:&nbsp;
+                  dd #{userData.details.drinking}
+                  br
+                  dt Drug of Choice:&nbsp;
+                  dd #{userData.details.drug}
+                  br
+                  dt Religion:&nbsp;
+                  dd #{userData.details.religion}, &nbsp;#{userData.details.religionSerious}
+                  br
+                  dt Sign:&nbsp;
+                  dd #{userData.details.sign} &nbsp;#{userData.details.signSerious}
+                  br
+                  dt Education:&nbsp;
+                  dd #{userData.details.educationStatus} &nbsp;#{userData.details.educationLevel}
+                  br
+                  dt Ulmer Status:&nbsp;
+                  dd #{userData.details.ulmer}
+                  br
+                  dt Income:&nbsp;
+                  dd #{userData.details.income}
+                  br
+                  dt Relationship Status:&nbsp;
+                  dd #{userData.details.relationshipStatus}
+                  br
+                  dt Relationship Type:&nbsp;
+                  dd #{userData.details.monogamyFlex} &nbsp; #{userData.details.monogamous}
+                  br
+                  dt Offspring:&nbsp;
+                  dd #{userData.details.childrenQ1}, &nbsp; #{userData.details.childrenQ2}
+                  br
+                  dt Pets:&nbsp;
+                  dd #{userData.details.dogs}, &nbsp;#{userData.details.cats}
+                  br
 block scripts
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKBptUxmWBtYmtT8hfD67-TcrUhu4cl8&sensor=true')
   script(src='/js/user/profile.js')

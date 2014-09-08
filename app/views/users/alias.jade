@@ -1,59 +1,150 @@
 extends ../shared/template
 block content
-  .panel.panel-default
-    .panel-body
-    .row
-      .col-xs-4
-        h2= client.alias
-        .col-xs-4
-          ul.list-inline
-            li
-              h5= client.age
-            li
-              h5= client.gender
-            li
-              h5= client.Location
-      .col-xs-2
-        a.thumbnail#alias(href='#')
-          img(src='#{user.photo}')
-        .col-xs-2.col-xs-offset-1
-          span.glyphicon.glyphicon-heart
-      .col-xs-4
-
-    button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage') Message
-    include newMessage
-    a.btn.btn-default.btn(href='/gifts') Gift
-    form.form(role='form', method='post', action='/winks')
-      input(type='hidden', name='receiverId', value=client._id)
-      button.btn.btn-default.btn-(type='submit') Wink
-      span.glyphicon.glyphicon-eye-open
-    a.btn.btn-default(href='/proposals/#{client._id}/new') Send Propsal
   .row
     .col-xs-12
-  .panel.panel-default
-    .panel-heading
-        h3.panel-title About #{client.alias}
-      .panel-body
-        h6 This is the About Me Section of the Profile Page
+      .panel.panel-default
+        .panel-body
+        .row
+          .col-xs-4
+            .row
+              .col-xs-1
+              .col-xs-6
+                h2 #{client.alias}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-birthday-cake &nbsp; #{client.age}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-male /
+                h5.i.fa.fa-female &nbsp; #{client.sex}
+            .row
+              .col-xs-1
+              .col-xs-6
+                h5.fa.fa-map-marker &nbsp; #{client.location}
+          .col-xs-4
+            a.thumbnail#alias(href='#')
+              img(src='#{client.profilePhoto}')
+          .col-xs-4#clientButtons
+            .row
+              .col-xs-4
+                a.btn.btn-default(href='/proposals/#{client._id}/new'): i.fa.fa-calendar &nbsp; Request a Date
+            .row
+              .col-xs-4
+                a.btn.btn-default.btn(href='/gifts'): i.fa.fa-gift &nbsp; Send a Gift
+            .row
+              .col-xs-4
+                button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage'): i.fa.fa-envelope &nbsp; Message
+                include newMessage
+            .row
+              .col-xs-4
+                a.btn.btn-default(href='#'): i.fa.fa-heart &nbsp; Favorite
+            .row
+              .col-xs-4
+                form.form(role='form', method='post', action='/winks')
+                  input(type='hidden', name='receiverId', value=client._id)
+                  button.btn.btn-default.btn-(type='submit'): i.fa.fa-eye &nbsp; Wink
   .row
-    .col-xs-12
-      .c-wrapper
-      #carousel-example-generic.carousel.slide(data-ride='carousel')
-        ol.carousel-indicators
-          li.active(data-target='#carousel-example-generic', data-slide-to='0')
-          li.active(data-target='#carousel-example-generic', data-slide-to='1')
-          li.active(data-target='#carousel-example-generic', data-slide-to='2')
-        .carousel-inner
-          .item.active
-            img(src='/img/node.png')
-          .item
-            img(src='/img/node.png')
-        a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left
-        a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-right
-
-
-
-
+    .col-xs-6
+      .row
+        .col-xs-12
+          .panel.panel-info
+            .panel-heading
+                h3#about.panel-title About me
+              .panel-body
+                dl
+                  dt My self summary
+                  br
+                  dd #{client.about.aboutMe}
+                  br
+                  dt What I'm doing with my life...
+                  dd #{client.about.life}
+                  br
+                  dt I'm really good at...
+                  dd #{client.about.brag}
+                  br
+                  dt My interestes (favorite books, music, food, etc.)...
+                  dd #{client.about.interests}
+                  br
+                  dt My favorite roll was...
+                  dd #{client.about.roll}
+                  br
+                  dt On a typical Wednesday night I am...
+                  dd #{client.about.nightLife}
+                  br
+      .row
+        .col-xs-12
+          .c-wrapper
+          #carousel-example-generic.carousel.slide(data-ride='carousel')
+            ol.carousel-indicators
+              li.active(data-target='#carousel-example-generic', data-slide-to='0')
+              li.active(data-target='#carousel-example-generic', data-slide-to='1')
+              li.active(data-target='#carousel-example-generic', data-slide-to='2')
+            .carousel-inner
+              .item.active
+                img(src='/img/node.png')
+              .item
+                img(src='/img/node.png')
+            a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+            a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-right
+        .col-xs-2
+    .col-xs-6
+      .row
+        .col-xs-12
+          .panel.panel-info
+            .panel-heading
+                h3#details.panel-title Details
+              .panel-body
+                dl.dl-horizontal
+                  dt Orientation:&nbsp;
+                  dd #{client.orientation}
+                  br
+                  dt Height:&nbsp;
+                  dd #{client.details.feet} feet,&nbsp; #{client.details.inches} inches
+                  br
+                  dt Body Type:&nbsp;
+                  dd #{client.details.bodyType}
+                  br
+                  dt Diet:&nbsp;
+                  dd #{client.details.diet}
+                  br
+                  dt Smokes:&nbsp;
+                  dd #{client.details.smoking}
+                  br
+                  dt Drinks:&nbsp;
+                  dd #{client.details.drinking}
+                  br
+                  dt Drug of Choice:&nbsp;
+                  dd #{client.details.drug}
+                  br
+                  dt Religion:&nbsp;
+                  dd #{client.details.religion}, &nbsp;#{client.details.religionSerious}
+                  br
+                  dt Sign:&nbsp;
+                  dd #{client.details.sign} &nbsp;#{client.details.signSerious}
+                  br
+                  dt Education:&nbsp;
+                  dd #{client.details.educationStatus} &nbsp;#{client.details.educationLevel}
+                  br
+                  dt Ulmer Status:&nbsp;
+                  dd #{client.details.ulmer}
+                  br
+                  dt Income:&nbsp;
+                  dd #{client.details.income}
+                  br
+                  dt Relationship Status:&nbsp;
+                  dd #{client.details.relationshipStatus}
+                  br
+                  dt Relationship Type:&nbsp;
+                  dd #{client.details.monogamyFlex} &nbsp; #{client.details.monogamous}
+                  br
+                  dt Offspring:&nbsp;
+                  dd #{client.details.childrenQ1}, &nbsp; #{client.details.childrenQ2}
+                  br
+                  dt Pets:&nbsp;
+                  dd #{client.details.dogs}, &nbsp;#{client.details.cats}
+                  br
 block scripts
