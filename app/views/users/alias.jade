@@ -75,21 +75,25 @@ block content
                   br
       .row
         .col-xs-12
-          .c-wrapper
-          #carousel-example-generic.carousel.slide(data-ride='carousel')
-            ol.carousel-indicators
-              li.active(data-target='#carousel-example-generic', data-slide-to='0')
-              li.active(data-target='#carousel-example-generic', data-slide-to='1')
-              li.active(data-target='#carousel-example-generic', data-slide-to='2')
-            .carousel-inner
-              .item.active
-                img(src='/img/node.png')
-              .item
-                img(src='/img/node.png')
-            a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-              span.glyphicon.glyphicon-chevron-left
-            a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
-              span.glyphicon.glyphicon-chevron-right
+          if client.photos
+            .c-wrapper
+            #carousel-example-generic.carousel.slide(data-ride='carousel')
+              ol.carousel-indicators
+                - var sc = 0
+                each p in client.photos
+                  li.active(data-target='#carousel-example-generic', data-slide-to='#{sc}')
+                  - sc++
+              .carousel-inner
+                - var p1 = client.photos.shift()
+                .item.active
+                  img(src='#{p1}')
+                each photo in client.photos
+                  .item
+                    img(src='#{photo}')
+              a.left.carousel-control(href='#carousel-example-generic', role='button', data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left
+              a.right.carousel-control(href='#carousel-example-generic', role='button', data-slide='next')
+                span.glyphicon.glyphicon-chevron-right
         .col-xs-2
     .col-xs-6
       .row
