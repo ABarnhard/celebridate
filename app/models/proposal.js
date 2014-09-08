@@ -20,6 +20,9 @@ Object.defineProperty(Proposal, 'collection', {
   get: function(){return global.mongodb.collection('proposals');}
 });
 
+Proposal.countForUser = function(userId, cb){
+  Proposal.collection.count({receiverId:userId, isRead:false}, cb);
+};
 
 Proposal.read = function(id, cb){
   var _id = Mongo.ObjectID(id);

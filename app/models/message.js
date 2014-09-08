@@ -16,6 +16,10 @@ Object.defineProperty(Message, 'collection', {
   get: function(){return global.mongodb.collection('messages');}
 });
 
+Message.countForUser = function(userId, cb){
+  Message.collection.count({receiverId:userId, isRead:false}, cb);
+};
+
 Message.read = function(id, cb){
   var _id = Mongo.ObjectID(id);
   Message.collection.findAndModify({_id:_id}, [], {$set:{isRead:true}}, function(err, msg){

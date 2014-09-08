@@ -58,6 +58,7 @@ exports.newProposal = function(req, res){
 exports.createWink = function(req, res){
   Wink.send(req.user._id, req.body.receiverId, function(){
     User.findById(req.body.receiverId, function(err, user){
+      req.flash('notice', 'Nice Wink! Nothing gets you laid faster than passive communication on the internet!');
       res.redirect('/users/' + user.alias);
     });
   });

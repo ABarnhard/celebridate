@@ -17,7 +17,7 @@
           li: a(href='/search'): span.fa.fa-search &nbsp Find Celebs
           li: a(href='/inbox')
             span.fa.fa-envelope &nbsp Inbox &nbsp;
-            span.badge= 0
+            span.badge= mCount
           li: a(href='/profile'): span.fa.fa-user &nbsp; #{user.alias}
           li
             form.navbar-form(method='post', action='/logout')

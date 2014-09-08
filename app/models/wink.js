@@ -13,6 +13,10 @@ Object.defineProperty(Wink, 'collection', {
   get: function(){return global.mongodb.collection('winks');}
 });
 
+Wink.countForUser = function(userId, cb){
+  Wink.collection.count({receiverId:userId, isRead:false}, cb);
+};
+
 Wink.send = function(senderId, receiverId, cb){
   receiverId = Mongo.ObjectID(receiverId);
   Wink.collection.findOne(senderId, receiverId, function(err, wink){

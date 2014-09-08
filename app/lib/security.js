@@ -1,5 +1,9 @@
 'use strict';
 
+var Message  = require('../models/message'),
+    Proposal = require('../models/proposal'),
+    Wink     = require('../models/wink');
+
 exports.locals = function(req, res, next){
   res.locals.user  = req.user;
   res.locals.flash = {};
@@ -8,8 +12,15 @@ exports.locals = function(req, res, next){
   keys.forEach(function(key){
     res.locals.flash[key] = req.flash(key);
   });
-
-  next();
+  var user = req.user || {};
+  Message.countForUser(user._id, function(err1, mCount){
+    Proposal.countForUser(user._id, function(err2, pCount){
+      Wink.countForUser(user._id, function(err3, wCount){
+        res.locals.mCount = mCount + pCount + wCount;
+        next();
+      });
+    });
+  });
 };
 
 exports.bounce = function(req, res, next){
