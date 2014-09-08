@@ -1,4 +1,4 @@
-.navbar.navbar-default.navbar(role='navigation')
+.navbar.navbar-default(role='navigation')
   .container-fluid
     .navbar-header
       button.navbar-toggle(data-toggle='collapse', data-target='#navbar-collapse')
@@ -6,15 +6,19 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') CelebriDate
+      if user
+        a.navbar-brand(href='/profile') CelebriDate
+      else
+        a.navbar-brand(href='/') CelebriDate
 
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav.navbar-right
         if user
-          li: a(href='/Profile'): span.fa.fa-user &nbsp Profile
+          li: a(href='/search'): span.fa.fa-search &nbsp Find Celebs
           li: a(href='/inbox')
             span.fa.fa-envelope &nbsp Inbox &nbsp;
             span.badge= 0
+          li: a(href='/profile'): span.fa.fa-user &nbsp; #{user.alias}
           li
             form.navbar-form(method='post', action='/logout')
               .form-group

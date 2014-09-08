@@ -245,6 +245,10 @@ User.prototype.find = function(data, cb){
     filter.coordinates = {$nearSphere:[this.coordinates[0], this.coordinates[1]]};
   }
   filter._id = {$ne:this._id};
+  if(data.orderAge){
+    var dir = data.orderAge === 'A' ? 1 : -1;
+    sort.age = dir;
+  }
   // console.log('*******FILTER', filter);
   User.collection.find(filter).sort(sort).toArray(function(err, profiles){
     if(data.distance === 'D-D'){profiles.reverse();}
