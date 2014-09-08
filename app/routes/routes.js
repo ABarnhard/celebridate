@@ -43,7 +43,6 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.delete('/logout', users.logout);
   app.get('/verify', users.verify);
-  app.put('/profile/init', users.initUpdate);
   app.get('/profile', users.profile);
   app.post('/profile/photos', users.addPhotos);
   app.put('/profile/photos/primary', users.setProfilePhoto);
@@ -51,7 +50,7 @@ module.exports = function(app, express){
   app.get('/gifts', gifts.index);
   app.post('/cart', cart.add);
   app.get('/cart', cart.index);
-  app.get('/cart', cart.destroy);
+  app.delete('/cart', cart.destroy);
   app.put('/profile/details', users.details);
   app.put('/profile/about', users.details);
   app.get('/users/alias', users.alias);

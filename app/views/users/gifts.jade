@@ -18,8 +18,7 @@ block content
                     td
                       form(method='post', action='/cart')
                         input(type='hidden', name='giftId', value=gift._id)
-                        button.btn.btn-primary.btn-sm(type='submit')= gift.name
-                        //button.btn.btn-default.btn-(data-toggle='modal', data-target='#gift')= gift.name
+                        button.btn.btn-default.btn-sm(type='submit')= gift.name
                     td#giftImg
                       img(src=gift.photo)
                     td $#{gift.price.toFixed(2)}
