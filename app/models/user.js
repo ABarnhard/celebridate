@@ -241,11 +241,15 @@ User.prototype.find = function(data, cb){
     var range = data.age.split('-').map(function(s){return parseInt(s);});
     filter.age = {$gte:range[0], $lt:range[1]};
   }
+  if(data.distance){
+    filter.coordinates = {$nearSphere:[this.coordinates[0], this.coordinates[1]]};
+  }
   filter._id = {$ne:this._id};
-  console.log('*******FILTER', filter);
-  User.collection.find(filter).sort(sort).toArray(function(err, objs){
-    console.log(objs);
-    cb(err, objs);
+  // console.log('*******FILTER', filter);
+  User.collection.find(filter).sort(sort).toArray(function(err, profiles){
+    if(data.distance === 'D-D'){profiles.reverse();}
+   // console.log(profiles);
+    cb(err, profiles);
   });
 };
 

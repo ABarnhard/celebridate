@@ -6,6 +6,8 @@ block content
       form(role='form', method='post', action='/proposals')
         input(type='hidden', name='receiverId', value='#{receiverId}')
         input(type='hidden', name='senderId', value='#{user._id}')
+        input(type='hidden', name='lat')
+        input(type='hidden', name='lng')
         .form-group
           label Activity
           input.form-control#activity(type='text', name='activity', placeholder='ie. Sailing, Skydiving...', autofocus=true)

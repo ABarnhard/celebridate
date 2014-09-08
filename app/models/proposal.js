@@ -41,7 +41,7 @@ Proposal.accept = function(receiverId, cb){
   Proposal.collection.find({receiverId:receiverId, isAccepted:false}).count(cb);
 };
 
-Proposal.proposals = function(receiverId, cb){
+Proposal.findAllForUser = function(receiverId, cb){
   Proposal.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, props){
     async.map(props, iterator, cb);
   });

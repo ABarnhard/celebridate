@@ -2,7 +2,7 @@ extends ../shared/template
 block content
   .row
     .col-xs-12
-      .panel.panel-primary
+      .panel.panel-success
         .panel-heading
           h3.panel-title Messages
         .panel-body
@@ -11,41 +11,47 @@ block content
               thead
                 th From
                 th Date
-                th Message
+                th Time
+                th Subject
               tbody
                 each msg in msgs
-                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
-                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
-                    td= msg.date.toDateString()
-                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
+                  tr(style='background-color:#{msg.isRead ? "lightblue" : "#8C8A8D"}')
+                    td: a(href='/users/#{msg.sender.alias}')= msg.sender.alias
+                    td= moment(msg.date).format('MM/DD/YYYY')
+                    td= moment(msg.date).fromNow()
+                    td: a(href='/messages/#{msg._id}')= msg.subject
     .col-xs-12
   .row
-    .col-xs-6
-      .panel.panel-primary
+    .col-xs-9
+      .panel.panel-info
         .panel-heading
-          h3.panel-title Proposals
+          h3.panel-title Date Proposals
         .panel-body
           .table-responsive
             table.table.table-hover.table-bordered#proposalsTable
               thead
                 th From
-                th Date
                 th Activity
                 th Message
               tbody
-                each msg in msgs
-                  tr(style='background-color:#{msg.isRead ? "#ECECEC" : "#8C8A8D"}')
-                    td: a(href='/users/#{msg.sender.email}')= msg.sender.name
-                    td= msg.date.toDateString()
-                    td: a(href='/messages/#{msg._id}')= (msg.message.slice(0, 20) + ' .....')
-    .col-xs-6
-      .panel.panel-primary
+                each prop in props
+                  tr
+                    td= sender.senderId
+                    td= proposal.activity
+                    td: a(href='/messages/#{msg._id}')= (prop.message.slice(0, 20) + '.....')
+    .col-xs-3
+      .panel.panel-danger
         .panel-heading
-          h3.panel-title Proposals
+          h3.panel-title Winks
         .panel-body
           .table-responsive
-            table.table.table-hover.table-bordered#proposalsTable
+            table.table.table-hover.table-bordered#winksTable
               thead
                 th From
+              tbody
+                each wink in winks
+                  tr
+                    td= wink.sender.alias
 
 block scripts
+

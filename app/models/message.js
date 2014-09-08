@@ -32,7 +32,7 @@ Message.unread = function(receiverId, cb){
   Message.collection.find({receiverId:receiverId, isRead:false}).count(cb);
 };
 
-Message.messages = function(receiverId, cb){
+Message.findAllForUser = function(receiverId, cb){
   Message.collection.find({receiverId:receiverId}).sort({date:-1}).toArray(function(err, msgs){
     async.map(msgs, iterator, cb);
   });

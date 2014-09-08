@@ -66,6 +66,7 @@ module.exports = function(app, express){
   app.get('/proposals/:proposalId', inbox.proposalMessage);
   app.get('/proposals/:receiverId/new', inbox.newProposal);
   app.post('/proposals', inbox.sendProposal);
+  app.post('/winks', inbox.createWink);
 
   console.log('Express: Routes Loaded');
 };

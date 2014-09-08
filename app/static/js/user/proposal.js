@@ -17,7 +17,7 @@
       var loc  = results[0].formatted_address,
           lat  = results[0].geometry.location.lat(),
           lng  = results[0].geometry.location.lng();
-      $('input[name=loc]').val(name);
+      $('#loc').val(name);
       $('input[data-name=lat]').val(lat);
       $('input[data-name=lng]').val(lng);
       $('form').submit();

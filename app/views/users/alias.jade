@@ -23,8 +23,7 @@ block content
     button.btn.btn-default.btn-(data-toggle='modal', data-target='#newMessage') Message
     include newMessage
     a.btn.btn-default.btn(href='/gifts') Gift
-    form.form(role='form', method='post', action='/message/#{client._id}')
-      input(type='hidden', name='senderId', value=user._id)
+    form.form(role='form', method='post', action='/winks')
       input(type='hidden', name='receiverId', value=client._id)
       button.btn.btn-default.btn-(type='submit') Wink
       span.glyphicon.glyphicon-eye-open
