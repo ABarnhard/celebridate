@@ -1,0 +1,36 @@
+{
+  "_id" : {"$oid":"540d00e5b7caf7eb52967981"},
+  "senderId" : {"$oid":"540cf8fdb7caf7eb5296797c"},
+  "receiverId" : {"$oid":"540cf62fb7caf7eb5296797b"},
+  "subject" : "Hey Girl! Got crack?",
+  "message" : "Hey girl I think you are talented - you got any crack?",
+  "date" : {"$date":1410138341312},
+  "isRead" : false
+}
+{
+  "_id" : {"$oid":"540d010cb7caf7eb52967982"},
+  "senderId" : {"$oid":"540cf8fdb7caf7eb5296797c"},
+  "receiverId" : {"$oid":"540cf62fb7caf7eb5296797b"},
+  "subject" : "it's me again - Crack!",
+  "message" : "for real!  I need some crack and I saw you lose your mind a while back - you on crack?",
+  "date" : {"$date":1410138380121},
+  "isRead" : false
+}
+{
+  "_id" : {"$oid":"540d0122b7caf7eb52967983"},
+  "senderId" : {"$oid":"540cf8fdb7caf7eb5296797c"},
+  "receiverId" : {"$oid":"540cf62fb7caf7eb5296797b"},
+  "subject" : "crAcK!",
+  "message" : "You got it?  I need it!  call me girl!  ",
+  "date" : {"$date":1410138390121},
+  "isRead" : false
+}
+{
+  "_id" : {"$oid":"540d0133b7caf7eb52967984"},
+  "senderId" : {"$oid":"540cf8fdb7caf7eb5296797c"},
+  "receiverId" : {"$oid":"540cf62fb7caf7eb5296797b"},
+  "subject" : "Are you not getting my messages?",
+  "message" : "I need crack",
+  "date" : {"$date":1410838390121},
+  "isRead" : false
+}
