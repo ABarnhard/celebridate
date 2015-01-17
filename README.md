@@ -2,13 +2,13 @@
 ### Code Badges
 [![Build Status](https://travis-ci.org/ABarnhard/celebridate.svg)](https://travis-ci.org/ABarnhard/celebridate)
 [![Coverage Status](https://coveralls.io/repos/ABarnhard/celebridate/badge.png)](https://coveralls.io/r/ABarnhard/celebridate)
-
+<!--
 ### Screenshots
 Forthcoming...
-
+-->
 ### Description
 A dating site for celebrities
-
+<!--
 ### Models
 ```
 Model 1
@@ -31,7 +31,7 @@ Collection 2
 - [x] Feature 1
 - [ ] Feature 2
 - [x] Feature 3
-
+-->
 ### Running Tests
 ```bash
 $ npm install
